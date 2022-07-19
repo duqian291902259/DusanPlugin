@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>SVGA Player</title>
+    {CSS_STUFF}
+    {JS_SCRIPT_STUFF}
+</head>
+<body onload="onPageLoaded()" oncontextmenu="return false;" onselectstart="return false;">
+<div id="topDiv">
+    <div class="switch-bg-btn" id="switch-bg-none" onclick="onSwitchBackground(this)"></div>
+    <div class="switch-bg-btn" id="switch-bg-black" onclick="onSwitchBackground(this)"></div>
+    <div class="switch-bg-btn" id="switch-bg-white" onclick="onSwitchBackground(this)"></div>
+    <div class="switch-bg-btn" id="switch-bg-blue" onclick="onSwitchBackground(this)"></div>
+    <div class="switch-bg-btn" id="switch-bg-green" onclick="onSwitchBackground(this)"></div>
+    <div class="switch-bg-btn" id="switch-bg-yellow" onclick="onSwitchBackground(this)"></div>
+    <div class="switch-bg-btn" id="switch-bg-red" onclick="onSwitchBackground(this)"></div>
+    <div id="infoDiv"></div>
+</div>
+<div id="content-div">
+    <div id="playerCanvas"></div>
+</div>
+</body>
+</html>
