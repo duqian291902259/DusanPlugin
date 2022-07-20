@@ -1,15 +1,18 @@
 plugins {
     id("java")
+    id("org.jetbrains.kotlin.jvm") version "1.6.20"
     id("org.jetbrains.intellij") version "1.5.2"
 }
 
-group = "site.duqian"
+group = "site.duqian.plugin"
 version = "1.0.0"
 
 repositories {
     mavenCentral()
 }
-// Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
+
+// Configure Gradle IntelliJ Plugin
+// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
     version.set("2021.2")
     type.set("IC") // Target IDE Platform
@@ -17,16 +20,14 @@ intellij {
     plugins.set(listOf(/* Plugin Dependencies */))
 }
 
-dependencies {
-    //compile(files("libs/*.jar"))
-    implementation(files("libs/*.jar"))
-}
-
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {
         sourceCompatibility = "11"
         targetCompatibility = "11"
+    }
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions.jvmTarget = "11"
     }
 
     patchPluginXml {

@@ -12,6 +12,7 @@ public class TipsDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JLabel tipsJL;
+    private JButton buttonCancel;
 
     public TipsDialog() {
         setContentPane(contentPane);
@@ -19,11 +20,17 @@ public class TipsDialog extends JDialog {
         getRootPane().setDefaultButton(buttonOK);
         setTitle("StopCoding");
         setLocation(400, 200);//距离屏幕左上角的其实位置
-        setSize(500, 200);//对话框的长宽
+        setSize(400, 200);//对话框的长宽
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
+            }
+        });
+        buttonCancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                DataCenter.reskTimer.cancel();
+                dispose();
             }
         });
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
