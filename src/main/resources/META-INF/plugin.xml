@@ -62,11 +62,19 @@
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta H"/>
         </action>
 
+        <!--coding tips-->
         <action id="site.duqian.plugin.StopCoding"
                 class="site.duqian.plugin.stopcoding.StopCodingSettingAction"
                 text="StopCoding" description="setting">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl S" second-keystroke="C"/>
+        </action>
+
+        <!--markdown note-->
+        <action id="mp-add-note-note" class="site.duqian.plugin.note.action.AddMdNoteAction"
+                text="add md note" description="add md note">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl meta M"/>
         </action>
     </actions>
 </idea-plugin>
