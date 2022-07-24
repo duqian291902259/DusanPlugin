@@ -1,9 +1,8 @@
 package site.duqian.plugin.note.file.util;
 
-/*import freemarker.cache.ClassTemplateLoader;
+import freemarker.cache.ClassTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import freemarker.template.TemplateException;*/
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,7 +13,7 @@ import java.util.Map;
  * freemarker工具
  */
 public class FreemarkerUtil {
-    /*private static Configuration configuration;
+    private static Configuration configuration;
     private FreemarkerUtil(){}
 
     static {
@@ -26,7 +25,7 @@ public class FreemarkerUtil {
         //3.设置字符集
         configuration.setDefaultEncoding("utf-8");
 
-    }*/
+    }
 
     /**
      * 模板渲染生成目标文件
@@ -38,12 +37,12 @@ public class FreemarkerUtil {
      */
     public static void genFile(String ftlUri, Map<String, Object> data, String filePath) throws Exception {
         //4.加载模板
-        /*Template template = configuration.getTemplate(ftlUri);
+        Template template = configuration.getTemplate(ftlUri);
         //6.创建Writer对象
         FileWriter writer = new FileWriter(new File(filePath));
         //7.输出数据模型到文件中
         template.process(data, writer);
         //8.关闭Writer对象
-        writer.close();*/
+        writer.close();
     }
 }

@@ -29,8 +29,8 @@
     </ol>
     ]]>
     </description>
-   <!--  <p>项目地址:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259</p>
- -->
+    <!--  <p>项目地址:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259</p>
+  -->
     <change-notes><![CDATA[
       <ul>
             <li>V1.0.0 release.</li>
@@ -41,17 +41,29 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
-
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <depends>com.intellij.modules.lang</depends>
+
     <extensions defaultExtensionNs="com.intellij">
         <preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>
+        <toolWindow factoryClass="site.duqian.plugin.note.window.MdNoteWindowFactory" id="MdNote" anchor="right"/>
+
+        <!-- svga extensions -->
+        <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeManager"
+                            serviceImplementation="site.duqian.plugin.svga.svga.SvgaFileTypeManagerImp"/>
+        <fileEditorProvider implementation="site.duqian.plugin.svga.svga.SvgaFileEditorProvider"/>
+        <fileTypeFactory implementation="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"/>
+        <fileType name="SVGA Animation" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
+                  language="SVGA" extensions="svga"/>
+
+
     </extensions>
 
+
     <actions>
-        <action id="site.duqian.plugin.test" class="site.duqian.plugin.HelloPlugin" text="杜小菜Plugin"
-                description="杜小菜-plugin">
+        <action id="site.duqian.plugin.test" class="site.duqian.plugin.HelloPlugin" text="AndroidPlugin"
+                description="AndroidPlugin by 杜小菜">
             <add-to-group group-id="ActivateToolWindowActions" anchor="first"/>
             <add-to-group group-id="ToolsMenu" anchor="first"/>
             <!-- 将组添加到右键菜单 -->
