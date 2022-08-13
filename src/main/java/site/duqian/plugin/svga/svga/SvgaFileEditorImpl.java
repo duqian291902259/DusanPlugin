@@ -1,3 +1,4 @@
+/*
 package site.duqian.plugin.svga.svga;
 
 import chrriis.dj.nativeswing.NSComponentOptions;
@@ -134,3 +135,4 @@ final class SvgaFileEditorImpl extends UserDataHolderBase implements FileEditor 
     public void dispose() {
     }
 }
+*/
