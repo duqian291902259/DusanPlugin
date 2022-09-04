@@ -11,8 +11,11 @@ import com.intellij.openapi.fileEditor.impl.text.TextEditorState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.jcef.JBCefApp;
+import com.intellij.ui.jcef.JBCefBrowser;
 import com.intellij.util.ui.JBUI;
 import groovy.util.logging.Log4j;
+import org.apache.commons.logging.Log;
 import org.jetbrains.annotations.NotNull;
 import site.duqian.plugin.svga.util.SvgaDataProcessor;
 import site.duqian.plugin.webview.*;
@@ -53,9 +56,25 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
         Browser browser = (Browser)jComponent;
         browser.load("https://www.baidu.com/");
         return jComponent;*/
-        JLabel label = new JLabel();
-        label.setText("htmlContent=" + mFile.getPath() + ",content=" + htmlContent);
-        return label;
+        String text = "htmlContent=" + mFile.getPath() + ",content=" + htmlContent;
+        JTextArea textArea = new JTextArea();
+        textArea.setText(text);
+
+        JScrollPane js = new JScrollPane(textArea);
+        js.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        js.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+        if (!JBCefApp.isSupported()) {
+            return new JLabel("Not support JBCefApp");
+        }
+
+        try {
+            JPanel myPanel = new JPanel();
+            myPanel.add(new JBCefBrowser("https://www.jetbrains.com").getComponent());
+            return myPanel;
+        } catch (Exception e) {
+            return textArea;
+        }
     }
 
     @Override

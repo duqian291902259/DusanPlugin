@@ -33,6 +33,7 @@ public class JcefBrowser implements BrowserView, Disposable {
             return;
         }
         browser = new JBCefBrowser("about:blank");
+        //browser.loadHTML();
         cefBrowser = browser.getCefBrowser();
         cefClient = browser.getJBCefClient().getCefClient();
         JBCefClient jbCefClient = browser.getJBCefClient();
