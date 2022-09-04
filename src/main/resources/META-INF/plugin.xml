@@ -9,7 +9,7 @@
     <version>1.0.0</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="duqian2010@gmail.com" url="https://site.duqian.net">Dusan</vendor>
+    <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -57,7 +57,8 @@
         <fileType name="SVGA Animation" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
                   language="SVGA" extensions="svga"/>
 
-
+        <toolWindow id="Embedded Web Browser" anchor="right"
+                    factoryClass="site.duqian.plugin.webview.BrowserWindowFactory"/>
     </extensions>
 
 

@@ -44,7 +44,7 @@ public class SvgaDataProcessor {
 
     @Nullable
     private static String processHtml(String path) {
-        String htmlContent = IOUtil.getFileContent("htm/player.htm");
+        String htmlContent = IOUtil.getFileContent("svga/htm/player.htm");
         if (htmlContent == null) {
             return null;
         }
@@ -62,7 +62,7 @@ public class SvgaDataProcessor {
                 fontColor.getRed(), fontColor.getGreen(), fontColor.getBlue()));
         htmlContent = htmlContent.replace(FONT_FAMILY_STUFF, UIUtil.getLabelFont().getFamily());
         htmlContent = htmlContent.replace(BACKGROUND_IMAGE_STUFF, String.format("data:image/svg+xml;base64,%s",
-                resourceToBase64("img/backgroundImage.svg")));
+                resourceToBase64("svga/img/backgroundImage.svg")));
         htmlContent = htmlContent.replace(SVGA_DATA_STUFF, String.format("data:svga/%s;base64,%s",
                 getSvgaVersion(path), fileToBase64(path)));
         return htmlContent;
@@ -70,9 +70,9 @@ public class SvgaDataProcessor {
 
     @NotNull
     private static String buildJsContent() {
-        return processJs("js/svga.min.js") + '\n' +
-                processJs("js/jszip.min.js") + '\n' +
-                processJs("js/main.js");
+        return processJs("svga/js/svga.min.js") + '\n' +
+                processJs("svga/js/jszip.min.js") + '\n' +
+                processJs("svga/js/main.js");
     }
 
     @NotNull
@@ -86,7 +86,7 @@ public class SvgaDataProcessor {
 
     @NotNull
     private static String processCss() {
-        String jsContent = IOUtil.getFileContent("htm/player.css");
+        String jsContent = IOUtil.getFileContent("svga/htm/player.css");
         if (jsContent != null) {
             return String.format("<style>%s</style>", jsContent);
         }

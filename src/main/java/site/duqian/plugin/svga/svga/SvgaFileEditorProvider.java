@@ -21,7 +21,7 @@ final class SvgaFileEditorProvider implements FileEditorProvider, DumbAware {
     @NotNull
     @Override
     public FileEditor createEditor(@NotNull Project project, @NotNull VirtualFile file) {
-        return null;//new SvgaFileEditorImpl(project, file);
+        return new SvgaFileMainImpl(project, file);
     }
 
     @NotNull
