@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    //id("org.jetbrains.kotlin.jvm") version "1.6.20"
+    id("org.jetbrains.kotlin.jvm") version "1.6.20"
     id("org.jetbrains.intellij") version "1.5.2"
 }
 
@@ -10,7 +10,7 @@ version = "1.0.0"
 repositories {
     mavenCentral()
     google()
-    //mavenLocal()
+    mavenLocal()
     maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
     maven { setUrl("https://maven.aliyun.com/repository/central") }
     maven { setUrl("https://maven.aliyun.com/repository/public") }
@@ -24,10 +24,10 @@ repositories {
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
     version.set("2021.2")
-    //version.set("2020.2.3")
-    type.set("IC") // Target IDE Platform
+    //version.set("2020.2.3") //Could not resolve com.jetbrains:jbre:jbr_jcef-11_0_8-osx-aarch64-b944.34.
+    //type.set("IC") // Target IDE Platform
 
-    plugins.set(listOf())
+    //plugins.set(listOf())
 }
 
 dependencies {

@@ -14,8 +14,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.jcef.JBCefApp;
 import com.intellij.ui.jcef.JBCefBrowser;
 import com.intellij.util.ui.JBUI;
-import groovy.util.logging.Log4j;
-import org.apache.commons.logging.Log;
 import org.jetbrains.annotations.NotNull;
 import site.duqian.plugin.svga.util.SvgaDataProcessor;
 import site.duqian.plugin.webview.*;
@@ -70,7 +68,9 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
 
         try {
             JPanel myPanel = new JPanel();
-            myPanel.add(new JBCefBrowser("https://www.jetbrains.com").getComponent());
+            JBCefBrowser browser = new JBCefBrowser("https://www.jetbrains.com");
+            browser.loadHTML(htmlContent);
+            myPanel.add(browser.getComponent());
             return myPanel;
         } catch (Exception e) {
             return textArea;
