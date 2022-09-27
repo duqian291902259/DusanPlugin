@@ -14,11 +14,13 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.jcef.JBCefApp;
 import com.intellij.ui.jcef.JBCefBrowser;
 import com.intellij.util.ui.JBUI;
+import java.io.File;
+import java.net.URI;
 import org.jetbrains.annotations.NotNull;
 import site.duqian.plugin.svga.util.SvgaDataProcessor;
 import site.duqian.plugin.webview.*;
-
 import javax.swing.*;
+import java.awt.*;
 import java.beans.PropertyChangeListener;
 
 final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
@@ -28,6 +30,7 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
 
     SvgaFileMainImpl(@NotNull Project project, @NotNull VirtualFile file) {
         mFile = file;
+        mLastFile = "";
     }
 
     private JComponent getBrowser() {
@@ -54,26 +57,48 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
         Browser browser = (Browser)jComponent;
         browser.load("https://www.baidu.com/");
         return jComponent;*/
-        String text = "htmlContent=" + mFile.getPath() + ",content=" + htmlContent;
+        String userDir = System.getProperty("user.dir");
+
+        String text = "userDir="+userDir+"\nhtmlContent=" + mFile.getPath() + "\n,content=" + htmlContent;
         JTextArea textArea = new JTextArea();
         textArea.setText(text);
 
-        JScrollPane js = new JScrollPane(textArea);
-        js.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        js.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-
-        if (!JBCefApp.isSupported()) {
+        /*if (!JBCefApp.isSupported()) {
+            browse("/Users/duqian/Movies/svga/index.html");
             return new JLabel("Not support JBCefApp");
-        }
+        }*/
 
         try {
             JPanel myPanel = new JPanel();
-            JBCefBrowser browser = new JBCefBrowser("https://www.jetbrains.com");
+            JBCefBrowser browser = new JBCefBrowser("http://www.duqian.site/");
             browser.loadHTML(htmlContent);
             myPanel.add(browser.getComponent());
             return myPanel;
         } catch (Exception e) {
+            browse("/Users/duqian/Movies/svga/index.html");
+            textArea.setText("阿哦，当前操作系统不支持实时预览动画，将使用系统默认浏览器展示动画效果！");
             return textArea;
+        }
+    }
+
+    private static String mLastFile = "";//防止再次获取焦点都打开浏览器
+
+    private static void browse(String filePath) {
+        if (filePath == null || "".equals(filePath) || filePath.equals(mLastFile)) return;
+        mLastFile = filePath;
+        //是否支持桌面
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                // 使用默认浏览器打开链接
+                //desktop.browse(new URI("http://www.duqian.site/"));
+                //打开本地的文件
+                desktop.open(new File(filePath));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("当前平台不支持 Desktop");
         }
     }
 
