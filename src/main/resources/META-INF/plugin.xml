@@ -58,8 +58,8 @@
                             serviceImplementation="site.duqian.plugin.svga.svga.SvgaFileTypeManagerImp"/>
         <fileEditorProvider implementation="site.duqian.plugin.svga.svga.SvgaFileEditorProvider"/>
         <fileTypeFactory implementation="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"/>
-        <fileType name="SVGA Animation" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
-                  language="SVGA" extensions="svga"/>
+        <fileType name="svga" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
+                  language="svga" extensions="svga"/>
 
         <!--WebBrowser-->
         <!--<toolWindow id="WebBrowser" anchor="right"
@@ -72,11 +72,6 @@
                 description="AndroidPlugin by 杜小菜">
             <add-to-group group-id="ActivateToolWindowActions" anchor="first"/>
             <add-to-group group-id="ToolsMenu" anchor="first"/>
-            <!-- 将组添加到右键菜单 -->
-            <add-to-group
-                    group-id="ProjectViewPopupMenu"
-                    anchor="after"
-                    relative-to-action="ReplaceInPath"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta H"/>
         </action>
 

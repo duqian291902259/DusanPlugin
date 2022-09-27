@@ -17,13 +17,13 @@ public class SvgaFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getName() {
-        return "SVGA Animation";
+        return "svga";
     }
 
     @NotNull
     @Override
     public String getDescription() {
-        return "SVGA Animation";
+        return "svga";
     }
 
     @NotNull

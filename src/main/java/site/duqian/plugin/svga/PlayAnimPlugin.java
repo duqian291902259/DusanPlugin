@@ -24,11 +24,14 @@ public class PlayAnimPlugin extends AnAction {
 
         // 获取当前右键的文件名
         VirtualFile virtualFile = e.getData(PlatformDataKeys.VIRTUAL_FILE);
-
-       /* Messages.showMessageDialog("Hello，Flat! " + basePath,
-                "杜小菜",
-                Messages.getInformationIcon());*/
-
+        String fileName = virtualFile != null ? virtualFile.getName() : "";
+        boolean isSvgaFile = fileName.endsWith(".svga");
+        if (!isSvgaFile) {
+            Messages.showMessageDialog("非可播放的文件，无法预览 " + fileName,
+                    "错误提示",
+                    Messages.getInformationIcon());
+            return;
+        }
         String htmlContent = SvgaDataProcessor.processSvgaData(virtualFile);
         String text = "basePath=" + basePath + "\nhtmlContent=" + virtualFile.getPath() + "\n,content=" + htmlContent;
         System.out.println(text);
@@ -55,11 +58,9 @@ public class PlayAnimPlugin extends AnAction {
         }
     }
 
-    private static String mLastFile = "";//防止再次获取焦点都打开浏览器
 
     private static void browse(String filePath) {
-        if (filePath == null || "".equals(filePath)) return;//|| filePath.equals(mLastFile)
-        mLastFile = filePath;
+        if (filePath == null || "".equals(filePath)) return;
         //是否支持桌面
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
