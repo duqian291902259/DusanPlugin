@@ -82,7 +82,7 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
             return myPanel;
         } catch (Exception e) {
             saveHtmlAndOpenByBrowser(htmlContent);
-            String fileSizeText = SvgaDataProcessor.processFileSizeText(mFile.getPath());
+            String fileSizeText = mFile.getName()+",size="+SvgaDataProcessor.processFileSizeText(mFile.getPath());
             textArea.setText("阿哦，当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n"+fileSizeText);
             //textArea.setVisible(false);
             return textArea;
