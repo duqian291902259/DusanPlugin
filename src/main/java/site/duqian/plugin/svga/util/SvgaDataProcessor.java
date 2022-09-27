@@ -121,7 +121,7 @@ public class SvgaDataProcessor {
         return value;
     }
 
-    private static String processFileSizeText(String filePath) {
+    public static String processFileSizeText(String filePath) {
         long length = new File(filePath).length();
         if (length < 1024) {
             return String.format("%sB", length);

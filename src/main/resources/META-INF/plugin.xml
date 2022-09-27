@@ -17,15 +17,16 @@
     <description><![CDATA[
      <p>DusanPlugin is just for android development</p>
      <ol>
-        <li>In the tools menu bar, open DusanPlugin.</li>
+        <li> Tools -> DusanPlugin.</li>
     </ol>
     <hr>
     <p>插件功能清单，含todo-list：</p>
       <ol>
-        <li>Simple：在菜单栏的Tools中打开功能，如：杜小菜Plugin</li>
+        <li>Simple：集合各种小插件，功能简单而美丽</li>
         <li>Fast：高效工作，定时提醒</li>
         <li>SVGA：支持SVGA动画预览</li>
         <li>Lottie：支持Lottie动画预览</li>
+        <li>一键同步生成马甲包布局</li>
     </ol>
     ]]>
     </description>
@@ -33,7 +34,8 @@
   -->
     <change-notes><![CDATA[
       <ul>
-            <li>V1.0.0 release.</li>
+            <li>V1.0.0 release：SVGA-Player for mac & 程序员工作计时器 </li>
+            <li>V1.0.1 release：fix bugs </li>
         </ul>
     ]]>
     </change-notes>

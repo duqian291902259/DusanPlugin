@@ -14,22 +14,28 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.jcef.JBCefApp;
 import com.intellij.ui.jcef.JBCefBrowser;
 import com.intellij.util.ui.JBUI;
+
 import java.io.File;
 import java.net.URI;
+
 import org.jetbrains.annotations.NotNull;
+import site.duqian.plugin.svga.util.IOUtil;
 import site.duqian.plugin.svga.util.SvgaDataProcessor;
 import site.duqian.plugin.webview.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 
 final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
 
-    private static final String NAME = "SVGA File Editor";
+    private static final String NAME = "SVGA-Player";
     private final VirtualFile mFile;
+    private final String mRootPath;
 
     SvgaFileMainImpl(@NotNull Project project, @NotNull VirtualFile file) {
         mFile = file;
+        mRootPath = project.getBasePath();
         mLastFile = "";
     }
 
@@ -57,9 +63,9 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
         Browser browser = (Browser)jComponent;
         browser.load("https://www.baidu.com/");
         return jComponent;*/
-        String userDir = System.getProperty("user.dir");
+        //String userDir = System.getProperty("user.dir");
 
-        String text = "userDir="+userDir+"\nhtmlContent=" + mFile.getPath() + "\n,content=" + htmlContent;
+        String text = "rootDir=" + mRootPath + "\nhtmlContent=" + mFile.getPath() + "\n,content=" + htmlContent;
         JTextArea textArea = new JTextArea();
         textArea.setText(text);
 
@@ -75,9 +81,30 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
             myPanel.add(browser.getComponent());
             return myPanel;
         } catch (Exception e) {
-            browse("/Users/duqian/Movies/svga/index.html");
-            textArea.setText("阿哦，当前操作系统不支持实时预览动画，将使用系统默认浏览器展示动画效果！");
+            saveHtmlAndOpenByBrowser(htmlContent);
+            String fileSizeText = SvgaDataProcessor.processFileSizeText(mFile.getPath());
+            textArea.setText("阿哦，当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n"+fileSizeText);
+            //textArea.setVisible(false);
             return textArea;
+        }
+    }
+
+    private void saveHtmlAndOpenByBrowser(String htmlContent) {
+        try {
+            String directory = mRootPath + File.separator + "build" + File.separator;
+            File file = new File(directory);
+            if (file.exists()) {
+                file.delete();
+            } else {
+                file.mkdirs();
+            }
+            String fileName = "index.html";
+            IOUtil.saveFile(directory, fileName, htmlContent);
+
+            // browse("/Users/duqian/Movies/svga/index.html");
+            browse(directory + fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

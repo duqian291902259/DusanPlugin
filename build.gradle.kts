@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "site.duqian.plugin"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -33,14 +33,17 @@ intellij {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
-
     implementation("org.freemarker:freemarker:2.3.31")
+
     // https://mvnrepository.com/artifact/com.hynnet/DJNativeSwing-SWT
     //implementation("com.hynnet:DJNativeSwing-SWT:1.0.0")
     //implementation("chrriis:DJNativeSwing-SWT:+")
 
     // https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.swt.win32.win32.x86_64
     //implementation("org.eclipse.platform:org.eclipse.swt.win32.win32.x86_64:+")
+
+    // https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.swt.cocoa.macosx.x86_64
+    //implementation("org.eclipse.platform:org.eclipse.swt.cocoa.macosx.x86_64:3.121.0")
 
 }
 
