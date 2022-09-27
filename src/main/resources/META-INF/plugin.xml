@@ -84,10 +84,10 @@
         </action>
 
         <!--markdown note-->
-        <!--<action id="mp-add-note-note" class="site.duqian.plugin.note.action.AddMdNoteAction"
+        <action id="mp-add-note-note" class="site.duqian.plugin.note.action.AddMdNoteAction"
                 text="add md note" description="add md note">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl meta M"/>
-        </action>-->
+        </action>
     </actions>
 </idea-plugin>

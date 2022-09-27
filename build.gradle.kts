@@ -32,7 +32,7 @@ intellij {
 }
 
 dependencies {
-    //implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 
     implementation("org.freemarker:freemarker:2.3.31")
     // https://mvnrepository.com/artifact/com.hynnet/DJNativeSwing-SWT

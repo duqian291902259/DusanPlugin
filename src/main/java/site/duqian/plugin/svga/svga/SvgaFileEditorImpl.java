@@ -1,4 +1,3 @@
-/*
 package site.duqian.plugin.svga.svga;
 
 import chrriis.dj.nativeswing.NSComponentOptions;
@@ -33,7 +32,11 @@ final class SvgaFileEditorImpl extends UserDataHolderBase implements FileEditor 
     @NotNull
     @Override
     public JComponent getComponent() {
-        NativeInterface.open();
+        try {
+            NativeInterface.open();//macOs无法使用
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         JWebBrowser browser = new JWebBrowser(NSComponentOptions.destroyOnFinalization(),
                 NSComponentOptions.constrainVisibility());
         browser.setMenuBarVisible(false);
@@ -135,4 +138,3 @@ final class SvgaFileEditorImpl extends UserDataHolderBase implements FileEditor 
     public void dispose() {
     }
 }
-*/
