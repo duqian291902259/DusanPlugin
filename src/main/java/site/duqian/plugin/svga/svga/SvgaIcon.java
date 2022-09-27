@@ -6,5 +6,5 @@ import javax.swing.*;
 
 class SvgaIcon {
 
-    static final Icon FILE = IconLoader.getIcon("/img/logo.png");
+    static final Icon FILE = IconLoader.getIcon("/svga/img/logo.png");
 }

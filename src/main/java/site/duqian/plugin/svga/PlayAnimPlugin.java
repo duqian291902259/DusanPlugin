@@ -1,0 +1,79 @@
+package site.duqian.plugin.svga;
+
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.vfs.VirtualFile;
+import site.duqian.plugin.svga.util.IOUtil;
+import site.duqian.plugin.svga.util.SvgaDataProcessor;
+
+import java.awt.*;
+import java.io.File;
+
+/**
+ * 预览SVGA动画
+ */
+public class PlayAnimPlugin extends AnAction {
+
+    @Override
+    public void actionPerformed(AnActionEvent e) {
+        Project project = e.getData(PlatformDataKeys.PROJECT);
+        String basePath = project != null ? project.getBasePath() : "";
+
+        // 获取当前右键的文件名
+        VirtualFile virtualFile = e.getData(PlatformDataKeys.VIRTUAL_FILE);
+
+       /* Messages.showMessageDialog("Hello，Flat! " + basePath,
+                "杜小菜",
+                Messages.getInformationIcon());*/
+
+        String htmlContent = SvgaDataProcessor.processSvgaData(virtualFile);
+        String text = "basePath=" + basePath + "\nhtmlContent=" + virtualFile.getPath() + "\n,content=" + htmlContent;
+        System.out.println(text);
+
+        String directory = basePath + File.separator + "build" + File.separator;
+        saveHtmlAndOpenByBrowser(directory, htmlContent);
+    }
+
+    private void saveHtmlAndOpenByBrowser(String directory, String htmlContent) {
+        try {
+            File file = new File(directory);
+            if (file.exists()) {
+                file.delete();
+            } else {
+                file.mkdirs();
+            }
+            String fileName = "index.html";
+            IOUtil.saveFile(directory, fileName, htmlContent);
+
+            // browse("/Users/duqian/Movies/svga/index.html");
+            browse(directory + fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String mLastFile = "";//防止再次获取焦点都打开浏览器
+
+    private static void browse(String filePath) {
+        if (filePath == null || "".equals(filePath)) return;//|| filePath.equals(mLastFile)
+        mLastFile = filePath;
+        //是否支持桌面
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                // 使用默认浏览器打开链接
+                //desktop.browse(new URI("http://www.duqian.site/"));
+                //打开本地的文件
+                desktop.open(new File(filePath));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("当前平台不支持 Desktop");
+        }
+    }
+
+}

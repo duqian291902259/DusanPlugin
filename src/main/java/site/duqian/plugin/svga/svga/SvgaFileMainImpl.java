@@ -2,7 +2,6 @@ package site.duqian.plugin.svga.svga;
 
 import com.intellij.codeHighlighting.BackgroundEditorHighlighter;
 import com.intellij.ide.structureView.StructureViewBuilder;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorLocation;
 import com.intellij.openapi.fileEditor.FileEditorState;
@@ -11,18 +10,11 @@ import com.intellij.openapi.fileEditor.impl.text.TextEditorState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.jcef.JBCefApp;
-import com.intellij.ui.jcef.JBCefBrowser;
-import com.intellij.util.ui.JBUI;
-
 import java.io.File;
-import java.net.URI;
-
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.svga.util.IOUtil;
 import site.duqian.plugin.svga.util.SvgaDataProcessor;
-import site.duqian.plugin.webview.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
@@ -39,41 +31,19 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
         mLastFile = "";
     }
 
-    private JComponent getBrowser() {
-        try {
-            return new Browser((BrowserView) Class.forName("site.duqian.plugin.webview.JcefBrowser").newInstance());
-        } catch (Exception e) {
-            Logger.getInstance(BrowserWindowFactory.class).error(e);
-        }
-
-        JLabel label = new JLabel("JCEF is not supported in running IDE");
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setVerticalAlignment(SwingConstants.TOP);
-        label.setBorder(JBUI.Borders.emptyTop(10));
-
-        return label;
-    }
-
     @NotNull
     @Override
     public JComponent getComponent() {
         String htmlContent = SvgaDataProcessor.processSvgaData(mFile);
-        System.out.println("htmlContent=" + htmlContent);
-        /*JComponent jComponent = getBrowser();
-        Browser browser = (Browser)jComponent;
-        browser.load("https://www.baidu.com/");
-        return jComponent;*/
-        //String userDir = System.getProperty("user.dir");
-
         String text = "rootDir=" + mRootPath + "\nhtmlContent=" + mFile.getPath() + "\n,content=" + htmlContent;
         JTextArea textArea = new JTextArea();
         textArea.setText(text);
+        showHtml(htmlContent, textArea);
+        return textArea;
 
         /*if (!JBCefApp.isSupported()) {
-            browse("/Users/duqian/Movies/svga/index.html");
             return new JLabel("Not support JBCefApp");
-        }*/
-
+        }
         try {
             JPanel myPanel = new JPanel();
             JBCefBrowser browser = new JBCefBrowser("http://www.duqian.site/");
@@ -81,12 +51,21 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
             myPanel.add(browser.getComponent());
             return myPanel;
         } catch (Exception e) {
-            saveHtmlAndOpenByBrowser(htmlContent);
-            String fileSizeText = mFile.getName()+",size="+SvgaDataProcessor.processFileSizeText(mFile.getPath());
-            textArea.setText("阿哦，当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n"+fileSizeText);
-            //textArea.setVisible(false);
+            showHtml(htmlContent, textArea);
             return textArea;
-        }
+        }*/
+    }
+
+    private void showHtml(String htmlContent, JTextArea textArea) {
+        saveHtmlAndOpenByBrowser(htmlContent);
+        String fileSizeText = mFile.getName() + ",size=" + SvgaDataProcessor.processFileSizeText(mFile.getPath());
+        textArea.setText("阿哦，当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n" + fileSizeText);
+        //textArea.setVisible(false);
+    }
+
+    @Override
+    public @Nullable VirtualFile getFile() {
+        return mFile;
     }
 
     private void saveHtmlAndOpenByBrowser(String htmlContent) {

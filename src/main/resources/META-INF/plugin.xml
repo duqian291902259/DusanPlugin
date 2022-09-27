@@ -6,10 +6,10 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>DusanPlugin</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan</vendor>
+    <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan-杜小菜</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -20,7 +20,7 @@
         <li> Tools -> DusanPlugin.</li>
     </ol>
     <hr>
-    <p>插件功能清单，含todo-list：</p>
+    <p>插件功能清单(含todo)：</p>
       <ol>
         <li>Simple：集合各种小插件，功能简单而美丽</li>
         <li>Fast：高效工作，定时提醒</li>
@@ -49,7 +49,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>
-        <toolWindow factoryClass="site.duqian.plugin.note.window.MdNoteWindowFactory" id="MdNote" anchor="right"/>
+
+        <!--MdNote-->
+        <!--<toolWindow factoryClass="site.duqian.plugin.note.window.MdNoteWindowFactory" id="MdNote" anchor="right"/>-->
 
         <!-- svga extensions -->
         <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeManager"
@@ -59,13 +61,14 @@
         <fileType name="SVGA Animation" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
                   language="SVGA" extensions="svga"/>
 
-        <toolWindow id="Embedded Web Browser" anchor="right"
-                    factoryClass="site.duqian.plugin.webview.BrowserWindowFactory"/>
+        <!--WebBrowser-->
+        <!--<toolWindow id="WebBrowser" anchor="right"
+                    factoryClass="site.duqian.plugin.webview.BrowserWindowFactory"/>-->
     </extensions>
 
 
     <actions>
-        <action id="site.duqian.plugin.test" class="site.duqian.plugin.HelloPlugin" text="AndroidPlugin"
+        <action id="site.duqian.plugin.test" class="site.duqian.plugin.HelloPlugin" text="DusanPlugin"
                 description="AndroidPlugin by 杜小菜">
             <add-to-group group-id="ActivateToolWindowActions" anchor="first"/>
             <add-to-group group-id="ToolsMenu" anchor="first"/>
@@ -75,6 +78,13 @@
                     anchor="after"
                     relative-to-action="ReplaceInPath"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta H"/>
+        </action>
+
+        <action id="site.duqian.plugin.test2" class="site.duqian.plugin.svga.PlayAnimPlugin" text="预览SVGA动画"
+                description="播放svga动画">
+            <!-- 将组添加到右键菜单 -->
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ReplaceInPath"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta p"/>
         </action>
 
         <!--coding tips-->
