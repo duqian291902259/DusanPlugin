@@ -19,6 +19,8 @@ function onPageLoaded() {
             player.setVideoItem(videoItem);
             player.startAnimation();
             processSvgaInfo(videoItem);
+
+            onSwitchBackground(document.getElementById('switch-bg-blue'))
         }
     );
 }

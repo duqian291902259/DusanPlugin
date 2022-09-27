@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "site.duqian.plugin"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -24,11 +24,14 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2021.2")
-    //version.set("2020.2.3") //Could not resolve com.jetbrains:jbre:jbr_jcef-11_0_8-osx-aarch64-b944.34.
-    //type.set("IC") // Target IDE Platform
+    //version.set("2021.2")
+    //version.set("2021.2.1")
+    version.set("2022.1.1") //2020.1 Could not resolve com.jetbrains:jbre:jbr_jcef-11_0_8-osx-aarch64-b944.34.
+    type.set("IC") // Target IDE Platform
+    //type.set("AI") // Target Android Studio Platform
 
     //plugins.set(listOf())
+    plugins.set(listOf("android"))
 }
 
 dependencies {
@@ -52,15 +55,16 @@ tasks {
     withType<JavaCompile> {
         sourceCompatibility = "11"
         targetCompatibility = "11"
+        options.encoding = "UTF-8"
     }
     /*withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
     }*/
 
     patchPluginXml {
-        sinceBuild.set("212")
-        //sinceBuild.set("202.60")
-        untilBuild.set("222.*")
+        //sinceBuild.set("212")
+        sinceBuild.set("202")
+        //untilBuild.set("222.*")
     }
 
    /* signPlugin {
