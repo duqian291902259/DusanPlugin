@@ -35,6 +35,6 @@ final class SvgaFileEditorProvider implements FileEditorProvider, DumbAware {
     @NotNull
     @Override
     public FileEditorPolicy getPolicy() {
-        return FileEditorPolicy.PLACE_BEFORE_DEFAULT_EDITOR;
+        return FileEditorPolicy.HIDE_DEFAULT_EDITOR;
     }
 }
