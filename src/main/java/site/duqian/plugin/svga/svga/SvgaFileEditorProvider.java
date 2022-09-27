@@ -15,7 +15,8 @@ final class SvgaFileEditorProvider implements FileEditorProvider, DumbAware {
 
     @Override
     public boolean accept(@NotNull Project project, @NotNull VirtualFile file) {
-        return SvgaFileTypeManager.getInstance().isSvga(file);
+        //return SvgaFileTypeManager.getInstance().isSvga(file);
+        return file.getFileType() instanceof SvgaFileType;
     }
 
     @NotNull

@@ -57,9 +57,15 @@
         <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeManager"
                             serviceImplementation="site.duqian.plugin.svga.svga.SvgaFileTypeManagerImp"/>
         <fileEditorProvider implementation="site.duqian.plugin.svga.svga.SvgaFileEditorProvider"/>
-        <fileTypeFactory implementation="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"/>
-        <fileType name="svga" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
-                  language="svga" extensions="svga"/>
+        <!--<fileTypeFactory implementation="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"/>-->
+        <!-- <fileType name="svga" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
+                 language="svga" extensions="svga"/>-->
+        <fileType
+                name="svga"
+                implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
+                fieldName="INSTANCE"
+                language="svga"
+                extensions="svga"/>
 
         <!--WebBrowser-->
         <!--<toolWindow id="WebBrowser" anchor="right"
