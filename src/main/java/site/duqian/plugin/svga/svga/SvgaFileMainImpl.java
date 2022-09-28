@@ -13,8 +13,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import site.duqian.plugin.svga.util.IOUtil;
-import site.duqian.plugin.svga.util.SvgaDataProcessor;
+import site.duqian.plugin.base.IOUtil;
+import site.duqian.plugin.svga.SvgaDataProcessor;
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
@@ -58,7 +58,7 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
 
     private void showHtml(String htmlContent, JTextArea textArea) {
         saveHtmlAndOpenByBrowser(htmlContent);
-        String fileSizeText = mFile.getName() + ",size=" + SvgaDataProcessor.processFileSizeText(mFile.getPath());
+        String fileSizeText = mFile.getName() + ",size=" + IOUtil.processFileSizeText(mFile.getPath());
         textArea.setText("阿哦，当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n" + fileSizeText);
         //textArea.setVisible(false);
     }
@@ -77,7 +77,7 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
             } else {
                 file.mkdirs();
             }
-            String fileName = "index.html";
+            String fileName = "svga.html";
             IOUtil.saveFile(directory, fileName, htmlContent);
 
             // browse("/Users/duqian/Movies/svga/index.html");

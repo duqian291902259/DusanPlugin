@@ -1,4 +1,4 @@
-package site.duqian.plugin.svga;
+package site.duqian.plugin;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -6,8 +6,9 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
-import site.duqian.plugin.svga.util.IOUtil;
-import site.duqian.plugin.svga.util.SvgaDataProcessor;
+import site.duqian.plugin.lottie.LottieJsonProcessor;
+import site.duqian.plugin.base.IOUtil;
+import site.duqian.plugin.svga.SvgaDataProcessor;
 
 import java.awt.*;
 import java.io.File;
@@ -25,22 +26,26 @@ public class PlayAnimPlugin extends AnAction {
         // 获取当前右键的文件名
         VirtualFile virtualFile = e.getData(PlatformDataKeys.VIRTUAL_FILE);
         String fileName = virtualFile != null ? virtualFile.getName() : "";
+
         boolean isSvgaFile = fileName.endsWith(".svga");
-        if (!isSvgaFile) {
-            Messages.showMessageDialog("非可播放的文件，无法预览 " + fileName,
-                    "错误提示",
-                    Messages.getInformationIcon());
-            return;
-        }
-        String htmlContent = SvgaDataProcessor.processSvgaData(virtualFile);
-        String text = "basePath=" + basePath + "\nhtmlContent=" + virtualFile.getPath() + "\n,content=" + htmlContent;
-        System.out.println(text);
+        boolean isJsonFile = fileName.endsWith(".json");
 
         String directory = basePath + File.separator + "build" + File.separator;
-        saveHtmlAndOpenByBrowser(directory, htmlContent);
+
+        if (isJsonFile) {
+            String jsonFileContent = LottieJsonProcessor.get().processData(virtualFile);
+            saveHtmlAndOpenByBrowser(directory, "lottie.html", jsonFileContent);
+        } else if (isSvgaFile) {
+            String htmlContent = SvgaDataProcessor.processSvgaData(virtualFile);
+            //String text = "basePath=" + basePath + "\nhtmlContent=" + virtualFile.getPath() + "\n,content=" + htmlContent;
+            //System.out.println(text);
+            saveHtmlAndOpenByBrowser(directory, "svga.html", htmlContent);
+        } else {
+            Messages.showMessageDialog("目前只支持预览SVGA/Lottie动画文件，无法预览 " + fileName, "错误提示", Messages.getInformationIcon());
+        }
     }
 
-    private void saveHtmlAndOpenByBrowser(String directory, String htmlContent) {
+    private void saveHtmlAndOpenByBrowser(String directory, String fileName, String htmlContent) {
         try {
             File file = new File(directory);
             if (file.exists()) {
@@ -48,7 +53,7 @@ public class PlayAnimPlugin extends AnAction {
             } else {
                 file.mkdirs();
             }
-            String fileName = "index.html";
+            //String fileName = "index.html";
             IOUtil.saveFile(directory, fileName, htmlContent);
 
             // browse("/Users/duqian/Movies/svga/index.html");
@@ -73,6 +78,7 @@ public class PlayAnimPlugin extends AnAction {
                 e.printStackTrace();
             }
         } else {
+            Messages.showMessageDialog("当前平台不支持Desktop功能", "错误提示", Messages.getErrorIcon());
             System.out.println("当前平台不支持 Desktop");
         }
     }

@@ -1,18 +1,35 @@
-package site.duqian.plugin.svga.util;
+package site.duqian.plugin.base;
+
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 public class IOUtil {
 
     @Nullable
     public static String getFileContent(String fileName) {
+        return getFileContent(fileName, true);
+    }
+
+    @Nullable
+    public static String fileToString(String fileName) {
+        return getFileContent(fileName, false);
+    }
+
+    @Nullable
+    private static String getFileContent(String fileName, boolean isFromRes) {
         InputStream inputStream = null;
         BufferedReader reader = null;
         try {
             StringBuilder buffer = new StringBuilder();
-            inputStream = getResourceAsStream(fileName);
+            if (isFromRes) {
+                inputStream = getResourceAsStream(fileName);
+            } else {
+                inputStream = new FileInputStream(fileName);
+            }
             if (inputStream != null) {
                 reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
                 String line;
@@ -22,7 +39,7 @@ public class IOUtil {
                 }
                 return buffer.toString();
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             close(reader);
@@ -130,5 +147,102 @@ public class IOUtil {
     public static InputStream byte2InputStream(byte[] b) {
         ByteArrayInputStream byteInputStream = new ByteArrayInputStream(b);
         return byteInputStream;
+    }
+
+    @NotNull
+    public static String getFileHeader(String path) {
+        FileInputStream is = null;
+        String value = "";
+        try {
+            is = new FileInputStream(path);
+            byte[] b = new byte[4];
+            is.read(b, 0, b.length);
+            value = bytesToHexString(b);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return value;
+    }
+
+    public static String processFileSizeText(String filePath) {
+        long length = new File(filePath).length();
+        if (length < 1024) {
+            return String.format("%sB", length);
+        } else if (length < 1048576) {
+            return String.format("%sK", Math.round(length * 1.0 / 1024 * 10) / 10.0);
+        } else {
+            return String.format("%sM", Math.round(length * 1.0 / 1048576 * 100) / 100.0);
+        }
+    }
+
+    public static String bytesToHexString(byte[] src) {
+        StringBuilder builder = new StringBuilder();
+        if (src == null || src.length <= 0) {
+            return builder.toString();
+        }
+        String hv;
+        for (byte b : src) {
+            hv = Integer.toHexString(b & 0xFF).toUpperCase();
+            if (hv.length() < 2) {
+                builder.append(0);
+            }
+            builder.append(hv);
+        }
+        return builder.toString();
+    }
+
+    public static String fileToBase64(String filePath) {
+        String base64 = null;
+        InputStream in = null;
+        try {
+            File file = new File(filePath);
+            in = new FileInputStream(file);
+            byte[] bytes = new byte[(int) file.length()];
+            if (in.read(bytes) != -1) {
+                base64 = Base64.getEncoder().encodeToString(bytes);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return base64;
+    }
+
+    public static String resourceToBase64(String resPath) {
+        String base64 = null;
+        InputStream in = IOUtil.getResourceAsStream(resPath);
+        if (in == null) {
+            return null;
+        }
+        try {
+            byte[] bytes = new byte[in.available()];
+            if (in.read(bytes) != -1) {
+                base64 = Base64.getEncoder().encodeToString(bytes);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return base64;
     }
 }

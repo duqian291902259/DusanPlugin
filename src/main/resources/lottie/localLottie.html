@@ -22,14 +22,18 @@
   </body>
   <script>
     // loadAnimation 渲染动画
+    const animationData = {jsonAnimationData}
+    
     const lottieAnimationItem = lottie.loadAnimation({
       // 选取一个容器，用于渲染动画
       container: document.querySelector("#app"),
       // 定义JSON文件路径
       //path: "https://assets10.lottiefiles.com/packages/lf20_l3qxn9jy.json",
-      path: "lottie.json",
+      //path: "lottie.json",
+      animationData: animationData, // the animation data
       // 是否循环播放
       loop: true,
+      autoplay: true,
       // 渲染的格式svg/canvas/html，svg性能更优，兼容性更好
       renderer: "svg",
     });

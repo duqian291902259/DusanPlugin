@@ -16,7 +16,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
-import site.duqian.plugin.svga.util.SvgaDataProcessor;
+import site.duqian.plugin.svga.SvgaDataProcessor;
 
 import javax.swing.*;
 import java.beans.PropertyChangeListener;
