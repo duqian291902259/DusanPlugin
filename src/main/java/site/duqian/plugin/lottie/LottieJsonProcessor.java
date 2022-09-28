@@ -26,10 +26,14 @@ public class LottieJsonProcessor extends IDataProcessor {
     @Override
     protected String getTemplateFilePath() {
         return "lottie/localLottie.html";
+        //return "lottie/index.html";
     }
 
     @Override
     protected String replaceTemplateContent(String templateContent, String fileContent) {
+        fileContent = fileContent .replace("\n","");
+                //.replaceAll(" ","");
         return templateContent.replace(JSON_ANIMATION_DATA, fileContent);
+
     }
 }

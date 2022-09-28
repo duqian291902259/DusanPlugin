@@ -37,7 +37,6 @@ function onPageLoaded() {
     );
 }
 
-
 //播放
 function startAnimation(){
     player.startAnimation();
@@ -71,7 +70,7 @@ function processSvgaInfo(videoItem) {
             bc += n.width * n.height * 4;
         }
     }
-    document.getElementById('infoDiv').innerHTML = videoItem.videoSize.width + '×' +
+    document.getElementById('infoDiv').innerHTML = videoItem.videoSize.width + 'x' +
         videoItem.videoSize.height + '\xa0\xa0SVGA/' + videoItem.version + '\xa0\xa0FPS:\xa0' +
         videoItem.FPS + '\xa0\xa0Frames:\xa0' + videoItem.frames + '\xa0\xa0Memory: ' +
         processFileSizeText(bc) + '\xa0\xa0File: {FILE_SIZE_STUFF}';

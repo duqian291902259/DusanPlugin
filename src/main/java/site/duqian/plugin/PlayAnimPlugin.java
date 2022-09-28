@@ -47,22 +47,12 @@ public class PlayAnimPlugin extends AnAction {
 
     private void saveHtmlAndOpenByBrowser(String directory, String fileName, String htmlContent) {
         try {
-            File file = new File(directory);
-            if (file.exists()) {
-                file.delete();
-            } else {
-                file.mkdirs();
-            }
-            //String fileName = "index.html";
             IOUtil.saveFile(directory, fileName, htmlContent);
-
-            // browse("/Users/duqian/Movies/svga/index.html");
             browse(directory + fileName);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     private static void browse(String filePath) {
         if (filePath == null || "".equals(filePath)) return;

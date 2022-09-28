@@ -73,6 +73,7 @@ public class IOUtil {
         if (!dirFile.exists()) {
             dirFile.mkdirs();
         }
+        file.delete();
         if (!file.exists()) {
             try {
                 file.createNewFile();
