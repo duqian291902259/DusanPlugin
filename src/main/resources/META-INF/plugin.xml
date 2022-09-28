@@ -5,8 +5,8 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>Lottie/SVGA/AndroidPlugins</name>
-    <version>1.0.4</version>
+    <name>Lottie/SVGA/AndroidTools</name>
+    <version>1.0.5</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
@@ -22,12 +22,12 @@
         <li> Dusan_杜小菜_duqian2010@gmail.com </li>
     </ol>
     <br/>
-    <p>Lottie/SVGA/AndroidPlugins with functions：</p>
+    <p>Lottie/SVGA/AndroidTools with functions：</p>
       <ol>
-        <li>Plugin-in for Android Developer</li>
+        <li>Lottie-Player,cross-platform</li>
+        <li>SVGA-Player for multiplatform</li>
         <li>Clock for coding</li>
-        <li>SVGA-Player</li>
-        <li>Lottie-Player</li>
+        <li>Plugin-in for Android Developer</li>
         <li>And so on...</li>
     </ol>
     ]]>
@@ -37,7 +37,7 @@
     <change-notes><![CDATA[
       <ul>
             <li>V1.0.0：timer for programmer</li>
-            <li>V1.0.1：SVGA-Player for all platforms </li>
+            <li>V1.0.1：Cross-platform SVGA player</li>
             <li>V1.0.2：Lottie-Player for multiplatform</li>
             <li>V1.0.3：update UI of plugins</li>
             <li>V1.0.4：bug fixed</li>
@@ -62,9 +62,6 @@
         <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeManager"
                             serviceImplementation="site.duqian.plugin.svga.svga.SvgaFileTypeManagerImp"/>
         <fileEditorProvider implementation="site.duqian.plugin.svga.svga.SvgaFileEditorProvider"/>
-        <!--<fileTypeFactory implementation="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"/>-->
-        <!-- <fileType name="svga" implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
-                 language="svga" extensions="svga"/>-->
         <fileType
                 name="svga"
                 implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
@@ -73,8 +70,7 @@
                 extensions="svga"/>
 
         <!--WebBrowser-->
-        <!--<toolWindow id="WebBrowser" anchor="right"
-                    factoryClass="site.duqian.plugin.webview.BrowserWindowFactory"/>-->
+        <!--<toolWindow id="WebBrowser" anchor="right" factoryClass="site.duqian.plugin.webview.BrowserWindowFactory"/>-->
     </extensions>
 
 
