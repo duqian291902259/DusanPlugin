@@ -43,7 +43,7 @@ public class SvgaDataProcessor {
 
     @Nullable
     private static String processHtml(String path) {
-        String htmlContent = IOUtil.getFileContent("svga/htm/player.htm");
+        String htmlContent = IOUtil.getFileContent("svga/htm/player.html");
         if (htmlContent == null) {
             return null;
         }
@@ -56,7 +56,8 @@ public class SvgaDataProcessor {
         Color themeBgColor = JBColor.background();
         htmlContent = htmlContent.replace(BACKGROUND_COLOR_STUFF, String.format("rgb(%d,%d,%d)",
                 themeBgColor.getRed(), themeBgColor.getGreen(), themeBgColor.getBlue()));
-        Color fontColor = JBColor.foreground();
+        //Color fontColor = JBColor.foreground();
+        Color fontColor = Color.decode("#ffffff");
         htmlContent = htmlContent.replace(FONT_COLOR_STUFF, String.format("rgb(%d,%d,%d)",
                 fontColor.getRed(), fontColor.getGreen(), fontColor.getBlue()));
         htmlContent = htmlContent.replace(FONT_FAMILY_STUFF, UIUtil.getLabelFont().getFamily());

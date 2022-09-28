@@ -10,8 +10,11 @@ window.addEventListener('DOMMouseScroll', function (event) {
     }
 }, {passive: false});
 
+
+let player = new SVGA.Player('#playerCanvas');
+
 function onPageLoaded() {
-    let player = new SVGA.Player('#playerCanvas');
+    player = new SVGA.Player('#playerCanvas');
     let parser = new SVGA.Parser('#playerCanvas');
     parser.load('{SVGA_DATA_STUFF}', function (videoItem) {
             document.getElementById('playerCanvas').style.width = ''.concat(videoItem.videoSize.width, 'px');
@@ -23,6 +26,22 @@ function onPageLoaded() {
             onSwitchBackground(document.getElementById('switch-bg-blue'))
         }
     );
+}
+
+
+//播放
+function startAnimation(){
+    player.startAnimation();
+}
+
+//暂停
+function pauseAnimation(){
+    player.pauseAnimation();
+}
+
+//停止播放动画，如果 clearsAfterStop === true，将会清空画布
+function stopAnimation(){
+    player.stopAnimation();
 }
 
 function onSwitchBackground(target) {

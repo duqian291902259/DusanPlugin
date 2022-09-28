@@ -16,10 +16,13 @@ body {
     border: 0;
 }
 
+#svgaTitle {
+ width:50%;margin:10px auto 0px;color:#ffffff;
+}
 #content-div {
     width: 100%;
     height: 100%;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 0;
     position: absolute;
     overflow-x: scroll;
@@ -38,11 +41,13 @@ body {
     height: 30px;
     min-height: 30px;
     line-height: 30px;
-    width: 100%;
-    min-width: 700px;
+    width: 50%;
+    margin:20px auto 0;
+    min-width: 600px;
     background: #{BACKGROUND_COLOR_STUFF};
-    position: fixed;
-    top: 0;
+    position: relative;
+    /*position: fixed;
+    top: 0;*/
 }
 
 .switch-bg-btn {
@@ -101,7 +106,7 @@ body {
     width: 0;
     height: 0;
     margin: -7px auto;
-    top: 50%;
+    top: 30%;
     border: 1px solid #c0c0c0;
     background-image: url({BACKGROUND_IMAGE_STUFF});
     position: absolute;

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="SVGAPlayer for web,by 杜小菜，duqian2010@gmail.com">
+    <meta name="description" content="SVGAPlayer by 杜小菜，duqian2010@gmail.com">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <title>SVGAPlayer</title>
@@ -10,6 +10,12 @@
     {JS_SCRIPT_STUFF}
 </head>
 <body onload="onPageLoaded()" oncontextmenu="return false;" onselectstart="return false;">
+<div id="svgaTitle">
+    <h5>SVGAPlayer，可点击色块，更改背景色</h5>
+    <button onclick="startAnimation()">播放</button>
+    <button onclick="pauseAnimation()">暂停</button>
+    <button onclick="stopAnimation()">停止</button>
+</div>
 <div id="topDiv" >
     <div class="switch-bg-btn" id="switch-bg-none" onclick="onSwitchBackground(this)"></div>
     <div class="switch-bg-btn" id="switch-bg-black" onclick="onSwitchBackground(this)"></div>
