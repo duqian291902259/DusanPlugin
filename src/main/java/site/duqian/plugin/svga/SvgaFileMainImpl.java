@@ -1,4 +1,4 @@
-package site.duqian.plugin.svga.svga;
+package site.duqian.plugin.svga;
 
 import com.intellij.codeHighlighting.BackgroundEditorHighlighter;
 import com.intellij.ide.structureView.StructureViewBuilder;
@@ -10,22 +10,24 @@ import com.intellij.openapi.fileEditor.impl.text.TextEditorState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
+
 import java.io.File;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.base.IOUtil;
-import site.duqian.plugin.svga.SvgaDataProcessor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 
-final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
+public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
 
     private static final String NAME = "SVGA-Player";
     private final VirtualFile mFile;
     private final String mRootPath;
 
-    SvgaFileMainImpl(@NotNull Project project, @NotNull VirtualFile file) {
+    public SvgaFileMainImpl(@NotNull Project project, @NotNull VirtualFile file) {
         mFile = file;
         mRootPath = project.getBasePath();
         mLastFile = "";
@@ -36,31 +38,41 @@ final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
     public JComponent getComponent() {
         String htmlContent = SvgaDataProcessor.processSvgaData(mFile);
         String text = "rootDir=" + mRootPath + "\nhtmlContent=" + mFile.getPath() + "\n,content=" + htmlContent;
-        JTextArea textArea = new JTextArea();
-        textArea.setText(text);
-        showHtml(htmlContent, textArea);
-        return textArea;
+        JPanel jPanel = new JPanel();
+        //JTextArea textArea = new JTextArea();
+        JLabel label = new JLabel();
+        label.setText(text);
+        showHtml(htmlContent, label);
+        JButton button = new JButton();
+        button.setText("点击打开");
+        button.addActionListener(e -> {
+            mLastFile = "";
+            showHtml(htmlContent, label);
+        });
+        jPanel.add(label);
+        jPanel.add(button);
+        return jPanel;
 
         /*if (!JBCefApp.isSupported()) {
             return new JLabel("Not support JBCefApp");
         }
         try {
-            JPanel myPanel = new JPanel();
+
             JBCefBrowser browser = new JBCefBrowser("http://www.duqian.site/");
             browser.loadHTML(htmlContent);
-            myPanel.add(browser.getComponent());
-            return myPanel;
+            jPanel.add(browser.getComponent());
+            return jPanel;
         } catch (Exception e) {
             showHtml(htmlContent, textArea);
             return textArea;
         }*/
     }
 
-    private void showHtml(String htmlContent, JTextArea textArea) {
+    private void showHtml(String htmlContent, JLabel label) {
         saveHtmlAndOpenByBrowser(htmlContent);
         String fileSizeText = mFile.getName() + ",size=" + IOUtil.processFileSizeText(mFile.getPath());
-        textArea.setText("阿哦，当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n" + fileSizeText);
-        //textArea.setVisible(false);
+        label.setText("当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n" + fileSizeText);
+        //label.setVisible(false);
     }
 
     @Override
