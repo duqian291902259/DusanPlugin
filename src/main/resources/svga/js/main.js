@@ -17,8 +17,17 @@ function onPageLoaded() {
     player = new SVGA.Player('#playerCanvas');
     let parser = new SVGA.Parser('#playerCanvas');
     parser.load('{SVGA_DATA_STUFF}', function (videoItem) {
-            document.getElementById('playerCanvas').style.width = ''.concat(videoItem.videoSize.width, 'px');
-            document.getElementById('playerCanvas').style.height = ''.concat(videoItem.videoSize.height, 'px');
+           var playerContainer = document.getElementById('content-div');
+           console.warn()
+           var playerCanvas = document.getElementById('playerCanvas');
+           var videoWidth = videoItem.videoSize.width;
+           var videoHeight = videoItem.videoSize.height;
+           var ratio = videoWidth/videoHeight;
+           var realWidth = Math.min(videoWidth, playerContainer.offsetHeight);
+            playerCanvas.style.width = ''.concat(realWidth, 'px');
+            playerCanvas.style.height = ''.concat(realWidth/ratio, 'px');
+
+            console.warn(videoWidth,videoHeight,ratio)
             player.setVideoItem(videoItem);
             player.startAnimation();
             processSvgaInfo(videoItem);

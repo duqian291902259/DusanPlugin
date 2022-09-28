@@ -10,21 +10,23 @@
     {JS_SCRIPT_STUFF}
 </head>
 <body onload="onPageLoaded()" oncontextmenu="return false;" onselectstart="return false;">
-<div id="svgaTitle">
-    <h5>SVGAPlayer，可点击色块，更改背景色</h5>
-    <button onclick="startAnimation()">播放</button>
-    <button onclick="pauseAnimation()">暂停</button>
-    <button onclick="stopAnimation()">停止</button>
-</div>
-<div id="topDiv" >
-    <div class="switch-bg-btn" id="switch-bg-none" onclick="onSwitchBackground(this)"></div>
-    <div class="switch-bg-btn" id="switch-bg-black" onclick="onSwitchBackground(this)"></div>
-    <div class="switch-bg-btn" id="switch-bg-white" onclick="onSwitchBackground(this)"></div>
-    <div class="switch-bg-btn" id="switch-bg-blue" onclick="onSwitchBackground(this)"></div>
-    <div class="switch-bg-btn" id="switch-bg-green" onclick="onSwitchBackground(this)"></div>
-    <div class="switch-bg-btn" id="switch-bg-yellow" onclick="onSwitchBackground(this)"></div>
-    <div class="switch-bg-btn" id="switch-bg-red" onclick="onSwitchBackground(this)"></div>
-    <div id="infoDiv"></div>
+<div class="container_header">
+    <div id="svgaTitle">
+        <h5 class="title">SVGAPlayer，可点击色块，更改背景色</h5>
+        <button onclick="startAnimation()">播放</button>
+        <button onclick="pauseAnimation()">暂停</button>
+        <button onclick="stopAnimation()">停止</button>
+    </div>
+    <div id="topDiv" >
+        <div class="switch-bg-btn" id="switch-bg-none" onclick="onSwitchBackground(this)"></div>
+        <div class="switch-bg-btn" id="switch-bg-black" onclick="onSwitchBackground(this)"></div>
+        <div class="switch-bg-btn" id="switch-bg-white" onclick="onSwitchBackground(this)"></div>
+        <div class="switch-bg-btn" id="switch-bg-blue" onclick="onSwitchBackground(this)"></div>
+        <div class="switch-bg-btn" id="switch-bg-green" onclick="onSwitchBackground(this)"></div>
+        <div class="switch-bg-btn" id="switch-bg-yellow" onclick="onSwitchBackground(this)"></div>
+        <div class="switch-bg-btn" id="switch-bg-red" onclick="onSwitchBackground(this)"></div>
+        <div id="infoDiv"></div>
+    </div>
 </div>
 <div id="content-div">
     <div id="playerCanvas"></div>
