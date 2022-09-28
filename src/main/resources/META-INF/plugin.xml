@@ -6,7 +6,7 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Lottie/SVGA/AndroidPlugins</name>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
@@ -17,19 +17,18 @@
     <description><![CDATA[
      <p>Interesting plugins for android development.</p>
      <ol>
-        <li> Tools -> DusanPlugin </li>
-        <li> Select .svga or .json animation file -> preview SVGA/Lottie anim</li>
+        <li> AS -> Tools -> DusanPlugin </li>
+        <li> Select .svga or lottie .json file -> Preview SVGA/Lottie Anim</li>
         <li> Dusan_杜小菜_duqian2010@gmail.com </li>
     </ol>
-    <p></p>
+    <br/>
     <p>Lottie/SVGA/AndroidPlugins with functions：</p>
       <ol>
-        <li>Simple：各种Android小插件，简单而美丽</li>
-        <li>Fast：高效工作，定时提醒</li>
-        <li>SVGA：支持SVGA动画预览</li>
-        <li>Lottie：支持Lottie动画预览</li>
-        <li>Robot：一键替换马甲包布局,todo</li>
-        <li>And so on：更多功能开发中，敬请期待...</li>
+        <li>Plugin-in for Android Developer</li>
+        <li>Clock for coding</li>
+        <li>SVGA-Player</li>
+        <li>Lottie-Player</li>
+        <li>And so on...</li>
     </ol>
     ]]>
     </description>
@@ -37,9 +36,11 @@
   -->
     <change-notes><![CDATA[
       <ul>
-            <li>V1.0.0：程序员工作计时器 </li>
+            <li>V1.0.0：timer for programmer</li>
             <li>V1.0.1：SVGA-Player for all platforms </li>
             <li>V1.0.2：Lottie-Player for multiplatform</li>
+            <li>V1.0.3：update UI of plugins</li>
+            <li>V1.0.4：bug fixed</li>
         </ul>
     ]]>
     </change-notes>
@@ -78,7 +79,7 @@
 
 
     <actions>
-        <action id="site.duqian.plugin.test" class="site.duqian.plugin.HelloPlugin" text="DusanPlugin"
+        <action id="site.duqian.plugin.test" class="site.duqian.plugin.DusanPlugin" text="DusanPlugin"
                 description="AndroidPlugin by 杜小菜">
             <add-to-group group-id="ActivateToolWindowActions" anchor="first"/>
             <add-to-group group-id="ToolsMenu" anchor="first"/>

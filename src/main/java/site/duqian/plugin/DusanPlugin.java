@@ -11,7 +11,7 @@ import com.intellij.openapi.ui.Messages;
  * Created by 杜乾 on 2022/9/28 - 09:39.
  * E-mail: duqian2010@gmail.com
  */
-public class HelloPlugin extends AnAction {
+public class DusanPlugin extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {

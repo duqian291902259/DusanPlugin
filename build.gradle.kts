@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "site.duqian.plugin"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
     mavenCentral()
@@ -71,9 +71,11 @@ tasks {
         certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
         privateKey.set(System.getenv("PRIVATE_KEY"))
         password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
-    }
-
-    publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
     }*/
+
+    //token property must be specified for plugin publishing
+    publishPlugin {
+        //channels.set("stable")
+        token.set(System.getenv("PLUGIN_PUBLISH_TOKEN"))
+    }
 }

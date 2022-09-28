@@ -6,6 +6,6 @@ import javax.swing.*;
 
 class SvgaIcon {
 
-    //static final Icon FILE = IconLoader.getReflectiveIcon("/svga/img/logo.png",ClassLoader.getSystemClassLoader());
-    static final Icon FILE = IconLoader.findIcon("/svga/img/logo.png");
+    //static final Icon FILE = IconLoader.getReflectiveIcon("/svga/img/svga_logo.png",ClassLoader.getSystemClassLoader());
+    static final Icon FILE = IconLoader.findIcon("/svga/img/svga_logo.png");
 }
