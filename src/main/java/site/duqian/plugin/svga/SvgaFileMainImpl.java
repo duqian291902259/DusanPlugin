@@ -52,12 +52,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         jPanel.add(label);
         jPanel.add(button);
         return jPanel;
-
-        /*if (!JBCefApp.isSupported()) {
-            return new JLabel("Not support JBCefApp");
-        }
-        try {
-
+        /*try {
             JBCefBrowser browser = new JBCefBrowser("http://www.duqian.site/");
             browser.loadHTML(htmlContent);
             jPanel.add(browser.getComponent());
@@ -119,7 +114,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
                 e.printStackTrace();
             }
         } else {
-            System.out.println("当前平台不支持 Desktop");
+            System.out.println("Current IDE not support Desktop");
         }
     }
 
