@@ -44,7 +44,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         label.setText(text);
         showHtml(htmlContent, label);
         JButton button = new JButton();
-        button.setText("点击打开");
+        button.setText("click to open");
         button.addActionListener(e -> {
             mLastFile = "";
             showHtml(htmlContent, label);
@@ -71,7 +71,10 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
     private void showHtml(String htmlContent, JLabel label) {
         saveHtmlAndOpenByBrowser(htmlContent);
         String fileSizeText = mFile.getName() + ",size=" + IOUtil.processFileSizeText(mFile.getPath());
-        label.setText("当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！\n" + fileSizeText);
+        //当前IDE暂时不支持实时预览动画，将使用系统默认浏览器展示动画效果！
+        String tips = "Not support preview animation," +
+                "\nwill open browser to show ";
+        label.setText(tips+"\n" + fileSizeText+"\n");
         //label.setVisible(false);
     }
 
