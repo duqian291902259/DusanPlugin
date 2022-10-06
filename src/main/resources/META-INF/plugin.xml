@@ -36,11 +36,12 @@
   -->
     <change-notes><![CDATA[
       <ul>
-            <li>V1.0.0：timer for programmer</li>
-            <li>V1.0.1：Cross-platform SVGA player</li>
-            <li>V1.0.2：Lottie-Player for multiplatform</li>
-            <li>V1.0.3：update UI of plugins</li>
-            <li>V1.0.4：bug fixed</li>
+            <li>V1.0.0：Clock for programmer.</li>
+            <li>V1.0.1：Cross-platform SVGA_Player.</li>
+            <li>V1.0.2：Lottie-Player for multiplatform.</li>
+            <li>V1.0.3：Update UI of plugins.</li>
+            <li>V1.0.4：Bug fixed.</li>
+            <li>V1.0.5：Add description for plugins.</li>
         </ul>
     ]]>
     </change-notes>
