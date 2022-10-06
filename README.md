@@ -33,14 +33,24 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 
 ![svga_player](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/svga_player_min.gif)
 
-### change-notes
+### Change-notes
 * V1.0.0：Timer for programmer.
 * V1.0.1：Cross-platform SVGA player.
 * V1.0.2：Lottie-Player for multiplatform.
 * V1.0.3：Update UI of plugins.
 * V1.0.4：Bug fixed.
 * V1.0.5：Add description for plugins.
-        
+
+### Download
+1.Download plugin from marketplace by search 'lottie-svga-androidtools' or 'duqian' to install it.
+
+##### Android Studio -> Preferences -> Plugins -> Marketplace
+
+2.click this link to download->
+[DusanPlugin-1.0.5.zip](https://github.com/duqian291902259/DusanPlugin/blob/main/release/DusanPlugin-1.0.5.zip)
+
+##### Drag the .zip file into the IDE and install it to take effect directly.
+
 ### Others
 To get more info,please contact me:
 
