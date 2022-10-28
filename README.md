@@ -65,4 +65,3 @@ There are more tools to dev.
 To get more info,please contact me:
 
 1. Email:duqian2010@gmail.com
-2. Wechat:AndroidDQ
