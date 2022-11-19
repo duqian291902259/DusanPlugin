@@ -19,16 +19,36 @@ import java.io.File;
 public class PlayAnimPlugin extends AnAction {
 
     @Override
-    public void actionPerformed(AnActionEvent e) {
-        Project project = e.getData(PlatformDataKeys.PROJECT);
+    public void update(AnActionEvent event) {
+        //在Action显示之前,根据选中文件扩展名判定是否显示此Action
+        boolean isShowMenu = isShowMenu(event);
+        event.getPresentation().setEnabled(isShowMenu);
+        event.getPresentation().setVisible(isShowMenu);
+    }
+
+    private static boolean isShowMenu(AnActionEvent event) {
+        VirtualFile virtualFile = event.getData(PlatformDataKeys.VIRTUAL_FILE);
+        if (virtualFile == null) return false;
+        String fileName = virtualFile.getName();
+        boolean isSvgaFile = fileName.endsWith(".svga");
+        boolean isJsonFile = fileName.endsWith(".json");
+        //String extension = virtualFile == null ? null : virtualFile.getExtension();
+        //"svga".equalsIgnoreCase(extension) || "json".equalsIgnoreCase(extension);
+        return isSvgaFile || isJsonFile;
+    }
+
+    @Override
+    public void actionPerformed(AnActionEvent event) {
+        Project project = event.getData(PlatformDataKeys.PROJECT);
         String basePath = project != null ? project.getBasePath() : "";
 
         // 获取当前右键的文件名
-        VirtualFile virtualFile = e.getData(PlatformDataKeys.VIRTUAL_FILE);
-        String fileName = virtualFile != null ? virtualFile.getName() : "";
-
-        boolean isSvgaFile = fileName.endsWith(".svga");
-        boolean isJsonFile = fileName.endsWith(".json");
+        VirtualFile virtualFile = event.getData(PlatformDataKeys.VIRTUAL_FILE);
+        if (virtualFile == null) return;
+        String fileName = virtualFile.getName().toLowerCase();
+        //String extension = virtualFile.getExtension();
+        boolean isSvgaFile = fileName.endsWith(".svga");//"svga".equalsIgnoreCase(extension); //
+        boolean isJsonFile = fileName.endsWith(".json");//"json".equalsIgnoreCase(extension);
 
         String directory = basePath + File.separator + "build" + File.separator;
 
@@ -37,8 +57,6 @@ public class PlayAnimPlugin extends AnAction {
             saveHtmlAndOpenByBrowser(directory, "lottie.html", jsonFileContent);
         } else if (isSvgaFile) {
             String htmlContent = SvgaDataProcessor.processSvgaData(virtualFile);
-            //String text = "basePath=" + basePath + "\nhtmlContent=" + virtualFile.getPath() + "\n,content=" + htmlContent;
-            //System.out.println(text);
             saveHtmlAndOpenByBrowser(directory, "svga.html", htmlContent);
         } else {
             Messages.showMessageDialog("目前只支持预览SVGA/Lottie动画文件，无法预览 " + fileName, "错误提示", Messages.getInformationIcon());
