@@ -6,7 +6,6 @@ plugins {
 
 group = "site.duqian.plugin"
 version = "1.0.7"
-
 repositories {
     mavenCentral()
     google()
