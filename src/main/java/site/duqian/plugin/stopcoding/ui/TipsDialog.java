@@ -18,20 +18,14 @@ public class TipsDialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        setTitle("StopCoding");
-        setLocation(400, 200);//距离屏幕左上角的其实位置
-        setSize(400, 200);//对话框的长宽
+        setTitle("Coding Clock");
+        setLocation(400, 200);//screen top left
+        setSize(400, 200);//size
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                DataCenter.reskTimer.cancel();
-                dispose();
-            }
+        buttonOK.addActionListener(e -> onOK());
+        buttonCancel.addActionListener(e -> {
+            DataCenter.reskTimer.cancel();
+            dispose();
         });
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -40,11 +34,7 @@ public class TipsDialog extends JDialog {
             }
         });
 
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
         DataCenter.reskTimer = new Timer();
         DataCenter.reskTimer.schedule(new RestTask(this), new Date(), 1000);
     }
@@ -54,12 +44,12 @@ public class TipsDialog extends JDialog {
     }
 
     private void onCancel() {
-        handle();//todo 取消倒计时
+        handle();
     }
 
     private void handle() {
         //do nothing!
-        JOptionPane.showMessageDialog(null, "休息回来，将自动关闭.", "tips", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "When you back,it will auto close.", "Tips", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void setDesc(String desc) {

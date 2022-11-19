@@ -3,9 +3,9 @@ package site.duqian.plugin.lottie;
 import site.duqian.plugin.base.IDataProcessor;
 
 /**
- * Description:Lottie 动画文件解析
+ * Description:Parse Lottie file and play
  * <p>
- * Created by 杜乾 on 2022/9/28 - 08:09.
+ * Created by 杜小菜 on 2022/9/28 - 08:09.
  * E-mail: duqian2010@gmail.com
  */
 public class LottieJsonProcessor extends IDataProcessor {
@@ -18,7 +18,6 @@ public class LottieJsonProcessor extends IDataProcessor {
         return SingleTonHolder.INSTANCE;
     }
 
-    //静态内部类
     private static class SingleTonHolder {
         private static final LottieJsonProcessor INSTANCE = new LottieJsonProcessor();
     }
@@ -26,14 +25,11 @@ public class LottieJsonProcessor extends IDataProcessor {
     @Override
     protected String getTemplateFilePath() {
         return "lottie/localLottie.html";
-        //return "lottie/index.html";
     }
 
     @Override
     protected String replaceTemplateContent(String templateContent, String fileContent) {
         fileContent = fileContent .replace("\n","");
-                //.replaceAll(" ","");
         return templateContent.replace(JSON_ANIMATION_DATA, fileContent);
-
     }
 }

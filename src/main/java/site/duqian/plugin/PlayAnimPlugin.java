@@ -14,13 +14,14 @@ import java.awt.*;
 import java.io.File;
 
 /**
- * 预览SVGA动画
+ * Description:Preview SVGA anim
+ *
+ * Created by 杜乾 on 2022/11/19 - 09:50.
+ * E-mail: duqian2010@gmail.com
  */
 public class PlayAnimPlugin extends AnAction {
-
     @Override
     public void update(AnActionEvent event) {
-        //在Action显示之前,根据选中文件扩展名判定是否显示此Action
         boolean isShowMenu = isShowMenu(event);
         event.getPresentation().setEnabled(isShowMenu);
         event.getPresentation().setVisible(isShowMenu);
@@ -32,8 +33,6 @@ public class PlayAnimPlugin extends AnAction {
         String fileName = virtualFile.getName();
         boolean isSvgaFile = fileName.endsWith(".svga");
         boolean isJsonFile = fileName.endsWith(".json");
-        //String extension = virtualFile == null ? null : virtualFile.getExtension();
-        //"svga".equalsIgnoreCase(extension) || "json".equalsIgnoreCase(extension);
         return isSvgaFile || isJsonFile;
     }
 
@@ -41,8 +40,7 @@ public class PlayAnimPlugin extends AnAction {
     public void actionPerformed(AnActionEvent event) {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         String basePath = project != null ? project.getBasePath() : "";
-
-        // 获取当前右键的文件名
+        // get selected file
         VirtualFile virtualFile = event.getData(PlatformDataKeys.VIRTUAL_FILE);
         if (virtualFile == null) return;
         String fileName = virtualFile.getName().toLowerCase();
@@ -59,7 +57,7 @@ public class PlayAnimPlugin extends AnAction {
             String htmlContent = SvgaDataProcessor.processSvgaData(virtualFile);
             saveHtmlAndOpenByBrowser(directory, "svga.html", htmlContent);
         } else {
-            Messages.showMessageDialog("目前只支持预览SVGA/Lottie动画文件，无法预览 " + fileName, "错误提示", Messages.getInformationIcon());
+            Messages.showMessageDialog("Your IDE not support to preview " + fileName, "Error Tips", Messages.getInformationIcon());
         }
     }
 
@@ -78,16 +76,15 @@ public class PlayAnimPlugin extends AnAction {
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try {
-                // 使用默认浏览器打开链接
                 //desktop.browse(new URI("http://www.duqian.site/"));
-                //打开本地的文件
                 desktop.open(new File(filePath));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            Messages.showMessageDialog("当前平台不支持Desktop功能", "错误提示", Messages.getErrorIcon());
-            System.out.println("当前平台不支持 Desktop");
+            String tips = "Current Os not support api: Desktop";
+            Messages.showMessageDialog(tips, "Error msg", Messages.getErrorIcon());
+            System.out.println(tips);
         }
     }
 

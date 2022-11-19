@@ -1,13 +1,14 @@
 package site.duqian.plugin.svga.svga;
 
-import com.intellij.openapi.fileTypes.FileTypeConsumer;
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.fileTypes.FileTypeFactory;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.vfs.VirtualFile;
 
-public class SvgaFileTypeFactory extends FileTypeFactory {
+public abstract class SvgaFileTypeFactory extends FileTypeFactory {
 
-    @Override
-    public void createFileTypes(@NotNull FileTypeConsumer fileTypeConsumer) {
-        fileTypeConsumer.consume(SvgaFileType.INSTANCE);
+    static SvgaFileTypeFactory getInstance() {
+        return ServiceManager.getService(SvgaFileTypeFactory.class);
     }
+
+    public abstract boolean isSvga(VirtualFile file);
 }

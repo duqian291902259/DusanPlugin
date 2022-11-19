@@ -4,7 +4,7 @@ import com.intellij.openapi.fileTypes.FileTypeConsumer;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 
-public class SvgaFileTypeManagerImp extends SvgaFileTypeManager {
+public class SvgaFileTypeImp extends SvgaFileTypeFactory {
 
     @Override
     public void createFileTypes(@NotNull FileTypeConsumer consumer) {

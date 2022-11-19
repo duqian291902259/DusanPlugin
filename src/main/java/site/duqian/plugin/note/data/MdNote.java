@@ -4,15 +4,10 @@ package site.duqian.plugin.note.data;
  * md note
  */
 public class MdNote implements java.io.Serializable{
-    // 标题
     private String title;
-    // 描述
     private String remark;
-    // 内容
     private String content;
-    // 文件名
     private String fileName;
-    // 文件类型
     private String fileType;
 
     public String getTitle() {

@@ -10,13 +10,10 @@ import com.intellij.openapi.fileEditor.impl.text.TextEditorState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
-
 import java.io.File;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.base.IOUtil;
-
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
@@ -52,15 +49,6 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         jPanel.add(label);
         jPanel.add(button);
         return jPanel;
-        /*try {
-            JBCefBrowser browser = new JBCefBrowser("http://www.duqian.site/");
-            browser.loadHTML(htmlContent);
-            jPanel.add(browser.getComponent());
-            return jPanel;
-        } catch (Exception e) {
-            showHtml(htmlContent, textArea);
-            return textArea;
-        }*/
     }
 
     private void showHtml(String htmlContent, JLabel label) {
@@ -97,7 +85,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         }
     }
 
-    private static String mLastFile = "";//防止再次获取焦点都打开浏览器
+    private static String mLastFile = "";//Prevents the preview from opening again
 
     private static void browse(String filePath) {
         if (filePath == null || "".equals(filePath) || filePath.equals(mLastFile)) return;
@@ -106,9 +94,9 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try {
-                // 使用默认浏览器打开链接
+                //open browser
                 //desktop.browse(new URI("http://www.duqian.site/"));
-                //打开本地的文件
+                //open local file
                 desktop.open(new File(filePath));
             } catch (Exception e) {
                 e.printStackTrace();
