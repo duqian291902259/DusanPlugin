@@ -12,7 +12,6 @@ import com.intellij.openapi.ui.Messages;
  * E-mail: duqian2010@gmail.com
  */
 public class DusanPlugin extends AnAction {
-
     @Override
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(PlatformDataKeys.PROJECT);
