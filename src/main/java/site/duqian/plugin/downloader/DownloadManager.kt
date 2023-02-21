@@ -26,29 +26,34 @@ object DownloadManager {
             println("dq-download ignore download")
             return
         }
-        val downloadedBytes = File(path).length()
-        mDownloadingUrl = url
-        updateDownloadStatus(url, DownloadStatus.STATUS_WAITING)
-        val threadPool = ThreadManager.downloadPool.mPool //Executors.newFixedThreadPool(5)
-        val retrofit: Retrofit = Retrofit.Builder().baseUrl("https://www.google.com/").callbackExecutor(threadPool).build()
-        val service = retrofit.create(
-            DownloadService::class.java
-        )
-        var call: Call<ResponseBody>? = service.download(url)
-        if (downloadedBytes > 0) {
-            val range = "bytes=$downloadedBytes-"
-            call = service.download(url, range)
-        }
-        call?.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                //将Response写入到从磁盘中，运行在子线程中的
-                writeResponseToDisk(url, path, response, downloadListener)
+        try {
+            val downloadedBytes = File(path).length()
+            mDownloadingUrl = url
+            updateDownloadStatus(url, DownloadStatus.STATUS_WAITING)
+            val threadPool = ThreadManager.downloadPool.mPool //Executors.newFixedThreadPool(5)
+            val retrofit: Retrofit =
+                Retrofit.Builder().baseUrl("https://www.google.com/").callbackExecutor(threadPool).build()
+            val service = retrofit.create(
+                DownloadService::class.java
+            )
+            var call: Call<ResponseBody>? = service.download(url)
+            if (downloadedBytes > 0) {
+                val range = "bytes=$downloadedBytes-"
+                call = service.download(url, range)
             }
+            call?.enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    //将Response写入到从磁盘中，运行在子线程中的
+                    writeResponseToDisk(url, path, response, downloadListener)
+                }
 
-            override fun onFailure(call: Call<ResponseBody>, throwable: Throwable) {
-                onDownloadFailed(url, downloadListener, throwable)
-            }
-        })
+                override fun onFailure(call: Call<ResponseBody>, throwable: Throwable) {
+                    onDownloadFailed(url, downloadListener, throwable)
+                }
+            })
+        } catch (e: Exception) {
+            onDownloadFailed(url, downloadListener, e)
+        }
     }
 
     private fun updateDownloadStatus(url: String, status: String) {
@@ -101,7 +106,7 @@ object DownloadManager {
         code: Int, url: String, file: File, `is`: InputStream, totalLength: Long, downloadListener: DownloadListener?
     ) {
         //开始下载
-        downloadListener?.onStart()
+        //downloadListener?.onStart()
         var currentLength: Long = 0
 
         //创建文件
@@ -138,7 +143,7 @@ object DownloadManager {
                     raf?.write(data, 0, len)
                 }
                 //计算当前下载进度
-                downloadListener?.onProgress((100 * currentLength / totalLength).toInt())
+                //downloadListener?.onProgress((100 * currentLength / totalLength).toInt())
             }
             println("$TAG downloadVideo isDownloading=${isDownloading(url)},url=$url")
             os.flush()

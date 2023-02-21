@@ -37,9 +37,8 @@ public class TestAction extends AnAction implements ApplicationComponent {
         String msg = "Hello DuQian! " + text;
         Messages.showMessageDialog(project, msg, "Hello Flat", Messages.getInformationIcon());
 
-
+        //test
         String testSvgaUrl = "http://res-fq.hiiu.live/hiiu/gift/1657707294016.svga?t=1657707294672";
-
         String basePath = project != null ? project.getBasePath() : "";
         String directory = basePath + File.separator + "build" + File.separator;
         DownloadUtil.INSTANCE.startDownload(directory + "download.anim", testSvgaUrl);
