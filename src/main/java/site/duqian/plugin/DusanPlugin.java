@@ -2,9 +2,12 @@ package site.duqian.plugin;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.psi.PsiFile;
+
 /**
  * Description:Hi from 杜小菜
  *
@@ -16,9 +19,15 @@ public class DusanPlugin extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(PlatformDataKeys.PROJECT);
-        String basePath = project != null ? project.getBasePath() : "";
-        Messages.showMessageDialog("Hello，欢迎使用Lottie/SVGA/AndroidPlugins!业余开发各种实用而有趣的AS插件。",
-                "Hi from 杜小菜",
+        //String basePath = project != null ? project.getBasePath() : "";
+        PsiFile psiFile = e.getData(CommonDataKeys.PSI_FILE);
+        if (psiFile != null) {
+            String classPath = psiFile.getVirtualFile().getPath();
+            String title = "Hello World!";
+            Messages.showMessageDialog(project, classPath, title, Messages.getInformationIcon());
+        }
+        Messages.showMessageDialog("Hello，Welcome to Lottie/SVGA/AndroidPlugins!",
+                "Hi from Dusan-杜小菜",
                 Messages.getInformationIcon());
     }
 }
