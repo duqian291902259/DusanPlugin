@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Description:Base 动画文件解析
  * <p>
- * Created by 杜乾 on 2022/9/28 - 08:09.
+ * Created by 杜小菜 on 2022/9/28 - 08:09.
  * E-mail: duqian2010@gmail.com
  */
 public abstract class IDataProcessor {

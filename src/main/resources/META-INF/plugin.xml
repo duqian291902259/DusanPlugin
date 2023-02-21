@@ -6,7 +6,7 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Lottie/SVGA/AndroidTools</name>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
@@ -15,7 +15,8 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-     <p>Interesting plugins for android development.</p>
+     <p>Plugins for Developer.will continue to update…</p>
+     <p>Github:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259,Welcome to star</p>
      <ol>
         <li> AndroidStudio/IDEA -> Tools -> DusanPlugin </li>
         <li> Select .svga or lottie .json file -> Preview SVGA/Lottie Anim</li>
@@ -31,17 +32,14 @@
         <li>And so on...</li>
     </ol>
     ]]>
+
     </description>
-    <!--  <p>项目地址:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259</p>
-  -->
     <change-notes><![CDATA[
       <ul>
             <li>V1.0.0：Clock for programmer.</li>
             <li>V1.0.1：Cross-platform SVGA_Player.</li>
             <li>V1.0.2：Lottie-Player for multiplatform.</li>
-            <li>V1.0.3：Update UI of plugins.</li>
-            <li>V1.0.4：Bug fixed.</li>
-            <li>V1.0.5：Add description for plugins.</li>
+            <li>V1.0.6+：upgrade plugins.</li>
         </ul>
     ]]>
     </change-notes>
@@ -60,8 +58,8 @@
         <!--<toolWindow factoryClass="site.duqian.plugin.note.window.MdNoteWindowFactory" id="MdNote" anchor="right"/>-->
 
         <!-- svga extensions -->
-        <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeManager"
-                            serviceImplementation="site.duqian.plugin.svga.svga.SvgaFileTypeManagerImp"/>
+        <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"
+                            serviceImplementation="site.duqian.plugin.svga.svga.SvgaFileTypeImp"/>
         <fileEditorProvider implementation="site.duqian.plugin.svga.svga.SvgaFileEditorProvider"/>
         <fileType
                 name="svga"
@@ -84,7 +82,7 @@
         </action>
 
         <action id="site.duqian.plugin.test2" class="site.duqian.plugin.PlayAnimPlugin" text="Preview SVGA/Lottie Anim"
-                description="预览SVGA/Lottie动画">
+                description="Preview SVGA or Lottie Anim">
             <!-- 将组添加到右键菜单 -->
             <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ReplaceInPath"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta p"/>
@@ -93,16 +91,16 @@
         <!--coding tips-->
         <action id="site.duqian.plugin.StopCoding"
                 class="site.duqian.plugin.stopcoding.StopCodingSettingAction"
-                text="StopCoding" description="setting">
+                text="CodingClock" description="CodingClock">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl S" second-keystroke="C"/>
         </action>
 
         <!--markdown note-->
-        <action id="mp-add-note-note" class="site.duqian.plugin.note.action.AddMdNoteAction"
+        <!--<action id="mp-add-note-note" class="site.duqian.plugin.note.action.AddMdNoteAction"
                 text="add md note" description="add md note">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl meta M"/>
-        </action>
+        </action>-->
     </actions>
 </idea-plugin>

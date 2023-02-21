@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * freemarker 文件渲染实现
+ * freemarker to render
  */
 public class FreemarkerFileImpl implements IFile {
     private List<MdNote> mdNotes;

@@ -5,8 +5,7 @@ plugins {
 }
 
 group = "site.duqian.plugin"
-version = "1.0.6"
-
+version = "1.0.7"
 repositories {
     mavenCentral()
     google()
@@ -23,11 +22,10 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    //version.set("2021.2")
     version.set("2022.1.1") //2020.1 Could not resolve com.jetbrains:jbre:jbr_jcef-11_0_8-osx-aarch64-b944.34.
+    //localPath.set("/Applications/AndroidStudio.app/Contents")
     type.set("IC") // Target IDE Platform
     //type.set("AI") // Target Android Studio Platform
-
     plugins.set(listOf("android"))
 }
 
@@ -51,7 +49,6 @@ tasks {
     }*/
 
     patchPluginXml {
-        //sinceBuild.set("202")
         sinceBuild.set("182")
     }
 

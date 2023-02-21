@@ -26,16 +26,15 @@ public class DataCenter {
     }
 
     public static String getSettingDesc() {
-
         if (CLOSE.equals(DataCenter.status)) {
-            return "Stopcoding is stopping";
+            return "Coding Clock is stopped";
         }
         DateTimeFormatter df = DateTimeFormatter.ofPattern("HH:mm:ss");
         if (WORKING.equals(status)) {
-            return "Next break:" + df.format(nextRestTime);
+            return "Next rest time:" + df.format(nextRestTime);
         }
         if (RESTING.equals(status)) {
-            return "Break end time:" + df.format(nextWorkTime);
+            return "End time:" + df.format(nextWorkTime);
         }
         return "";
     }

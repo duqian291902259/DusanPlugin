@@ -22,7 +22,7 @@ public class AddNoteDialog extends DialogWrapper {
         super(true);
         this.selectText = selectText;
         this.fileName = fileName;
-        setTitle("add md note");
+        setTitle("Add note");
         setModal(true);
         setSize(400,250);
         init();
@@ -31,9 +31,9 @@ public class AddNoteDialog extends DialogWrapper {
     @Override
     protected @Nullable JComponent createCenterPanel() {
         JPanel jPanel = new JPanel(new BorderLayout());
-        titleField = new JTextField("标题");
+        titleField = new JTextField("Title");
         jPanel.add(titleField,BorderLayout.NORTH);
-        remarkTextArea = new JTextArea("描述");
+        remarkTextArea = new JTextArea("Description");
         remarkTextArea.setPreferredSize(new Dimension(300,100));
         jPanel.add(remarkTextArea,BorderLayout.CENTER);
         return jPanel;
@@ -45,14 +45,13 @@ public class AddNoteDialog extends DialogWrapper {
         String remark = remarkTextArea.getText();
         System.out.println("title="+title+",remark="+remark);
         System.out.println("content="+selectText);
-        // 组装数据，加入到数据总线内
+
         MdNote mdNote = new MdNote();
         mdNote.setTitle(title);
         mdNote.setRemark(remark);
         mdNote.setContent(selectText);
         mdNote.setFileName(fileName);
         mdNote.setFileType(fileName.substring(fileName.lastIndexOf(".")+1));
-        // 添加数据
         DataBus.addRow(mdNote);
         this.close(OK_EXIT_CODE);
     }

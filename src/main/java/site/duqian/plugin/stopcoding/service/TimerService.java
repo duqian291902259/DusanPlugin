@@ -19,55 +19,39 @@ public class TimerService {
         return DataCenter.settingData;
     }
 
-    /**
-     * 休息倒计时
-     */
     public static void restCountDown() {
         DataCenter.restCountDownSecond--;
     }
 
-    /**
-     * 初始化休息倒计时间
-     */
     public static void initRestCountDown() {
         if (DataCenter.restCountDownSecond == -1) {
             DataCenter.restCountDownSecond = 60 * DataCenter.settingData.getRestTime();
         }
     }
 
-    /**
-     * 设置下一次工作时间
-     */
     public static void resetNextWorkTime() {
         DataCenter.nextWorkTime = LocalDateTime.now().plusMinutes(DataCenter.settingData.getRestTime());
     }
 
-    /**
-     * 设置下一次休息时间
-     */
     public static void resetNexRestTime() {
         DataCenter.nextRestTime = LocalDateTime.now().plusMinutes(DataCenter.settingData.getWorkTime());
     }
 
     public static String openTimer() {
-        //清楚之前的所有任务
         DataCenter.workTimer.cancel();
-        //创建开启定时任务
         DataCenter.workTimer = new Timer();
-        //
         resetNexRestTime();
         DataCenter.workTimer.schedule(new WorkTask(), Date.from(DataCenter.nextRestTime.atZone(ZoneId.systemDefault()).toInstant()));
         DataCenter.status = DataCenter.WORKING;
         DataCenter.settingData.setOpen(true);
-        return String.format("coding休息 %s minutes, 下次休息时间：%s", DataCenter.settingData.getWorkTime(), getDateStr(DataCenter.nextRestTime));
+        return String.format("Start coding for %s minutes, Next rest time：%s", DataCenter.settingData.getWorkTime(), getDateStr(DataCenter.nextRestTime));
     }
 
     public static String closeTimer() {
-        //清除之前的所有任务
         DataCenter.workTimer.cancel();
         DataCenter.settingData.setOpen(false);
         DataCenter.status = DataCenter.CLOSE;
-        return "Stop Timer";
+        return "Coding-Clock is off";
     }
 
     public static String getCountDownDesc(int time) {
@@ -75,7 +59,7 @@ public class TimerService {
             int hour = time / (60 * 60);
             int minute = (time % (60 * 60)) / 60;
             int second = time % 60;
-            return "休息一会，去喝杯水吧，倒计时：" + String.format("%s:%s:%s", fillZero(hour), fillZero(minute), fillZero(second));
+            return "Have a rest,count down：" + String.format("%s:%s:%s", fillZero(hour), fillZero(minute), fillZero(second));
         }
         return "The rest is over";
     }

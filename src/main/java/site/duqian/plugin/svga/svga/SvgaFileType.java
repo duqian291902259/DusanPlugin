@@ -9,7 +9,6 @@ import javax.swing.*;
 public class SvgaFileType extends LanguageFileType {
 
     static final SvgaFileType INSTANCE = new SvgaFileType();
-
     private SvgaFileType() {
         super(SvgaLanguage.INSTANCE);
     }

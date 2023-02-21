@@ -25,8 +25,8 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 
 1. Lottie-Player,cross-platform.
 1. SVGA-Player for multiplatform.
-1. Timer for programmer.
-1. Plugin-in for Android Developer
+1. Coding Clock.
+1. Plugin-in for Android Developer.
 1. And so on...
 
 ### Plugin Screenshots
@@ -40,9 +40,7 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 * V1.0.0：Timer for programmer.
 * V1.0.1：Cross-platform SVGA player.
 * V1.0.2：Lottie-Player for multiplatform.
-* V1.0.3：Update UI of plugins.
-* V1.0.4：Bug fixed.
-* V1.0.5：Add description for plugins.
+* V1.0.7：Coding Clock..
 
 ### Download
 1.Download plugin from marketplace by search 'lottie-svga-androidtools' or 'duqian' to install it.
@@ -50,7 +48,7 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 ##### Android Studio -> Preferences -> Plugins -> Marketplace
 
 2.click this link to download->
-[DusanPlugin-1.0.6.zip](https://github.com/duqian291902259/DusanPlugin/blob/main/release/DusanPlugin-1.0.6.zip)
+[DusanPlugin-1.0.7.zip](https://github.com/duqian291902259/DusanPlugin/blob/main/release/DusanPlugin-1.0.7.zip)
 
 ##### Drag the .zip file into the IDE and install it to take effect directly.
 
@@ -65,4 +63,3 @@ There are more tools to dev.
 To get more info,please contact me:
 
 1. Email:duqian2010@gmail.com
-2. Wechat:AndroidDQ
