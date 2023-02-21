@@ -40,7 +40,7 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 * V1.0.0：Timer for programmer.
 * V1.0.1：Cross-platform SVGA player.
 * V1.0.2：Lottie-Player for multiplatform.
-* V1.0.7：Coding Clock..
+* V1.0.8：More plugins..
 
 ### Download
 1.Download plugin from marketplace by search 'lottie-svga-androidtools' or 'duqian' to install it.

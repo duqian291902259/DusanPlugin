@@ -6,7 +6,7 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Lottie/SVGA/AndroidTools</name>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
@@ -16,20 +16,19 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
      <p>Plugins for Developer.will continue to update…</p>
-     <p>Github:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259,Welcome to star</p>
+     <p>Github:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259,Welcome to Star</p>
      <ol>
-        <li> AndroidStudio/IDEA -> Tools -> DusanPlugin </li>
+        <li> Has installed? AndroidStudio/IDEA -> Tools -> DusanPlugin </li>
         <li> Select .svga or lottie .json file -> Preview SVGA/Lottie Anim</li>
-        <li> To get more info,please contact duqian2010@gmail.com </li>
+        <li> duqian2010@gmail.com </li>
     </ol>
     <br/>
     <p>Lottie/SVGA/AndroidTools with functions：</p>
       <ol>
-        <li>Lottie-Player,cross-platform</li>
-        <li>SVGA-Player for multiplatform</li>
-        <li>Clock for coding</li>
-        <li>Plugin-in for Android Developer</li>
-        <li>And so on...</li>
+        <li>Lottie-Player</li>
+        <li>SVGA-Player</li>
+        <li>Clock for programmer</li>
+        <li>More Plugins</li>
     </ol>
     ]]>
 
@@ -37,9 +36,9 @@
     <change-notes><![CDATA[
       <ul>
             <li>V1.0.0：Clock for programmer.</li>
-            <li>V1.0.1：Cross-platform SVGA_Player.</li>
-            <li>V1.0.2：Lottie-Player for multiplatform.</li>
-            <li>V1.0.6+：upgrade plugins.</li>
+            <li>V1.0.1：SVGA_Player.</li>
+            <li>V1.0.2：Lottie-Player.</li>
+            <li>V1.0.8+：Upgrade plugins.</li>
         </ul>
     ]]>
     </change-notes>
