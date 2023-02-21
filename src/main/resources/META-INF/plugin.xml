@@ -54,6 +54,9 @@
     <extensions defaultExtensionNs="com.intellij">
         <preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>
 
+        <!--窗体-->
+        <toolWindow canCloseContents="true" anchor="bottom" id="DQTool"
+                    factoryClass="site.duqian.plugin.dqlab.MyToolWindowFactory"/>
         <!--MdNote-->
         <!--<toolWindow factoryClass="site.duqian.plugin.note.window.MdNoteWindowFactory" id="MdNote" anchor="right"/>-->
 
@@ -68,8 +71,6 @@
                 language="svga"
                 extensions="svga"/>
 
-        <!--WebBrowser-->
-        <!--<toolWindow id="WebBrowser" anchor="right" factoryClass="site.duqian.plugin.webview.BrowserWindowFactory"/>-->
     </extensions>
 
 
@@ -102,5 +103,26 @@
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl meta M"/>
         </action>-->
+
+        <!-- 测试action入口   group with id "xxxx" isn't registered; action will be added to the "Other" group -->
+        <action id="HiId_FileMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
+            <add-to-group group-id="FileMenu" anchor="first"/>
+            <add-to-group group-id="MainMenu" anchor="first"/>
+            <add-to-group group-id="EditMenu" anchor="first"/>
+            <add-to-group group-id="ViewMenu" anchor="first"/>
+            <add-to-group group-id="CodeMenu" anchor="first"/>
+            <add-to-group group-id="RefactoringMenu" anchor="first"/>
+            <add-to-group group-id="BuildMenu" anchor="first"/>
+            <add-to-group group-id="RunMenu" anchor="first"/>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <add-to-group group-id="WindowMenu" anchor="first"/>
+            <add-to-group group-id="HelpMenu" anchor="first"/>
+        </action>
+        <action id="HiId_EditorPopupMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+        <action id="HiId_MainToolBar" class="site.duqian.plugin.DusanPlugin" text="DuQian">
+            <add-to-group group-id="MainToolBar" anchor="first"/>
+        </action>
     </actions>
 </idea-plugin>
