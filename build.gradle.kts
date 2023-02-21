@@ -35,13 +35,18 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.swt.cocoa.macosx.x86_64
     //implementation("org.eclipse.platform:org.eclipse.swt.cocoa.macosx.x86_64:3.121.0")
+
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    implementation("com.squareup.retrofit2:retrofit:2.4.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.4.0")
 }
 
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {
-        sourceCompatibility = "11"
-        targetCompatibility = "11"
+        sourceCompatibility = "8"
+        targetCompatibility = "8"
         options.encoding = "UTF-8"
     }
    /* withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
