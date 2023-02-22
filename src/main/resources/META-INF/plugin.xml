@@ -96,15 +96,8 @@
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl S" second-keystroke="C"/>
         </action>
 
-        <!--markdown note-->
-        <!--<action id="mp-add-note-note" class="site.duqian.plugin.note.action.AddMdNoteAction"
-                text="add md note" description="add md note">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl meta M"/>
-        </action>-->
-
         <!-- 测试action入口   group with id "xxxx" isn't registered; action will be added to the "Other" group -->
-        <action id="HiId_FileMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
+        <!--<action id="HiId_FileMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
             <add-to-group group-id="FileMenu" anchor="first"/>
             <add-to-group group-id="MainMenu" anchor="first"/>
             <add-to-group group-id="EditMenu" anchor="first"/>
@@ -122,6 +115,6 @@
         </action>
         <action id="HiId_MainToolBar" class="site.duqian.plugin.DusanPlugin" text="DuQian">
             <add-to-group group-id="MainToolBar" anchor="first"/>
-        </action>
+        </action>-->
     </actions>
 </idea-plugin>
