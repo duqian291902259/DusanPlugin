@@ -7,11 +7,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
-import site.duqian.plugin.base.DownloadUtil;
-
-import java.io.File;
 
 /**
  * Description:测试Action
@@ -36,11 +32,5 @@ public class TestAction extends AnAction implements ApplicationComponent {
         }
         String msg = "Hello DuQian! " + text;
         Messages.showMessageDialog(project, msg, "Hello Flat", Messages.getInformationIcon());
-
-        //test
-        String testSvgaUrl = "http://res-fq.hiiu.live/hiiu/gift/1657707294016.svga?t=1657707294672";
-        String basePath = project != null ? project.getBasePath() : "";
-        String directory = basePath + File.separator + "build" + File.separator;
-        DownloadUtil.INSTANCE.startDownload(directory + "download.anim", testSvgaUrl);
     }
 }

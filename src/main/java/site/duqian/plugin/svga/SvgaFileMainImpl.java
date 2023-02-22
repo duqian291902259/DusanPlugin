@@ -18,6 +18,7 @@ import com.intellij.ui.JBColor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.base.IOUtil;
+import site.duqian.plugin.base.Log;
 import site.duqian.plugin.downloader.DownloadListener;
 import site.duqian.plugin.downloader.DownloadManager;
 
@@ -37,8 +38,8 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         mLastFile = "";
     }
 
-    private final String tips = "Please input anim resource url ";
-    private final String URL_TEST = "http://res-fq.hiiu.live/hiiu/gift/1657707047035.svga?t=1657707047640";
+    private static final String tips = "Please input anim resource url ";
+    private static final String URL_TEST = "http://res-fq.hiiu.live/hiiu/gift/1657707047035.svga?t=1657707047640";
 
     private String htmlContent = "";
 
@@ -47,8 +48,8 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
     public JComponent getComponent() {
         htmlContent = SvgaDataProcessor.processSvgaData(mFile);
         showHtml(htmlContent);
-        String text = "rootDir=" + mRootPath + "\nhtmlContent=" + mFile.getPath() + "\n,content=" + htmlContent;
-        //System.out.println(text);
+        String text = "rootDir=" + mRootPath + "\nhtmlContent=" + mFile.getPath() + "\n,content=";
+        Log.INSTANCE.i(text);
 
         JPanel jPanel = new JPanel();
         JLabel label1 = new JLabel();

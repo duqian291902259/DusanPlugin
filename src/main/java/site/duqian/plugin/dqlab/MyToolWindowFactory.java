@@ -32,8 +32,12 @@ public class MyToolWindowFactory implements ToolWindowFactory {
                 group.add(new TestAction("Login2"));
                 group.add(new TestAction("Login3"));
 
-                ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("ToolBar", group, false);
-                setToolbar(toolbar.getComponent());
+                try {
+                    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("ToolBar", group, false);
+                    setToolbar(toolbar.getComponent());
+                } catch (Exception e) {
+
+                }
             }
         }
 
