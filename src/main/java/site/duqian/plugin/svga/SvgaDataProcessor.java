@@ -42,7 +42,7 @@ public class SvgaDataProcessor {
     }
 
     @Nullable
-    private static String processHtml(String path) {
+    static String processHtml(String path) {
         String htmlContent = IOUtil.getFileContent("svga/htm/player.html");
         if (htmlContent == null) {
             return null;

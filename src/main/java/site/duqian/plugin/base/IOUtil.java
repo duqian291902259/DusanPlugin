@@ -64,7 +64,7 @@ public class IOUtil {
     }
 
     /**
-     * 保存内容到"ccvoice/file/xxxx"配置文件
+     * 保存内容到指定目录
      */
     public static void saveFile(String directory, String fileName, String content) {
         String path = String.format("%s/%s", directory, fileName);
