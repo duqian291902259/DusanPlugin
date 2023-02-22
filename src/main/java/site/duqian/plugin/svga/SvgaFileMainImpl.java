@@ -57,13 +57,11 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         String fileSizeText = mFile.getName() + ",size=" + IOUtil.processFileSizeText(mFile.getPath());
         label1.setText(fileSizeText);
         JTextArea textArea1 = new JTextArea();
-        textArea1.setRows(2);
-        textArea1.setBackground(JBColor.BLUE);
+        textArea1.setRows(1);
+        textArea1.setBackground(JBColor.blue);
         textArea1.requestFocus();
         textArea1.grabFocus();
-        textArea1.setAlignmentY(5f);
         textArea1.setFocusable(true);
-        textArea1.setSize(300, 50);
         textArea1.setSelectedTextColor(JBColor.white);
         textArea1.setText(URL_TEST);
 
