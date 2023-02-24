@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.base.IOUtil;
 import site.duqian.plugin.base.Log;
+import site.duqian.plugin.base.MD5Util;
 import site.duqian.plugin.downloader.DownloadListener;
 import site.duqian.plugin.downloader.DownloadManager;
 
@@ -38,8 +39,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         mLastFile = "";
     }
 
-    private static final String tips = "Please input anim resource url ";
-    private static final String URL_TEST = "http://res-fq.hiiu.live/hiiu/gift/1657707047035.svga?t=1657707047640";
+    private static final String TIPS = "Please input anim resource url ";
 
     private String htmlContent = "";
 
@@ -63,7 +63,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         textArea1.grabFocus();
         textArea1.setFocusable(true);
         textArea1.setSelectedTextColor(JBColor.white);
-        textArea1.setText(URL_TEST);
+        textArea1.setText(TIPS);
 
         //preview button
         JButton button = new JButton();
@@ -93,17 +93,21 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
             resUrl = inputText;
         } else {
             //Messages.showMessageDialog("Error", tips, Messages.getErrorIcon());
-            textArea1.setText(tips);
+            textArea1.setText(TIPS);
             showHtml(htmlContent);
             return;
         }
         String directory = mRootPath + File.separator + "build" + File.separator;
         new File(directory).mkdirs();
-        String savedPath = directory + "download.anim";
+        String savedPath = directory + "download." + MD5Util.md5(inputText) + ".svga";
         System.out.println("savedPath " + savedPath);
 
         File savedFile = new File(savedPath);
-        savedFile.delete();
+        if (savedFile.exists() && savedFile.length() > 0) {
+            showAnim(savedPath);
+            return;
+        }
+        //savedFile.delete();
         String tempPath = "$savedPath.temp";
         File tempFile = new File(tempPath);
         DownloadManager.INSTANCE.download(resUrl, savedPath, new DownloadListener() {
@@ -119,10 +123,18 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
             public void onDownloadSuccess(@Nullable String path) {
                 System.out.println("onDownloadSuccess " + path);
                 tempFile.renameTo(savedFile);
-                String htmlContent = SvgaDataProcessor.processHtml(savedPath);
-                showHtml(htmlContent);
+                if (savedFile.exists() && savedFile.length() > 0) {
+                    showAnim(savedPath);
+                } else {
+                    SwingUtilities.invokeLater(() -> Messages.showMessageDialog("download failed", "Error", Messages.getErrorIcon()));
+                }
             }
         });
+    }
+
+    private void showAnim(String savedPath) {
+        String htmlContent = SvgaDataProcessor.processHtml(savedPath);
+        showHtml(htmlContent);
     }
 
     private void showHtml(String htmlContent) {

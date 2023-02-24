@@ -27,7 +27,9 @@ object DownloadManager {
             return
         }
         try {
-            val downloadedBytes = File(path).length()
+            val file = File(path)
+            file.parentFile?.mkdirs()
+            val downloadedBytes = file.length()
             mDownloadingUrl = url
             updateDownloadStatus(url, DownloadStatus.STATUS_WAITING)
             val threadPool = ThreadManager.downloadPool.mPool //Executors.newFixedThreadPool(5)
@@ -178,5 +180,6 @@ object DownloadManager {
     ) {
         downloadListener?.onDownloadSuccess(file.absolutePath)
         updateDownloadStatus(url, DownloadStatus.STATUS_DOWNLOADED)
+        mDownloadingUrl = ""
     }
 }
