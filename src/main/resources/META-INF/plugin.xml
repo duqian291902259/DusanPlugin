@@ -15,10 +15,10 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-     <p>Plugins for Developer.will continue to update…</p>
+       <p>Plugins for Developer.Upgrading in the future.</p>
      <p>Github:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259,Welcome to Star</p>
      <ol>
-        <li> Has installed? AndroidStudio/IDEA -> Tools -> DusanPlugin </li>
+        <li> AndroidStudio/IDEA -> Tools -> DusanPlugin </li>
         <li> Select .svga or lottie .json file -> Preview SVGA/Lottie Anim</li>
         <li> duqian2010@gmail.com </li>
     </ol>
