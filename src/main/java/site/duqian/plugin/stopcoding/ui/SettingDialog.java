@@ -1,23 +1,15 @@
 package site.duqian.plugin.stopcoding.ui;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.KeyStroke;
-
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.ui.Messages;
 import site.duqian.plugin.stopcoding.data.DataCenter;
 import site.duqian.plugin.stopcoding.data.SettingData;
 import site.duqian.plugin.stopcoding.service.TimerService;
+
+import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class SettingDialog extends JDialog {
     private JPanel contentPane;
@@ -82,17 +74,11 @@ public class SettingDialog extends JDialog {
         } else {
             notifyStr = TimerService.closeTimer();
         }
-        /*NotificationGroup notificationGroup = new NotificationGroup("Coding Clock", NotificationDisplayType.BALLOON, true);
-        Notification notification = notificationGroup.createNotification(notifyStr, MessageType.INFO);
-        Notifications.Bus.notify(notification);*/
-
-        //JOptionPane.showMessageDialog(null, notifyStr, "Tips", JOptionPane.INFORMATION_MESSAGE);
         Messages.showMessageDialog(notifyStr, "Tips", Messages.getInformationIcon());
         dispose();
     }
 
     private void onCancel() {
-        // add your code here if necessary
         dispose();
     }
 

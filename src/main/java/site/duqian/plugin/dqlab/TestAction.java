@@ -31,6 +31,6 @@ public class TestAction extends AnAction implements ApplicationComponent {
             String classPath = psiFile.getVirtualFile().getPath();
         }
         String msg = "Hello DuQian! " + text;
-        Messages.showMessageDialog(project, msg, "Hello Flat", Messages.getInformationIcon());
+        Messages.showMessageDialog(project, msg, "Test Title", Messages.getInformationIcon());
     }
 }

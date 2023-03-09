@@ -53,7 +53,7 @@ public class IOUtil {
         return IOUtil.class.getClassLoader().getResourceAsStream(fileName);
     }
 
-    private static void close(Closeable closeable) {
+    public static void close(Closeable closeable) {
         if (closeable != null) {
             try {
                 closeable.close();

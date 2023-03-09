@@ -6,7 +6,7 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Lottie/SVGA/AndroidTools</name>
-    <version>1.0.9</version>
+    <version>1.1.0</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
@@ -113,8 +113,9 @@
         <action id="HiId_EditorPopupMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
-        <action id="HiId_MainToolBar" class="site.duqian.plugin.DusanPlugin" text="DuQian">
-            <add-to-group group-id="MainToolBar" anchor="first"/>
-        </action>-->
+       -->
+        <action id="FlatBi" class="site.duqian.plugin.BiReporterPlugin" text="BI-Reporter">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
     </actions>
 </idea-plugin>

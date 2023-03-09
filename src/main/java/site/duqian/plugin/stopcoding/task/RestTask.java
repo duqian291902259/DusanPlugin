@@ -26,10 +26,6 @@ public class RestTask extends TimerTask {
             DataCenter.reskTimer.cancel();   //close
             tipsDialog.dispose(); //关闭提示窗口
             String notifyStr = TimerService.openTimer();// start
-//            NotificationGroup notificationGroup = new NotificationGroup("Coding Clock", NotificationDisplayType.BALLOON, true);
-//            Notification notification = notificationGroup.createNotification(notifyStr, MessageType.INFO);
-//            Notifications.Bus.notify(notification);
-
             JOptionPane.showMessageDialog(null, notifyStr, "tips", JOptionPane.INFORMATION_MESSAGE);
         }
     }
