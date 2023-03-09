@@ -11,21 +11,18 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
-
-import java.io.File;
-
 import com.intellij.ui.JBColor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.base.IOUtil;
-import site.duqian.plugin.base.Log;
+import site.duqian.plugin.base.LogUtil;
 import site.duqian.plugin.base.MD5Util;
 import site.duqian.plugin.downloader.DownloadListener;
 import site.duqian.plugin.downloader.DownloadManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 
 public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEditor {
 
@@ -49,7 +46,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         htmlContent = SvgaDataProcessor.processSvgaData(mFile);
         showHtml(htmlContent);
         String text = "rootDir=" + mRootPath + "\nhtmlContent=" + mFile.getPath() + "\n,content=";
-        Log.INSTANCE.i(text);
+        LogUtil.INSTANCE.i(text);
 
         JPanel jPanel = new JPanel();
         JLabel label1 = new JLabel();
@@ -63,7 +60,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         textArea1.grabFocus();
         textArea1.setFocusable(true);
         textArea1.setSelectedTextColor(JBColor.white);
-        textArea1.setText(TIPS);
+        textArea1.setText(TIPS);//http://res-fq..live/hii/gift/1657707294016.svga?t=1657707294672
 
         //preview button
         JButton button = new JButton();
@@ -177,9 +174,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try {
-                //open browser
                 //desktop.browse(new URI("http://www.duqian.site/"));
-                //open local file
                 desktop.open(new File(filePath));
             } catch (Exception e) {
                 e.printStackTrace();
