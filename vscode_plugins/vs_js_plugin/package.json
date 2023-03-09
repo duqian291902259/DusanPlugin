@@ -1,0 +1,11 @@
+{
+    "name": "vsc-plugin-dusan",
+      "version": "1.0.0",
+      "engines": {
+          "vscode": "^1.47.3"
+      },
+      "activationEvents": [
+          "onStartupFinished"
+      ],
+      "main": "./ext.js"
+  }

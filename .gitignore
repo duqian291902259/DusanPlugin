@@ -14,3 +14,7 @@
 .externalNativeBuild
 .cxx
 .hprof
+node_modules/
+dist/
+.vscode/
+.vscodeignore
