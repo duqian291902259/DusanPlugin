@@ -14,3 +14,8 @@
 .externalNativeBuild
 .cxx
 .hprof
+node_modules/
+dist/
+.vscode/
+.vscodeignore
+package-lock.json
