@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "site.duqian.plugin"
-version = "1.1.0"
+version = "1.2.2"
 repositories {
     mavenCentral()
     google()
@@ -22,8 +22,7 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2022.1.1") //2020.1 Could not resolve com.jetbrains:jbre:jbr_jcef-11_0_8-osx-aarch64-b944.34.
-    //localPath.set("/Applications/AndroidStudio.app/Contents")
+    version.set("2022.1.1")
     type.set("IC") // Target IDE Platform
     //type.set("AI") // Target Android Studio Platform
     plugins.set(listOf("android"))
@@ -32,14 +31,11 @@ intellij {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
     implementation("org.freemarker:freemarker:2.3.31")
-
-    // https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.swt.cocoa.macosx.x86_64
-    //implementation("org.eclipse.platform:org.eclipse.swt.cocoa.macosx.x86_64:3.121.0")
-
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation("com.squareup.retrofit2:retrofit:2.4.0")
     implementation("com.squareup.retrofit2:converter-gson:2.4.0")
+    implementation("com.google.code.gson:gson:2.8.6")
 }
 
 tasks {

@@ -20,7 +20,7 @@ public class IOUtil {
     }
 
     @Nullable
-    private static String getFileContent(String fileName, boolean isFromRes) {
+    public static String getFileContent(String fileName, boolean isFromRes) {
         InputStream inputStream = null;
         BufferedReader reader = null;
         try {
@@ -97,7 +97,7 @@ public class IOUtil {
         }
     }
 
-    private static final String TAG = "IOUtils";
+    public static final String TAG = "IOUtils";
 
     public static void closeStream(InputStream is) {
         if (is != null) {
@@ -128,7 +128,7 @@ public class IOUtil {
     /**
      * Pipe an InputStream to the given OutputStream <p /> Taken from Apache Commons IOUtils.
      */
-    private static long copy(InputStream input, OutputStream output) throws IOException {
+    public static long copy(InputStream input, OutputStream output) throws IOException {
         try {
             byte[] buffer = new byte[1024 * 4];
             long count = 0;
