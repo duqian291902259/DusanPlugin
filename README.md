@@ -22,6 +22,7 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 
 1. Lottie-Player.
 1. SVGA-Player.
+1. ChatGPT plugin.
 1. Coding-Clock.
 1. Plugin-in for Android Developer.
 1. And so on...
