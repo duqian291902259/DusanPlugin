@@ -6,7 +6,7 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Lottie/SVGA/AndroidTools</name>
-    <version>1.1.0</version>
+    <version>1.2.2</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
@@ -72,7 +72,6 @@
 
     </extensions>
 
-
     <actions>
         <action id="site.duqian.plugin.test" class="site.duqian.plugin.DusanPlugin" text="DusanPlugin"
                 description="AndroidPlugin by 杜小菜">
@@ -96,7 +95,7 @@
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl S" second-keystroke="C"/>
         </action>
 
-        <!-- 测试action入口   group with id "xxxx" isn't registered; action will be added to the "Other" group -->
+        <!-- test plugin entry.group with id "xxxx" isn't registered; action will be added to the "Other" group -->
         <!--<action id="HiId_FileMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
             <add-to-group group-id="FileMenu" anchor="first"/>
             <add-to-group group-id="MainMenu" anchor="first"/>
@@ -114,8 +113,5 @@
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
        -->
-        <action id="FlatBi" class="site.duqian.plugin.BiReporterPlugin" text="BI-Reporter">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
     </actions>
 </idea-plugin>
