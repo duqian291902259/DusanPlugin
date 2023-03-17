@@ -6,6 +6,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.base.IOUtil;
+import site.duqian.plugin.base.LogUtil;
 
 import java.awt.*;
 
@@ -38,6 +39,7 @@ public class SvgaDataProcessor {
         if (htmlContent == null) {
             return "";
         }
+        LogUtil.INSTANCE.i("processSvgaData");
         return htmlContent;
     }
 
@@ -45,6 +47,7 @@ public class SvgaDataProcessor {
     static String processHtml(String path) {
         String htmlContent = IOUtil.getFileContent("svga/htm/player.html");
         if (htmlContent == null) {
+            LogUtil.INSTANCE.i("htmlContent is null");
             return null;
         }
         htmlContent = htmlContent.replace(CSS_SCRIPT_STUFF, processCss());

@@ -40,13 +40,11 @@ public class PlayAnimPlugin extends AnAction {
     public void actionPerformed(AnActionEvent event) {
         Project project = event.getData(PlatformDataKeys.PROJECT);
         String basePath = project != null ? project.getBasePath() : "";
-        // get selected file
         VirtualFile virtualFile = event.getData(PlatformDataKeys.VIRTUAL_FILE);
         if (virtualFile == null) return;
         String fileName = virtualFile.getName().toLowerCase();
-        //String extension = virtualFile.getExtension();
-        boolean isSvgaFile = fileName.endsWith(".svga");//"svga".equalsIgnoreCase(extension); //
-        boolean isJsonFile = fileName.endsWith(".json");//"json".equalsIgnoreCase(extension);
+        boolean isSvgaFile = fileName.endsWith(".svga");
+        boolean isJsonFile = fileName.endsWith(".json");
 
         String directory = basePath + File.separator + "build" + File.separator;
 

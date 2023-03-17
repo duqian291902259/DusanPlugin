@@ -30,19 +30,21 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
     private final VirtualFile mFile;
     private final String mRootPath;
 
+    private JPanel mJPanel = null;
+
+    private static final String TIPS = "Please input anim resource url ";
+
+    private String htmlContent = "";
     public SvgaFileMainImpl(@NotNull Project project, @NotNull VirtualFile file) {
         mFile = file;
         mRootPath = project.getBasePath();
         mLastFile = "";
     }
 
-    private static final String TIPS = "Please input anim resource url ";
-
-    private String htmlContent = "";
-
     @NotNull
     @Override
     public JComponent getComponent() {
+        if (mJPanel != null) return mJPanel;
         htmlContent = SvgaDataProcessor.processSvgaData(mFile);
         showHtml(htmlContent);
         String text = "rootDir=" + mRootPath + "\nhtmlContent=" + mFile.getPath() + "\n,content=";
@@ -78,7 +80,7 @@ public final class SvgaFileMainImpl extends UserDataHolderBase implements FileEd
         jPanel.add(label1);
         jPanel.add(textArea1);
         jPanel.add(button);
-
+        this.mJPanel = jPanel;
         return jPanel;
     }
 

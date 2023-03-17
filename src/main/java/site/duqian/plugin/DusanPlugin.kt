@@ -4,8 +4,6 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.ui.Messages
-import org.jetbrains.annotations.NonNls
-import org.jetbrains.annotations.SystemIndependent
 import site.duqian.plugin.base.*
 import site.duqian.plugin.entity.ChatGptResult
 
@@ -37,27 +35,10 @@ class DusanPlugin : AnAction() {
 
         try {
             testChatGpt(basePath)
-            checkPythonEnv(basePath)
+            //UIUtils.checkPython(basePath,false)
         } catch (e: Exception) {
             LogUtil.i("execute cmd error = $e")
         }
-    }
-
-
-    private fun checkPythonEnv(basePath: @SystemIndependent @NonNls String?) {
-        val cmdList: MutableList<String> = ArrayList()
-        cmdList.add("which")
-        cmdList.add("python3")
-        SysCmdUtil.executeCmd(cmdList, basePath, object : CmdCallback {
-            override fun onResult(success: Boolean, cmdResult: String?) {
-                LogUtil.i("check python3=$cmdResult")
-                if (!success) {
-                    UIUtils.showMessageDialog("cmd error", "has not install python3", Messages.getErrorIcon())
-                } else {
-                    UIUtils.showMessageDialog("cmd success", "$cmdResult", Messages.getInformationIcon())
-                }
-            }
-        })
     }
 
     /**

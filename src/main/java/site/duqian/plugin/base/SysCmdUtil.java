@@ -49,7 +49,7 @@ public class SysCmdUtil {
 
 
             CapturingProcessHandler handler = new CapturingProcessHandler(commandLine.createProcess(), CharsetToolkit.getDefaultSystemCharset(), commandLineString);
-            ProcessOutput result = handler.runProcess(20 * 1000);
+            ProcessOutput result = handler.runProcess(10 * 1000);
             boolean isOK = result.getExitCode() == 0;
             String stderr = result.getStderr();
             LogUtil.INSTANCE.i(TAG + ",executeCmd isOK=" + isOK + ",result=" + stderr);
@@ -57,8 +57,6 @@ public class SysCmdUtil {
                 String text = isOK ? stderr : "execute failed:" + result.getExitCode();
                 cmdCallback.onResult(isOK, text);
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

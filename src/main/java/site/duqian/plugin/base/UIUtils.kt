@@ -22,4 +22,26 @@ object UIUtils {
             )
         }
     }
+
+    fun showMessageDialog(message: String) {
+        showMessageDialog("cmd result", message, Messages.getErrorIcon())
+    }
+
+    fun checkPython(basePath: String?, isPython3: Boolean) {
+        val cmdList: MutableList<String> = ArrayList()
+        cmdList.add("which")
+        if (isPython3) {
+            cmdList.add("python3")
+        } else {
+            cmdList.add("python")
+        }
+        SysCmdUtil.executeCmd(cmdList, basePath, object : CmdCallback {
+            override fun onResult(success: Boolean, cmdResult: String?) {
+                LogUtil.i("check python=$cmdResult,isPython3=$isPython3")
+                if (!success) {
+                    showMessageDialog("has not install ${cmdList[1]}")
+                }
+            }
+        })
+    }
 }
