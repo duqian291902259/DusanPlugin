@@ -277,10 +277,10 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 		webviewPanel.webview.onDidReceiveMessage(e => {
 			console.log("document.documentData=" + document.documentData);
 			if (e.type === 'ready') {
-				console.log(999999999),
-					this.postMessage(webviewPanel, 'init', {
-						value: document.documentData
-					});
+				console.log("read to play"),
+				this.postMessage(webviewPanel, 'init', {
+					value: document.documentData
+				});
 			}
 		});
 	}
@@ -520,8 +520,7 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 				<div id="content-div">
 					<canvas id="playerCanvas"></canvas>
 					<script nonce="${nonce}" src="${svgaFile}"></script>
-					<script nonce="${nonce}" src="${scriptUri}"></script>
-			
+					<!-- <script nonce="${nonce}" src="${scriptUri}"></script> -->
 					<!-- <script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
 						src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svga.lite.min.js"></script>
 					<script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
@@ -544,20 +543,82 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 		
 		
 				console.log("init1");
+				const {
+					Downloader,
+					Parser,
+					Player
+				} = SVGA;
+				const parser = new SVGA.Parser();
+				const player = new SVGA.Player('#playerCanvas');
+				let lastData = undefined;
+				(function () {
+					const vscode = acquireVsCodeApi();
+					const svgaFn = (data) => {
+						const downloader = new Downloader();
+						// 默认调用 WebWorker 线程解析
+						// 可配置 new Parser({ disableWorker: true }) 禁止
+						console.log("init play");
+				
+						(async () => {
+							const svgaData = await parser.do(data);
+							await player.mount(svgaData);
+							player
+								// 开始动画事件回调
+								.$on('start', () => console.log('event start'))
+								// 暂停动画事件回调
+								.$on('pause', () => console.log('event pause'))
+								// 停止动画事件回调
+								.$on('stop', () => console.log('event stop'))
+								// 动画结束事件回调
+								.$on('end', () => console.log('event end'))
+								// 清空动画事件回调
+								.$on('clear', () => console.log('event clear'))
+								// 动画播放中事件回调
+								.$on('process', () => console.log('event process', player.progress));
+							// 开始播放动画
+							player.start();
+						})();
+					};
+				
+					// // Handle messages from the extension
+					window.addEventListener('message', async e => {
+						const {
+							type,
+							body,
+						} = e.data;
+						switch (type) {
+							case 'init': {
+								const originData = body.value.data;
+								const data = new Uint8Array(originData);
+								console.log("originData=" + originData);
+								console.log("data=" + data);
+								lastData = data;
+								svgaFn(data);
+							}
+						}
+					});
+					vscode.postMessage({
+						type: 'ready'
+					});
+				}());
 		
 				//播放
 				function startAnimation() {
+					console.log("startAnimation"+lastData);
+					svgaFn(lastData);
 					//player.start();
 				}
 		
 				//暂停
 				function pauseAnimation() {
-					//player.pause();
+					console.log("pauseAnimation");
+					player.pause();
 				}
 		
 				//停止播放动画，如果 clearsAfterStop === true，将会清空画布
 				function stopAnimation() {
-					//player.stop();
+					console.log("stopAnimation");
+					player.stop();
 				}
 		
 				function onSwitchBackground(target) {
