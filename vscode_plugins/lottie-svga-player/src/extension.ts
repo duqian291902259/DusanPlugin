@@ -3,9 +3,9 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-
 import { Base64 } from 'js-base64';
 import { PawDrawEditorProvider } from './pawDrawEditor';
+import { getNonce } from './utils';
 
 const myProvider = class implements vscode.TextDocumentContentProvider {
 	provideTextDocumentContent(uri: vscode.Uri): string {
@@ -47,9 +47,9 @@ export function activate(context: vscode.ExtensionContext) {
 		// 设置HTML内容
 		currentPanel.webview.html = getWebviewContent1(stylesResetUri);
 		console.log(context.extensionUri);
-	
+
 		//stylesResetUri=https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/xxx.png
-		console.log("stylesResetUri="+stylesResetUri);
+		console.log("stylesResetUri=" + stylesResetUri);
 		console.log(vsSrc);
 
 		//open file
@@ -66,8 +66,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 	//svga-player
 	context.subscriptions.push(vscode.commands.registerCommand('duqian.svga', async (fileUri) => {
-		handleSelectedFile(context, fileUri);
-		//startPlaySvga(context, fileUri);
+		//handleSelectedFile(context, fileUri);
+		startPlaySvga(context, fileUri);
 	}));
 
 	//svga-preivew
@@ -161,6 +161,10 @@ function getWebviewContent1(srcPath: vscode.Uri) {
 // This method is called when your extension is deactivated
 export function deactivate() { }
 
+function postMessage(panel: vscode.WebviewPanel, type: string, body: any): void {
+	panel.webview.postMessage({ type, body });
+}
+
 function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 	console.log("duqian.svga fileUri=" + fileUri);
 	const curFilePath = fileUri.path;
@@ -176,6 +180,8 @@ function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 
 	let animContent = fs.readFileSync(curFilePath, 'utf8');
 	console.log("animContent=" + animContent);
+
+	
 	//animContent = Buffer.from(animContent, 'utf-8').toString('base64');
 
 	//animContent = EncodeDecode.b64EncodeUnicode(animContent); 
@@ -183,8 +189,25 @@ function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 	//console.log("animContent1=" + animContent);
 
 	let htmlContent = fs.readFileSync(htmlPath.path, 'utf8');
-	let htmlContent2 = htmlContent.replace("{animationData}", animContent);
-	console.log("htmlContent2=" + animContent);
-	currentPanel.webview.html = htmlContent2;
+	//let htmlContent2 = htmlContent.replace("{animationData}", animContent);
+	
+	const svgaFilePath = vscode.Uri.file(
+		path.join(context.extensionPath, 'media', 'svga.lite.min.js')
+	);
+	const svgaFile = currentPanel.webview.asWebviewUri(svgaFilePath);
+
+	const scriptPath = vscode.Uri.file(
+		path.join(context.extensionPath, 'media', 'svgaPerview.js')
+	);
+	const scriptUri = currentPanel.webview.asWebviewUri(scriptPath);
+
+	const nonce = getNonce();
+
+	htmlContent = htmlContent.replace("${nonce}", nonce).replace("${nonce}", nonce).replace("${svgaFile}", svgaFile + "").replace("{scriptUri}", scriptUri + "");
+	console.log("htmlContent2=" + htmlContent);
+	currentPanel.webview.html = htmlContent;
+
+
+	postMessage(currentPanel,"init", animContent);
 }
 

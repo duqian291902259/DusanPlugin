@@ -494,7 +494,6 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJiYWNrZ3JvdW5kSW1hZ2VfYnlfbW9reSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiPgogICAgdmlld0JveD0iMCAwIDEwIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMCAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgICAgICAuc3Qwe2ZpbGw6I0ZGRkZGRjt9CiAgICAgICAgLnN0MXtmaWxsOiNDMEMwQzA7fQogICAgPC9zdHlsZT4KICAgIDxyZWN0IGNsYXNzPSJzdDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgPHJlY3QgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgogICAgPHJlY3QgeD0iNSIgeT0iNSIgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgo8L3N2Zz4K);
 				}
 			</style>
-		
 		</head>
 		
 		<body oncontextmenu="return false;" onselectstart="return false;">
@@ -520,9 +519,9 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 				<div id="content-div">
 					<canvas id="playerCanvas"></canvas>
 					<script nonce="${nonce}" src="${svgaFile}"></script>
-					<!-- <script nonce="${nonce}" src="${scriptUri}"></script> -->
+					<!-- <script nonce="${nonce}" src="${scriptUri}"></script>
 					<!-- <script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
-						src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svga.lite.min.js"></script>
+						src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svga.lite.min.js"></script>  -->
 				</div>
 			</div>
 		
