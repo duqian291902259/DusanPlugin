@@ -1,15 +1,20 @@
 # DusanPlugin
 
-Interesting plugins for developmenter.
+Interesting plugins for developer.
 
-which integrated into the IDE of jetbrains,like Android Studio and VS Code IDEA.
+lottie-svga-player can integrated into the IDE,it has Multiple platform version for Visual Studio Code,Android Studio and VS Code IDEA.
+
+For IDEA/Android Studio：[Lottie_SVGA_AndroidTools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools?preview=true)
+For VSCode：[lottie-svga-player](https://marketplace.visualstudio.com/items?itemName=duqian3201.lottie-svga-player)
+
 
 Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://github.com/duqian291902259/DusanPlugin)
 
 ## 1. lottie-svga-player
 
-1. Install by vs code.
+1. Install by Visual Studio Code.
 1. Select .svga or lottie .json file -> Preview SVGA/Lottie.
+1. Drog .svga to vscode to play or preview lottie json by right menus
 
 ### Functions
 
@@ -21,9 +26,11 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 
 ### Plugin Screenshots
 
-![lottie_player](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/lottie_player_min.gif)
+![lottie_svga_player_vscode](./media/lottie-svga-player-vscode1.png)
 
-![svga_player](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/svga_player_min.gif)
+![lottie_player](./media/lottie_player_min.gif)
+
+![svga_player](./media/svga_player_min.gif)
 
 
 ### Download
