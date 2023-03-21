@@ -20,7 +20,7 @@ For VSCode：[lottie-svga-player](https://marketplace.visualstudio.com/items?ite
 
 ### General Description 
 
-1. AndroidStudio/ Visual Studio IDE -> Download plugins
+1. AndroidStudio/ VisualStudioCode IDE -> Download plugins
 1. Select .svga or lottie .json file -> Preview SVGA/Lottie.
 
 ### Functions
