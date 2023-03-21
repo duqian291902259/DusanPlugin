@@ -140,7 +140,7 @@
             background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJiYWNrZ3JvdW5kSW1hZ2VfYnlfbW9reSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiPgogICAgdmlld0JveD0iMCAwIDEwIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMCAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgICAgICAuc3Qwe2ZpbGw6I0ZGRkZGRjt9CiAgICAgICAgLnN0MXtmaWxsOiNDMEMwQzA7fQogICAgPC9zdHlsZT4KICAgIDxyZWN0IGNsYXNzPSJzdDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgPHJlY3QgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgogICAgPHJlY3QgeD0iNSIgeT0iNSIgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgo8L3N2Zz4K);
         }
     </style>
-    <script  type="text/javascript" src="https://unpkg.com/svga/dist/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/svga/dist/index.min.js"></script>
 </head>
 
 <body oncontextmenu="return false;" onselectstart="return false;">
@@ -170,7 +170,7 @@
 
     <script type="text/javascript" nonce="${nonce}" src="${svgaFile}"></script>
     <script type="text/javascript" nonce="${nonce}" src="${scriptUri}"></script>
-    
+
     <script type="text/javascript">
         window.addEventListener('mousewheel', function (event) {
             if (event.ctrlKey === true || event.metaKey) {
@@ -187,39 +187,23 @@
 
         console.log("init1");
         const {
-            Downloader,
             Parser,
             Player
         } = SVGA;
-        let parser = new SVGA.Parser();
-        let player = new SVGA.Player('#playerCanvas');
+        const lastDataStub = undefined;
         let lastData = undefined;
+        if (player == undefined) {
+            parser = new SVGA.Parser();
+            player = new SVGA.Player('#playerCanvas');
+        }
+        //startPlay(lastData);
+
         (function () {
             const vscode = acquireVsCodeApi();
             const svgaFn = (data) => {
-                const downloader = new Downloader();
-                // 默认调用 WebWorker 线程解析
-                // 可配置 new Parser({ disableWorker: true }) 禁止
                 console.log("init play");
-
                 (async () => {
-                    const svgaData = await parser.do(data);
-                    await player.mount(svgaData);
-                    player
-                        // 开始动画事件回调
-                        .$on('start', () => console.log('event start'))
-                        // 暂停动画事件回调
-                        .$on('pause', () => console.log('event pause'))
-                        // 停止动画事件回调
-                        .$on('stop', () => console.log('event stop'))
-                        // 动画结束事件回调
-                        .$on('end', () => console.log('event end'))
-                        // 清空动画事件回调
-                        .$on('clear', () => console.log('event clear'))
-                        // 动画播放中事件回调
-                        .$on('process', () => console.log('event process', player.progress));
-                    // 开始播放动画
-                    player.start();
+                    startPlay(data);
                 })();
             };
 
@@ -247,13 +231,25 @@
 
         //播放
         function startAnimation() {
+            console.log("startAnimation " + lastData);
+            startPlay(lastData)
+        }
+
+        function startPlay(lastData) {
+            //if (!player) {
             parser = new SVGA.Parser();
             player = new SVGA.Player('#playerCanvas');
-            console.log("startAnimation" + lastData);
+            //}
+            console.log("startPlay " + lastData);
             (async () => {
                 const svgaData = await parser.do(lastData);
                 await player.mount(svgaData);
-                // 开始播放动画
+                player.$on('start', () => console.log('event start'))
+                    .$on('pause', () => console.log('event pause'))
+                    .$on('stop', () => console.log('event stop'))
+                    .$on('end', () => console.log('event end'))
+                    .$on('clear', () => console.log('event clear'))
+                    .$on('process', () => console.log('event process', player.progress));
                 player.start();
             })();
         }

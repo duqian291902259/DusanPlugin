@@ -181,7 +181,6 @@ function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 	let animContent = fs.readFileSync(curFilePath, 'utf8');
 	console.log("animContent=" + animContent);
 
-	
 	//animContent = Buffer.from(animContent, 'utf-8').toString('base64');
 
 	//animContent = EncodeDecode.b64EncodeUnicode(animContent); 
@@ -190,7 +189,7 @@ function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 
 	let htmlContent = fs.readFileSync(htmlPath.path, 'utf8');
 	//let htmlContent2 = htmlContent.replace("{animationData}", animContent);
-	
+
 	const svgaFilePath = vscode.Uri.file(
 		path.join(context.extensionPath, 'media', 'svga.lite.min.js')
 	);
@@ -203,11 +202,19 @@ function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 
 	const nonce = getNonce();
 
-	htmlContent = htmlContent.replace("${nonce}", nonce).replace("${nonce}", nonce).replace("${svgaFile}", svgaFile + "").replace("{scriptUri}", scriptUri + "");
+	htmlContent = htmlContent.replace("${nonce}", nonce)
+		.replace("${nonce}", nonce)
+		.replace("${svgaFile}", svgaFile + "")
+		.replace("{scriptUri}", scriptUri + "")
+		.replace("$lastDataStub", animContent);
 	console.log("htmlContent2=" + htmlContent);
 	currentPanel.webview.html = htmlContent;
 
+	postMessage(currentPanel, "init", animContent);
+	setTimeout(function () {
+		console.log("init player delay=");
+		//postMessage(currentPanel, "init", animContent);
+	}, 2000);
 
-	postMessage(currentPanel,"init", animContent);
 }
 
