@@ -459,33 +459,18 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					color: rgb(255, 255, 255);
 					cursor: default;
 				}
-		
-				#content-div1 {
-					width: 100%;
-					margin: 0 auto;
-					padding: 0;
-					position: absolute;
-					overflow-x: scroll;
-					overflow-y: auto;
-					scrollbar-track-color: rgb(60, 63, 65);
-					scrollbar-3dlight-color: rgb(60, 63, 65);
-					scrollbar-darkshadow-color: rgb(60, 63, 65);
-					scrollbar-base-color: rgb(60, 63, 65);
-					scrollbar-arrow-color: rgb(60, 63, 65);
-					scrollbar-highlight-color: rgb(60, 63, 65);
-					scrollbar-shadow-color: rgb(60, 63, 65);
-					scrollbar-face-color: #7d7d7d;
-				}
-
+			
 				#content-body {
-					width: 100%;
-					height: 100%;
+					width: 80%;
+					height: 70%;
 					position: relative;
 					overflow-x: scroll;
 					overflow-y: auto;
 				}
 
 				#playerCanvas {
+					max-width:80%;
+					max-height:75%;
 					position: absolute;
 					left: 50%;
 					top: 50%;
