@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.ui.Messages
 import site.duqian.plugin.base.*
+import site.duqian.plugin.downloader.ThreadManager
 import site.duqian.plugin.entity.ChatGptResult
 
 /**
@@ -34,8 +35,10 @@ class DusanPlugin : AnAction() {
         )
 
         try {
-            testChatGpt(basePath)
-            //UIUtils.checkPython(basePath,false)
+            ThreadManager.backgroundPool.execute {
+                UIUtils.checkPython(basePath, false)
+                testChatGpt(basePath)
+            }
         } catch (e: Exception) {
             LogUtil.i("execute cmd error = $e")
         }
