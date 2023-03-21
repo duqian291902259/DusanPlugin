@@ -1,8 +1,8 @@
 # DusanPlugin
 
-Interesting plugins for developer.
+Interesting IDE plugins for developer.
 
-which integrated into the IDE of jetbrains,like Android Studio and IntelliJ IDEA.
+which integrated into the IDE,like Visual Studio Code,Android Studio and IntelliJ IDEA.
 
 Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://github.com/duqian291902259/DusanPlugin)
 
