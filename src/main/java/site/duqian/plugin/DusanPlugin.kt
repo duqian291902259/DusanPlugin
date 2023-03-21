@@ -65,7 +65,7 @@ class DusanPlugin : AnAction() {
         cmdList.add("Content-type: application/json")
         cmdList.add("\\")
         cmdList.add("-H")
-        cmdList.add("Authorization: Bearer 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")
+        cmdList.add("Authorization: Bearer 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")
         cmdList.add("\\")
         cmdList.add("-d")
         cmdList.add(
@@ -86,7 +86,7 @@ class DusanPlugin : AnAction() {
                 val text = chatGptResult?.choices?.get(0)?.text
                 LogUtil.i("$TAG ChatGpt answer=$text")
                 if (text?.isEmpty() == false) {
-                    UIUtils.showMessageDialog("ChatGpt answer", text, Messages.getInformationIcon())
+                    UIUtils.showMessageDialog("ChatGpt answer", text, Messages.getErrorIcon())
                     return
                 }
                 UIUtils.showMessageDialog("ChatGpt error", result, Messages.getErrorIcon())

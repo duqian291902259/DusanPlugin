@@ -13,8 +13,10 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 
 ![Lottie_SVGA_AndroidTools](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/Lottie-SVGA-Player-Plugin666.png)
 
-For IDEA：![Lottie_SVGA_AndroidTools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools?preview=true)
-For VSCode：![lottie-svga-player](https://marketplace.visualstudio.com/items?itemName=duqian3201.lottie-svga-player)
+![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/lottie-svga-player-vscode.png)
+
+For IDEA/Android Studio：[Lottie_SVGA_AndroidTools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools?preview=true)
+For VSCode：[lottie-svga-player](https://marketplace.visualstudio.com/items?itemName=duqian3201.lottie-svga-player)
 
 ### General Description 
 
@@ -37,7 +39,9 @@ For VSCode：![lottie-svga-player](https://marketplace.visualstudio.com/items?it
 
 ![svga_player](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/svga_player_min.gif)
 
-![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/lottie-svga-player-vscode.png)
+![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/lottie-svga-player-vscode1.png)
+
+![chatgpt-demo](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/chatgpt-demo.png)
 
 ### Download
 1.Download plugin from marketplace by search 'lottie-svga-androidtools' or 'duqian' to install it.
