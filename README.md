@@ -6,20 +6,21 @@ which integrated into the IDE,like Visual Studio Code,Android Studio and Intelli
 
 Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://github.com/duqian291902259/DusanPlugin)
 
-## 1. lottie-svga-player
-
-### Plugin Overview
+## lottie-svga-player
 
 
-For IDEA/Android Studio：
+#### For IDEA/Android Studio：
+
 [Lottie_SVGA_AndroidTools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools?preview=true)
-
-[https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools)
+--> [https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools)
 
 ![Lottie_SVGA_AndroidTools](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/Lottie-SVGA-Player-Plugin666.png)
 
-For VSCode：
+#### For Visual Studi Code：
+
 [lottie-svga-player](https://marketplace.visualstudio.com/items?itemName=duqian3201.lottie-svga-player)
+
+Drog .svga to vscode to play or preview lottie json by right menus
 
 ![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/lottie-svga-player-vscode.png)
 
