@@ -9,15 +9,19 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 ## 1. lottie-svga-player
 
 ### Plugin Overview
+
+
+For IDEA/Android Studio：
+[Lottie_SVGA_AndroidTools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools?preview=true)
+
 [https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools)
 
-![Lottie_SVGA_AndroidTools](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/Lottie-SVGA-Player-Plugin666.png)
+![Lottie_SVGA_AndroidTools](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/Lottie-SVGA-Player-Plugin666.png)
 
-![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/blob/main/screenshot/lottie-svga-player-vscode.png)
+For VSCode：
+[lottie-svga-player](https://marketplace.visualstudio.com/items?itemName=duqian3201.lottie-svga-player)
 
-For IDEA/Android Studio：[Lottie_SVGA_AndroidTools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools?preview=true)
-
-For VSCode：[lottie-svga-player](https://marketplace.visualstudio.com/items?itemName=duqian3201.lottie-svga-player)
+![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/lottie-svga-player-vscode.png)
 
 ### General Description 
 
