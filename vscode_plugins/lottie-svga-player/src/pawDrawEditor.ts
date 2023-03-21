@@ -523,8 +523,6 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					<!-- <script nonce="${nonce}" src="${scriptUri}"></script> -->
 					<!-- <script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
 						src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svga.lite.min.js"></script>
-					<script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
-						src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svgaPerview.js"></script> -->
 				</div>
 			</div>
 		
@@ -548,8 +546,8 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					Parser,
 					Player
 				} = SVGA;
-				const parser = new SVGA.Parser();
-				const player = new SVGA.Player('#playerCanvas');
+				let parser = new SVGA.Parser();
+				let player = new SVGA.Player('#playerCanvas');
 				let lastData = undefined;
 				(function () {
 					const vscode = acquireVsCodeApi();
@@ -604,9 +602,15 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 		
 				//播放
 				function startAnimation() {
+					parser = new SVGA.Parser();
+				    player = new SVGA.Player('#playerCanvas');
 					console.log("startAnimation"+lastData);
-					svgaFn(lastData);
-					//player.start();
+					(async () => {
+						const svgaData = await parser.do(lastData);
+						await player.mount(svgaData);
+						// 开始播放动画
+						player.start();
+					})();
 				}
 		
 				//暂停

@@ -33,6 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		//vscode.workspace.registerTextDocumentContentProvider("flat", myProvider);
 
+		currentPanel = undefined;
 		currentPanel = initWebView(context, "FlatWeb");
 		// 获取磁盘上的资源路径
 		const onDiskPath = vscode.Uri.file(
@@ -46,14 +47,14 @@ export function activate(context: vscode.ExtensionContext) {
 		// 设置HTML内容
 		currentPanel.webview.html = getWebviewContent1(stylesResetUri);
 		console.log(context.extensionUri);
-		//path:'/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/lottie.html'
-		//stylesResetUri=https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/ic_launcher_round.png
+	
+		//stylesResetUri=https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/xxx.png
 		console.log("stylesResetUri="+stylesResetUri);
 		console.log(vsSrc);
 
 		//open file
-		let uri = vscode.Uri.file("/Users/duqian/Documents/DuQian/MyGithub/MyPluginLib");
-		let success = vscode.commands.executeCommand('vscode.openFolder', uri);
+		//let uri = vscode.Uri.file("/Users/duqian/Documents/DuQian/MyGithub/MyPluginLib");
+		//let success = vscode.commands.executeCommand('vscode.openFolder', uri);
 	});
 
 	context.subscriptions.push(disposable);

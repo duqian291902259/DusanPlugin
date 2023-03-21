@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="SVGAPlayer by 杜小菜，duqian2010@gmail.com">
@@ -58,24 +57,6 @@
             text-align: center;
             border-radius: 4px;
             border: none;
-        }
-
-        #content-div {
-            width: 100%;
-            height: 100%;
-            margin: 0px auto;
-            padding: 0;
-            position: absolute;
-            overflow-x: scroll;
-            overflow-y: auto;
-            scrollbar-track-color: rgb(60, 63, 65);
-            scrollbar-3dlight-color: rgb(60, 63, 65);
-            scrollbar-darkshadow-color: rgb(60, 63, 65);
-            scrollbar-base-color: rgb(60, 63, 65);
-            scrollbar-arrow-color: rgb(60, 63, 65);
-            scrollbar-highlight-color: rgb(60, 63, 65);
-            scrollbar-shadow-color: rgb(60, 63, 65);
-            scrollbar-face-color: #7d7d7d;
         }
 
         #topDiv {
@@ -141,164 +122,41 @@
             cursor: default;
         }
 
+        #content-div1 {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            position: absolute;
+            overflow-x: scroll;
+            overflow-y: auto;
+            scrollbar-track-color: rgb(60, 63, 65);
+            scrollbar-3dlight-color: rgb(60, 63, 65);
+            scrollbar-darkshadow-color: rgb(60, 63, 65);
+            scrollbar-base-color: rgb(60, 63, 65);
+            scrollbar-arrow-color: rgb(60, 63, 65);
+            scrollbar-highlight-color: rgb(60, 63, 65);
+            scrollbar-shadow-color: rgb(60, 63, 65);
+            scrollbar-face-color: #7d7d7d;
+        }
+
+        #content-body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow-x: scroll;
+            overflow-y: auto;
+        }
+
         #playerCanvas {
-            width: 0;
-            height: 0;
-            max-width: 100%;
-            max-height: 100%;
-            margin: 0px auto;
-            top: 30%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
             border: 1px solid #c0c0c0;
             background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJiYWNrZ3JvdW5kSW1hZ2VfYnlfbW9reSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiPgogICAgdmlld0JveD0iMCAwIDEwIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMCAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgICAgICAuc3Qwe2ZpbGw6I0ZGRkZGRjt9CiAgICAgICAgLnN0MXtmaWxsOiNDMEMwQzA7fQogICAgPC9zdHlsZT4KICAgIDxyZWN0IGNsYXNzPSJzdDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgPHJlY3QgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgogICAgPHJlY3QgeD0iNSIgeT0iNSIgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgo8L3N2Zz4K);
-            /*position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);*/
         }
     </style>
-    <script src="./svga.lite.2.0.7.js"></script>
 
-    <script type="text/javascript">
-        window.addEventListener('mousewheel', function (event) {
-            if (event.ctrlKey === true || event.metaKey) {
-                event.preventDefault();
-            }
-        }, { passive: false });
-
-        window.addEventListener('DOMMouseScroll', function (event) {
-            if (event.ctrlKey === true || event.metaKey) {
-                event.preventDefault();
-            }
-        }, { passive: false });
-
-        //import { Parser, Player } from 'svga'
-
-        const parser = new SVGA.Parser()
-        const svga = parser.load('http://res-fq.hiiu.live/hiiu/gift/1657707294016.svga?t=1657707294672')
-
-        const player = new SVGA.Player('#playerCanvas')
-        player.mount(svga)
-        player.start()
-        //let player = new SVGA.Player('#playerCanvas');
-
-        console.log("init1" + player);
-
-
-        function onPageLoaded() {
-            /* player = new SVGA.Player('#playerCanvas');
-            parser.load('data:svga/2.0;base64,{animationData}', function (videoItem) {
-                var playerContainer = document.getElementById('content-div');
-                console.warn()
-                var playerCanvas = document.getElementById('playerCanvas');
-                var videoWidth = videoItem.videoSize.width;
-                var videoHeight = videoItem.videoSize.height;
-                var ratio = videoWidth / videoHeight;
-                var realWidth = Math.min(videoWidth, playerContainer.offsetHeight);
-                playerCanvas.style.width = ''.concat(realWidth, 'px');
-                playerCanvas.style.height = ''.concat(realWidth / ratio, 'px');
-
-                console.warn(videoWidth, videoHeight, ratio)
-                player.setVideoItem(videoItem);
-                player.startAnimation();
-                processSvgaInfo(videoItem);
-
-                onSwitchBackground(document.getElementById('switch-bg-blue'))
-           });*/
-            //const originData = body.value.data;
-            // const data = new Uint8Array(originData);
-            // console.log("originData=" + originData);
-            //svgaFn({ animationData });
-
-            const svgaFn = (data) => {
-                const downloader = new Downloader();
-                // 默认调用 WebWorker 线程解析
-                // 可配置 new Parser({ disableWorker: true }) 禁止
-                const parser = new Parser();
-                // #canvas 是 HTMLCanvasElement
-                player = new SVGA.Player('#playerCanvas');
-                console.log("init2" + player);
-                (async () => {
-                    const svgaData = await parser.do(data);
-                    await player.mount(svgaData);
-                    player
-                        // 开始动画事件回调
-                        .$on('start', () => console.log('event start'))
-                        // 暂停动画事件回调
-                        .$on('pause', () => console.log('event pause'))
-                        // 停止动画事件回调
-                        .$on('stop', () => console.log('event stop'))
-                        // 动画结束事件回调
-                        .$on('end', () => console.log('event end'))
-                        // 清空动画事件回调
-                        .$on('clear', () => console.log('event clear'))
-                        // 动画播放中事件回调
-                        .$on('process', () => console.log('event process', player.progress));
-                    // 开始播放动画
-                    player.start();
-                })();
-            };
-
-            // 开始播放动画
-            player.start()
-        }
-
-        //播放
-        function startAnimation() {
-            //svgaFn({ animationData });
-            player.start();
-        }
-
-        //暂停
-        function pauseAnimation() {
-            player.pause();
-        }
-
-        //停止播放动画，如果 clearsAfterStop === true，将会清空画布
-        function stopAnimation() {
-            player.stop();
-        }
-
-        function onSwitchBackground(target) {
-            document.getElementById('playerCanvas').style.backgroundImage = getComputedStyle(target, null).backgroundImage;
-            document.getElementById('playerCanvas').style.backgroundColor = getComputedStyle(target, null).backgroundColor;
-            if (target.id === 'switch-bg-none') {
-                document.getElementById('playerCanvas').style.borderWidth = '1px';
-            } else {
-                document.getElementById('playerCanvas').style.borderWidth = '0';
-            }
-        }
-
-        function processSvgaInfo(videoItem) {
-            let bc = 0;
-            for (let key in videoItem.images) {
-                if (videoItem.images.hasOwnProperty(key)) {
-                    let n = getImageSizeFromBase64Data(videoItem.images[key]);
-                    bc += n.width * n.height * 4;
-                }
-            }
-            document.getElementById('infoDiv').innerHTML = videoItem.videoSize.width + 'x' +
-                videoItem.videoSize.height + '\xa0\xa0SVGA/' + videoItem.version + '\xa0\xa0FPS:\xa0' +
-                videoItem.FPS + '\xa0\xa0Frames:\xa0' + videoItem.frames + '\xa0\xa0Memory: ' +
-                processFileSizeText(bc) + '\xa0\xa0File: 209.5K';
-        }
-
-        function getImageSizeFromBase64Data(base64) {
-            let dec = window.atob(base64),
-                length = dec.length,
-                array = new Uint8Array(new ArrayBuffer(length)), i;
-            for (i = 0; i < length; i++) array[i] = dec.charCodeAt(i);
-            return { width: 256 * array[18] + array[19], height: 256 * array[22] + array[23] }
-        }
-
-        function processFileSizeText(bc) {
-            if (bc < 1024) {
-                return bc + 'B';
-            } else if (bc < 1048576) {
-                return (Math.round(bc * 1.0 / 1024 * 10) / 10.0) + 'K';
-            } else {
-                return (Math.round(bc * 1.0 / 1048576 * 100) / 100.0) + 'M';
-            }
-        }
-    </script>
 </head>
 
 <body oncontextmenu="return false;" onselectstart="return false;">
@@ -320,8 +178,121 @@
             <div id="infoDiv"></div>
         </div>
     </div>
-    <div id="content-div">
-        <div id="playerCanvas"></div>
-    </div>
+    <div id="content_body">
+        <div id="content-div">
+            <canvas id="playerCanvas"></canvas>
+            <script nonce="${nonce}" src="${svgaFile}"></script>
+        </div>
+
+        <script type="text/javascript">
+            window.addEventListener('mousewheel', function (event) {
+                if (event.ctrlKey === true || event.metaKey) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+
+            window.addEventListener('DOMMouseScroll', function (event) {
+                if (event.ctrlKey === true || event.metaKey) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+
+
+            console.log("init1");
+            const {
+                Downloader,
+                Parser,
+                Player
+            } = SVGA;
+            let parser = new SVGA.Parser();
+            let player = new SVGA.Player('#playerCanvas');
+            let lastData = undefined;
+            (function () {
+                const vscode = acquireVsCodeApi();
+                const svgaFn = (data) => {
+                    const downloader = new Downloader();
+                    // 默认调用 WebWorker 线程解析
+                    // 可配置 new Parser({ disableWorker: true }) 禁止
+                    console.log("init play");
+
+                    (async () => {
+                        const svgaData = await parser.do(data);
+                        await player.mount(svgaData);
+                        player
+                            // 开始动画事件回调
+                            .$on('start', () => console.log('event start'))
+                            // 暂停动画事件回调
+                            .$on('pause', () => console.log('event pause'))
+                            // 停止动画事件回调
+                            .$on('stop', () => console.log('event stop'))
+                            // 动画结束事件回调
+                            .$on('end', () => console.log('event end'))
+                            // 清空动画事件回调
+                            .$on('clear', () => console.log('event clear'))
+                            // 动画播放中事件回调
+                            .$on('process', () => console.log('event process', player.progress));
+                        // 开始播放动画
+                        player.start();
+                    })();
+                };
+
+                // // Handle messages from the extension
+                window.addEventListener('message', async e => {
+                    const {
+                        type,
+                        body,
+                    } = e.data;
+                    switch (type) {
+                        case 'init': {
+                            const originData = body.value.data;
+                            const data = new Uint8Array(originData);
+                            console.log("originData=" + originData);
+                            console.log("data=" + data);
+                            lastData = data;
+                            svgaFn(data);
+                        }
+                    }
+                });
+                vscode.postMessage({
+                    type: 'ready'
+                });
+            }());
+
+            //播放
+            function startAnimation() {
+                parser = new SVGA.Parser();
+                player = new SVGA.Player('#playerCanvas');
+                console.log("startAnimation" + lastData);
+                (async () => {
+                    const svgaData = await parser.do(lastData);
+                    await player.mount(svgaData);
+                    // 开始播放动画
+                    player.start();
+                })();
+            }
+
+            //暂停
+            function pauseAnimation() {
+                console.log("pauseAnimation");
+                player.pause();
+            }
+
+            //停止播放动画，如果 clearsAfterStop === true，将会清空画布
+            function stopAnimation() {
+                console.log("stopAnimation");
+                player.stop();
+            }
+
+            function onSwitchBackground(target) {
+                document.getElementById('playerCanvas').style.backgroundImage = getComputedStyle(target, null).backgroundImage;
+                document.getElementById('playerCanvas').style.backgroundColor = getComputedStyle(target, null).backgroundColor;
+                if (target.id === 'switch-bg-none') {
+                    document.getElementById('playerCanvas').style.borderWidth = '1px';
+                } else {
+                    document.getElementById('playerCanvas').style.borderWidth = '0';
+                }
+            }
+        </script>
 </body>
+
 </html>
