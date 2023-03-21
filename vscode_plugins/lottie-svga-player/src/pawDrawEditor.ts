@@ -275,7 +275,7 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 		webviewPanel.webview.onDidReceiveMessage(e => this.onMessage(document, e));
 
 		webviewPanel.webview.onDidReceiveMessage(e => {
-			console.log("document.documentData=" + document.documentData);
+			console.log("document.documentData");
 			if (e.type === 'ready') {
 				console.log("read to play"),
 				this.postMessage(webviewPanel, 'init', {
@@ -305,7 +305,7 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 	}
 	private getHtmlForWebview(webview: vscode.Webview): string {
 		const scriptPath = vscode.Uri.file(
-			path.join(this._context.extensionPath, 'media', 'svgaPerview.js')
+			path.join(this._context.extensionPath, 'media', 'svga.perview.js')
 		);
 		const scriptUri = webview.asWebviewUri(scriptPath);
 
@@ -326,7 +326,7 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 
 		htmlContent = htmlContent.replace("{nonce}", nonce).replace("{nonce}", nonce).replace("{svgaFile}", svgaFile + "").replace("{scriptUri}", scriptUri + ""); */
 		const htmlContent = this.getHtmlContentNew(nonce, svgaFile, scriptUri);
-		console.log("htmlContent=" + htmlContent);
+		//console.log("htmlContent=" + htmlContent);
 		return htmlContent;
 	}
 

@@ -20,7 +20,6 @@ let currentPanel: vscode.WebviewPanel | undefined = undefined;
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "duqian" is now active!');
 
@@ -66,8 +65,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 	//svga-player
 	context.subscriptions.push(vscode.commands.registerCommand('duqian.svga', async (fileUri) => {
-		//handleSelectedFile(context, fileUri);
-		startPlaySvga(context, fileUri);
+		handleSelectedFile(context, fileUri);
+		//startPlaySvga(context, fileUri);
 	}));
 
 	//svga-preivew
@@ -99,7 +98,7 @@ function handleSelectedFile(context: vscode.ExtensionContext, fileUri: any) {
 
 	let animContent = fs.readFileSync(curFilePath, 'utf8');
 	let htmlContent = fs.readFileSync(htmlPath.path, 'utf8');
-	console.log("animContent=" + animContent);
+	//console.log("animContent=" + animContent);
 	let htmlContent2 = htmlContent.replace("{animationData}", animContent);
 	currentPanel.webview.html = htmlContent2;
 }
@@ -169,6 +168,7 @@ function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 	console.log("duqian.svga fileUri=" + fileUri);
 	const curFilePath = fileUri.path;
 	let name = curFilePath.substring(curFilePath.lastIndexOf("/") + 1, curFilePath.length);
+	currentPanel = undefined;
 	currentPanel = initWebView(context, name);
 
 	var index = curFilePath.lastIndexOf(".svga");
@@ -179,38 +179,39 @@ function startPlaySvga(context: vscode.ExtensionContext, fileUri: any) {
 	);
 
 	let animContent = fs.readFileSync(curFilePath, 'utf8');
-	console.log("animContent=" + animContent);
-
+	//console.log("animContent=" + animContent);
 	//animContent = Buffer.from(animContent, 'utf-8').toString('base64');
-
 	//animContent = EncodeDecode.b64EncodeUnicode(animContent); 
 	//animContent =  Base64.encode(animContent); 
-	//console.log("animContent1=" + animContent);
 
 	let htmlContent = fs.readFileSync(htmlPath.path, 'utf8');
 	//let htmlContent2 = htmlContent.replace("{animationData}", animContent);
+
 
 	const svgaFilePath = vscode.Uri.file(
 		path.join(context.extensionPath, 'media', 'svga.lite.min.js')
 	);
 	const svgaFile = currentPanel.webview.asWebviewUri(svgaFilePath);
 
-	const scriptPath = vscode.Uri.file(
-		path.join(context.extensionPath, 'media', 'svgaPerview.js')
-	);
-	const scriptUri = currentPanel.webview.asWebviewUri(scriptPath);
-
+	//const svgaPath = currentPanel.webview.asWebviewUri(fileUri);
+	//console.log("svgaPath=" + svgaPath);
 	const nonce = getNonce();
+
+	const data = new Uint8Array(Buffer.from(animContent, 'utf-8'));
+	console.log("data=" + data);
 
 	htmlContent = htmlContent.replace("${nonce}", nonce)
 		.replace("${nonce}", nonce)
 		.replace("${svgaFile}", svgaFile + "")
-		.replace("{scriptUri}", scriptUri + "")
-		.replace("$lastDataStub", animContent);
+		//.replace("{animationData}", fileUri + "");
+		.replace("{animationData}",data+"");
+
 	console.log("htmlContent2=" + htmlContent);
+
 	currentPanel.webview.html = htmlContent;
 
 	postMessage(currentPanel, "init", animContent);
+
 	setTimeout(function () {
 		console.log("init player delay=");
 		//postMessage(currentPanel, "init", animContent);

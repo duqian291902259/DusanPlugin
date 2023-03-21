@@ -169,7 +169,7 @@
     </div>
 
     <script type="text/javascript" nonce="${nonce}" src="${svgaFile}"></script>
-    <script type="text/javascript" nonce="${nonce}" src="${scriptUri}"></script>
+    <!-- <script type="text/javascript" nonce="${nonce}" src="${scriptUri}"></script> -->
 
     <script type="text/javascript">
         window.addEventListener('mousewheel', function (event) {
@@ -186,19 +186,27 @@
 
 
         console.log("init1");
-        const {
-            Parser,
-            Player
-        } = SVGA;
-        const lastDataStub = undefined;
-        let lastData = undefined;
-        if (player == undefined) {
-            parser = new SVGA.Parser();
-            player = new SVGA.Player('#playerCanvas');
-        }
-        //startPlay(lastData);
 
+
+        const animationData = '{animationData}';
+
+        let lastData = animationData;
+
+        let parser = new SVGA.Parser();
+        let player = new SVGA.Player('#playerCanvas');
+
+        (async () => {
+            const svga = await parser.load(animationData);
+            await player.mount(svga);
+            player.start();
+            console.log("svga " + svga);
+        })();
+        console.log("lastData " + lastData);
         (function () {
+            const {
+                Parser,
+                Player
+            } = SVGA;
             const vscode = acquireVsCodeApi();
             const svgaFn = (data) => {
                 console.log("init play");
@@ -236,10 +244,8 @@
         }
 
         function startPlay(lastData) {
-            //if (!player) {
             parser = new SVGA.Parser();
             player = new SVGA.Player('#playerCanvas');
-            //}
             console.log("startPlay " + lastData);
             (async () => {
                 const svgaData = await parser.do(lastData);
