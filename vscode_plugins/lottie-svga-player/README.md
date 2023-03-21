@@ -1,6 +1,6 @@
 # DusanPlugin
 
-Interesting plugins for developer.
+Interesting plugins for developer. upgrading!!!!
 
 lottie-svga-player can integrated into the IDE,it has Multiple platform version for Visual Studio Code,Android Studio and VS Code IDEA.
 
