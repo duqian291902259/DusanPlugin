@@ -19,3 +19,5 @@ dist/
 .vscode/
 .vscodeignore
 package-lock.json
+idea-sandbox/
+/idea-sandbox/

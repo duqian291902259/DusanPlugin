@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="LottiePlayer by 杜小菜，duqian2010@gmail.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LottiePlayer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.4/lottie.min.js"></script>
+    <style>
+      body{
+         background-color:#3C3F41;
+      }
+      #app {
+        width: 500px;
+        height: 500px;
+        margin:10px auto;
+      }
+      #lottieTitle {
+        width: 300px;
+        margin:20px auto;
+        display:flex;
+      }
+      button {
+        width:50px;height:30px;padding:5px 0px;margin-left:10px;text-align:center;
+        border-radius: 4px;
+        border: none;
+        color:#000000;
+      }
+      .title{
+        height: 30px;
+        line-height: 30px;
+        margin: 0;
+        color:#66FFFFFF;
+      }
+
+    </style>
+</head>
+<body>
+<div id="lottieTitle">
+    <h4 class="title">LottiePlayer </h4>
+    <button onclick="startAnimation()"> Play</button>
+    <button onclick="pauseAnimation()"> Pause</button>
+    <button onclick="stopAnimation()"> Clear</button>
+</div>
+<div id="app"></div>
+</body>
+<script>
+    const animationData = {animationData}
+    var player;
+    initPlayer();
+    function initPlayer(){
+       if(player)return;
+       player = lottie.loadAnimation({
+          container: document.querySelector("#app"),
+          //path: "https://assets10.lottiefiles.com/packages/lf20_l3qxn9jy.json",
+          animationData: animationData, // the animation data
+          loop: true,
+          autoplay: true,
+          renderer: "svg",
+        });
+    }
+    //play
+    function startAnimation(){
+        initPlayer();
+        player.play();
+    }
+
+    //pause
+    function pauseAnimation(){
+        initPlayer();
+        player.pause();
+    }
+
+    //clear or stop
+    function stopAnimation(){
+        initPlayer();
+        player.destroy();
+        player = null;
+    }
+
+</script>
+</html>

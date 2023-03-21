@@ -1,0 +1,117 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>site.duqian.DusanPlugin</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Lottie/SVGA/AndroidTools</name>
+    <version>1.2.3</version>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+       <p>Plugins for Developer.Upgrading in the future.</p>
+     <p>Github:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259,Welcome to Star</p>
+     <ol>
+        <li> AndroidStudio/IDEA -> Tools -> DusanPlugin </li>
+        <li> Select .svga or lottie .json file -> Preview SVGA/Lottie Anim</li>
+        <li> duqian2010@gmail.com </li>
+    </ol>
+    <br/>
+    <p>Lottie/SVGA/AndroidTools with functions：</p>
+      <ol>
+        <li>Lottie-Player</li>
+        <li>SVGA-Player</li>
+        <li>Clock for programmer</li>
+        <li>More Plugins</li>
+    </ol>
+    ]]>
+
+    </description>
+    <change-notes><![CDATA[
+      <ul>
+            <li>V1.0.0：Clock for programmer.</li>
+            <li>V1.0.1：SVGA_Player.</li>
+            <li>V1.0.2：Lottie-Player.</li>
+            <li>V1.0.8+：Upgrade plugins.</li>
+        </ul>
+    ]]>
+    </change-notes>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>
+
+        <!--窗体-->
+        <toolWindow canCloseContents="true" anchor="bottom" id="DQTool"
+                    factoryClass="site.duqian.plugin.dqlab.MyToolWindowFactory"/>
+        <!--MdNote-->
+        <!--<toolWindow factoryClass="site.duqian.plugin.note.window.MdNoteWindowFactory" id="MdNote" anchor="right"/>-->
+
+        <!-- svga extensions -->
+        <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"
+                            serviceImplementation="site.duqian.plugin.svga.svga.SvgaFileTypeImp"/>
+        <fileEditorProvider implementation="site.duqian.plugin.svga.svga.SvgaFileEditorProvider"/>
+        <fileType
+                name="svga"
+                implementationClass="site.duqian.plugin.svga.svga.SvgaFileType"
+                fieldName="INSTANCE"
+                language="svga"
+                extensions="svga"/>
+
+    </extensions>
+
+    <actions>
+        <action id="site.duqian.plugin.test" class="site.duqian.plugin.DusanPlugin" text="DusanPlugin"
+                description="AndroidPlugin by 杜小菜">
+            <add-to-group group-id="ActivateToolWindowActions" anchor="first"/>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta H"/>
+        </action>
+
+        <action id="site.duqian.plugin.test2" class="site.duqian.plugin.PlayAnimPlugin" text="Preview SVGA/Lottie Anim"
+                description="Preview SVGA or Lottie Anim">
+            <!-- 将组添加到右键菜单 -->
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ReplaceInPath"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl meta p"/>
+        </action>
+
+        <!--coding tips-->
+        <action id="site.duqian.plugin.StopCoding"
+                class="site.duqian.plugin.stopcoding.StopCodingSettingAction"
+                text="CodingClock" description="CodingClock">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl S" second-keystroke="C"/>
+        </action>
+
+        <!-- test plugin entry.group with id "xxxx" isn't registered; action will be added to the "Other" group -->
+        <!--<action id="HiId_FileMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
+            <add-to-group group-id="FileMenu" anchor="first"/>
+            <add-to-group group-id="MainMenu" anchor="first"/>
+            <add-to-group group-id="EditMenu" anchor="first"/>
+            <add-to-group group-id="ViewMenu" anchor="first"/>
+            <add-to-group group-id="CodeMenu" anchor="first"/>
+            <add-to-group group-id="RefactoringMenu" anchor="first"/>
+            <add-to-group group-id="BuildMenu" anchor="first"/>
+            <add-to-group group-id="RunMenu" anchor="first"/>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <add-to-group group-id="WindowMenu" anchor="first"/>
+            <add-to-group group-id="HelpMenu" anchor="first"/>
+        </action>
+        <action id="HiId_EditorPopupMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+       -->
+    </actions>
+</idea-plugin>
