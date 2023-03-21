@@ -397,24 +397,6 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					border: none;
 				}
 		
-				#content-div {
-					width: 100%;
-					height: 100%;
-					margin: 0px auto;
-					padding: 0;
-					position: absolute;
-					overflow-x: scroll;
-					overflow-y: auto;
-					scrollbar-track-color: rgb(60, 63, 65);
-					scrollbar-3dlight-color: rgb(60, 63, 65);
-					scrollbar-darkshadow-color: rgb(60, 63, 65);
-					scrollbar-base-color: rgb(60, 63, 65);
-					scrollbar-arrow-color: rgb(60, 63, 65);
-					scrollbar-highlight-color: rgb(60, 63, 65);
-					scrollbar-shadow-color: rgb(60, 63, 65);
-					scrollbar-face-color: #7d7d7d;
-				}
-		
 				#topDiv {
 					height: 30px;
 					min-height: 30px;
@@ -478,13 +460,36 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					cursor: default;
 				}
 		
-				#playerCanvas2 {
-					width: 0;
-					height: 0;
-					max-width: 100%;
-					max-height: 100%;
-					margin: 0px auto;
-					top: 30%;
+				#content-div1 {
+					width: 100%;
+					margin: 0 auto;
+					padding: 0;
+					position: absolute;
+					overflow-x: scroll;
+					overflow-y: auto;
+					scrollbar-track-color: rgb(60, 63, 65);
+					scrollbar-3dlight-color: rgb(60, 63, 65);
+					scrollbar-darkshadow-color: rgb(60, 63, 65);
+					scrollbar-base-color: rgb(60, 63, 65);
+					scrollbar-arrow-color: rgb(60, 63, 65);
+					scrollbar-highlight-color: rgb(60, 63, 65);
+					scrollbar-shadow-color: rgb(60, 63, 65);
+					scrollbar-face-color: #7d7d7d;
+				}
+
+				#content-body {
+					width: 100%;
+					height: 100%;
+					position: relative;
+					overflow-x: scroll;
+					overflow-y: auto;
+				}
+
+				#playerCanvas {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%,-50%);
 					border: 1px solid #c0c0c0;
 					background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJiYWNrZ3JvdW5kSW1hZ2VfYnlfbW9reSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiPgogICAgdmlld0JveD0iMCAwIDEwIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMCAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgICAgICAuc3Qwe2ZpbGw6I0ZGRkZGRjt9CiAgICAgICAgLnN0MXtmaWxsOiNDMEMwQzA7fQogICAgPC9zdHlsZT4KICAgIDxyZWN0IGNsYXNzPSJzdDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgPHJlY3QgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgogICAgPHJlY3QgeD0iNSIgeT0iNSIgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgo8L3N2Zz4K);
 				}
@@ -511,15 +516,17 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					<div id="infoDiv"></div>
 				</div>
 			</div>
-			<div id="content-div">
-				<canvas id="playerCanvas"></canvas>
-				<script nonce="${nonce}" src="${svgaFile}"></script>
-				<script nonce="${nonce}" src="${scriptUri}"></script>
-		
-				<!-- <script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
-					src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svga.lite.min.js"></script>
-				<script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
-					src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svgaPerview.js"></script> -->
+			<div id="content_body">
+				<div id="content-div">
+					<canvas id="playerCanvas"></canvas>
+					<script nonce="${nonce}" src="${svgaFile}"></script>
+					<script nonce="${nonce}" src="${scriptUri}"></script>
+			
+					<!-- <script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
+						src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svga.lite.min.js"></script>
+					<script nonce="WRjNwz1vANRYI2atJBqF1gIllCxZpg90"
+						src="https://file%2B.vscode-resource.vscode-cdn.net/Users/duqian/Documents/DuQian/MyGithub/MyPlugins/VSCodePlugins/duqian/media/svgaPerview.js"></script> -->
+				</div>
 			</div>
 		
 			<script type="text/javascript">
