@@ -1,6 +1,6 @@
 # DusanPlugin
 
-Interesting plugins for android development.
+Interesting plugins for developer.
 
 which integrated into the IDE of jetbrains,like Android Studio and IntelliJ IDEA.
 
