@@ -1,8 +1,8 @@
 {
   "name": "lottie-svga-player",
   "displayName": "lottie-svga-player",
-  "description": "lottie and svga previewer,drog .svga to vscode to play or preview lottie json by right menus",
-  "version": "1.0.3",
+  "description": "lottie and svga previewer,drog .svga to vscode to play or preview lottie json by right menus.\n you also can download plugin from IDEA or Android Studio",
+  "version": "1.0.7",
 	"author": "duqian",
 	"publisher": "duqian3201",
   "keywords": [
@@ -17,6 +17,7 @@
 	},
 	"icon": "media/logo.png",
   "categories": [
+    "Extension Packs",
     "Other"
   ],
   "activationEvents": [
