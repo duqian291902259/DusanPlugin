@@ -364,11 +364,9 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 				}
 		
 				.container_header {
-					width: 100%;
+					width: 60%;
 					height: 80px;
-					position: fixed;
-					top: 0;
-					left: 0;
+					margin: 10px auto 0px;
 				}
 		
 				.title {

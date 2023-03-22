@@ -2,7 +2,7 @@
   "name": "lottie-svga-player",
   "displayName": "lottie-svga-player",
   "description": "Preview lottie or svga animation.Drog .svga to vscode to play.\nStart the lottie animation by right-clicking the menu.\n you can also download plugin from IDEA or Android Studio",
-  "version": "1.0.8",
+  "version": "1.0.9",
 	"author": "duqian",
 	"publisher": "duqian3201",
   "keywords": [
@@ -31,17 +31,17 @@
       {
         "command": "duqian.helloflat",
         "title": "Hello Flat",
-        "category": "Flat"
+        "category": "Dusan"
       },
       {
         "command": "duqian.lottie",
         "title": "preview lottie",
-        "category": "Flat"
+        "category": "Dusan"
       },
       {
         "command": "duqian.svga",
         "title": "preview svga",
-        "category": "Flat"
+        "category": "Dusan"
       }
     ],
     "menus": {
@@ -68,7 +68,13 @@
 					}
 				]
 			}
-		]
+		],
+    "keybindings":[
+      {
+        "command": "duqian.helloflat",
+        "key": "ctrl+shift+0"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
