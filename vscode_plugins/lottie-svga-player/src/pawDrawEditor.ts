@@ -359,7 +359,7 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					width: 100%;
 					height: 100%;
 					margin: 0;
-					padding-top: 100px;
+					padding-top: 50px;
 					box-sizing: border-box;
 				}
 		
@@ -382,7 +382,7 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					color: #ffffff;
 					display: flex;
 					text-align: center;
-					min-width: 600px;
+					min-width: 550px;
 				}
 		
 				button {
@@ -400,8 +400,8 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 					min-height: 30px;
 					line-height: 30px;
 					width: 50%;
-					margin: 20px auto 0;
-					min-width: 600px;
+					margin: 20px auto;
+					min-width: 300px;
 					background: rgb(60, 63, 65);
 					position: relative;
 				}
@@ -468,7 +468,7 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 
 				#playerCanvas {
 					max-width:80%;
-					max-height:75%;
+					max-height:70%;
 					position: absolute;
 					left: 50%;
 					top: 50%;
