@@ -290,8 +290,17 @@ export class LottieFileEditorProvider implements vscode.CustomEditorProvider<Paw
 					});
 					webviewPanel.webview.html = htmlContent;
 				} else {
+					vscode.commands.executeCommand('workbench.action.closeActiveEditor');
 					console.log("not lottie file=" + json);
-					webviewPanel.webview.html = getErrorPage(json);
+
+					vscode.commands.executeCommand(
+						"vscode.openWith",
+						document.uri,
+						"default",
+						webviewPanel.viewColumn
+					);
+					// Not loading HTML into the webview
+					//webviewPanel.webview.html = getErrorPage(json);
 				}
 			}
 		});
@@ -321,7 +330,7 @@ export class LottieFileEditorProvider implements vscode.CustomEditorProvider<Paw
 			path.join(this._context.extensionPath, 'demo', 'lottie.json')
 		);
 		let jsonString = fs.readFileSync(lottie.path, 'utf8');
-		const htmlContent = this.getHtmlContent(jsonString);
+		const htmlContent = this.getHtmlContent("{}");
 		//console.log("htmlContent=" + htmlContent);
 		return htmlContent;
 	}
