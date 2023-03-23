@@ -191,12 +191,12 @@ class PawDrawDocument extends Disposable implements vscode.CustomDocument {
  * - Implementing save, undo, redo, and revert.
  * - Backing up a custom editor.
  */
-export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDrawDocument> {
+export class SvgaFileEditorProvider implements vscode.CustomEditorProvider<PawDrawDocument> {
 
 	public static register(context: vscode.ExtensionContext): vscode.Disposable {
 		return vscode.window.registerCustomEditorProvider(
-			PawDrawEditorProvider.viewType,
-			new PawDrawEditorProvider(context),
+			SvgaFileEditorProvider.viewType,
+			new SvgaFileEditorProvider(context),
 			{
 				webviewOptions: {
 					retainContextWhenHidden: true,

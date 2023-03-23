@@ -4,8 +4,10 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { Base64 } from 'js-base64';
-import { PawDrawEditorProvider } from './pawDrawEditor';
-import { getNonce } from './utils';
+import { SvgaFileEditorProvider } from './SvgaFileEditorProvider';
+
+import { LottieFileEditorProvider } from './LottieFileEditorProvider';
+import { getNonce,isJsonString } from './utils';
 
 const myProvider = class implements vscode.TextDocumentContentProvider {
 	provideTextDocumentContent(uri: vscode.Uri): string {
@@ -69,14 +71,11 @@ export function activate(context: vscode.ExtensionContext) {
 		//startPlaySvga(context, fileUri);
 	}));
 
-	//svga-preivew
-	context.subscriptions.push(vscode.commands.registerCommand('svga.preview', async (fileUri) => {
-		handleSelectedFile(context, fileUri);
-		console.log("svga.preview");
-	}));
-
 	//svga-editor
-	context.subscriptions.push(PawDrawEditorProvider.register(context));
+	context.subscriptions.push(SvgaFileEditorProvider.register(context));
+
+	//lottie-editor
+	context.subscriptions.push(LottieFileEditorProvider.register(context));
 }
 
 //  "when": "explorerResourceIsFolder","when": "resourceLangId == json"
