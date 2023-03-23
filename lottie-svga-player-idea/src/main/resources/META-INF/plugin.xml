@@ -1,19 +1,13 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+
     <id>site.duqian.DusanPlugin</id>
 
-    <!-- Public plugin name should be written in Title Case.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Lottie/SVGA/AndroidTools</name>
-    <version>1.2.3</version>
+    <version>1.2.5</version>
 
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="duqian2010@gmail.com" url="https://www.duqian.site">Dusan_杜小菜_duqian</vendor>
 
-    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
        <p>Plugins for Developer.Upgrading in the future.</p>
      <p>Github:<a href="https://github.com/duqian291902259/DusanPlugin">duqian291902259,Welcome to Star</p>
@@ -43,8 +37,6 @@
     ]]>
     </change-notes>
 
-    <!-- Product and plugin compatibility requirements.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
@@ -53,11 +45,8 @@
     <extensions defaultExtensionNs="com.intellij">
         <preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>
 
-        <!--窗体-->
         <toolWindow canCloseContents="true" anchor="bottom" id="DQTool"
                     factoryClass="site.duqian.plugin.dqlab.MyToolWindowFactory"/>
-        <!--MdNote-->
-        <!--<toolWindow factoryClass="site.duqian.plugin.note.window.MdNoteWindowFactory" id="MdNote" anchor="right"/>-->
 
         <!-- svga extensions -->
         <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"
@@ -70,6 +59,9 @@
                 language="svga"
                 extensions="svga"/>
 
+
+        <!--lottie-->
+        <fileEditorProvider implementation="site.duqian.plugin.lottie.LottieEditorProvider"/>
     </extensions>
 
     <actions>

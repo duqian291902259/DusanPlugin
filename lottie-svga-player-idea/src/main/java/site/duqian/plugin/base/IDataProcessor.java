@@ -29,13 +29,13 @@ public abstract class IDataProcessor {
      */
     protected abstract String getTemplateFilePath();
 
-    private String processHtml(@NotNull String templatePath, @NotNull String filePath) {
-        String templateContent = IOUtil.getFileContent(templatePath);//插件工程的资源路径
+    public String processHtml(@NotNull String templatePath, @NotNull String filePath) {
+        String templateContent = IOUtil.getFileContent(templatePath);
         if (templateContent == null) {
             return null;
         }
 
-        String fileContent = IOUtil.fileToString(filePath);//任意文件路径
+        String fileContent = IOUtil.fileToString(filePath);
         if (fileContent == null || fileContent.equals("")) {
             return null;
         }
