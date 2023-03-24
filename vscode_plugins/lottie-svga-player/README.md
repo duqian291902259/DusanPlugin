@@ -14,8 +14,9 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 ## 1. lottie-svga-player
 
 1. Install by Visual Studio Code.
-1. Select .svga or lottie .json file -> Preview SVGA/Lottie.
-1. Drog .svga to vscode to play or preview lottie json by right menus
+1. Select .svga or lottie .json file -> preview lottie json by right menus:preview svga/lottie.
+1. Drog animation file to vscode to play.
+
 
 ### 2. More Features
 
