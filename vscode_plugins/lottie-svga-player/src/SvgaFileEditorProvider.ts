@@ -359,8 +359,10 @@ export class SvgaFileEditorProvider implements vscode.CustomEditorProvider<PawDr
 					width: 100%;
 					height: 100%;
 					margin: 0;
-					padding-top: 50px;
+					padding-top: 30px;
 					box-sizing: border-box;
+					overflow-x: scroll;
+					overflow-y: auto;
 				}
 		
 				.container_header {
@@ -396,14 +398,12 @@ export class SvgaFileEditorProvider implements vscode.CustomEditorProvider<PawDr
 				}
 		
 				#topDiv {
-					height: 30px;
+					height: 70px;
 					min-height: 30px;
 					line-height: 30px;
-					width: 50%;
-					margin: 20px auto;
-					min-width: 300px;
 					background: rgb(60, 63, 65);
 					position: relative;
+					margin-left:100px;
 				}
 		
 				.switch-bg-btn {
@@ -451,7 +451,6 @@ export class SvgaFileEditorProvider implements vscode.CustomEditorProvider<PawDr
 					line-height: 30px;
 					width: auto;
 					position: absolute;
-					right: 10px;
 					font-family: '.AppleSystemUIFont', serif;
 					font-size: 12px;
 					color: rgb(255, 255, 255);
@@ -459,20 +458,22 @@ export class SvgaFileEditorProvider implements vscode.CustomEditorProvider<PawDr
 				}
 			
 				#content-body {
-					width: 80%;
-					height: 70%;
+					width: 70%;
+					height: 100%;
+					margin:20px auto;
 					position: relative;
 					overflow-x: scroll;
 					overflow-y: auto;
 				}
 
 				#playerCanvas {
-					max-width:80%;
+					max-width:70%;
 					max-height:70%;
+					overflow-x: scroll;
+					overflow-y: auto;
 					position: absolute;
 					left: 50%;
-					top: 50%;
-					transform: translate(-50%,-50%);
+					transform: translate(-50%,0%);
 					border: 1px solid #c0c0c0;
 					background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJiYWNrZ3JvdW5kSW1hZ2VfYnlfbW9reSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiPgogICAgdmlld0JveD0iMCAwIDEwIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMCAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgogICAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgICAgICAuc3Qwe2ZpbGw6I0ZGRkZGRjt9CiAgICAgICAgLnN0MXtmaWxsOiNDMEMwQzA7fQogICAgPC9zdHlsZT4KICAgIDxyZWN0IGNsYXNzPSJzdDAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgPHJlY3QgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgogICAgPHJlY3QgeD0iNSIgeT0iNSIgY2xhc3M9InN0MSIgd2lkdGg9IjUiIGhlaWdodD0iNSIvPgo8L3N2Zz4K);
 				}
