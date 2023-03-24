@@ -45,7 +45,7 @@ Drog .svga to vscode to play or preview lottie json by right menus
 
 ![svga_player](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/svga_player_min.gif)
 
-![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/lottie-svga-player-vscode1.png)
+![lottie-svga-player-vscode](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/lottie-svga-player-vscode2.png)
 
 ![chatgpt-demo](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/chatgpt-demo.png)
 
