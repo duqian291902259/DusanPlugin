@@ -383,14 +383,13 @@ export class LottieFileEditorProvider implements vscode.CustomEditorProvider<Paw
 			<h4 class="title">LottiePlayer </h4>
 			<button onclick="startAnimation()"> Play</button>
 			<button onclick="pauseAnimation()"> Pause</button>
-			<button onclick="stopAnimation()"> Clear</button>
+			<!-- <button onclick="stopAnimation()"> Clear</button> -->
 		</div>
 		<div id="app"></div>
 		</body>
 		<script>
-
 			let animationData = ${json};
-
+			let lastData = ${json};
 			(function () {
 				const vscode = acquireVsCodeApi();
 				//Handle messages from the extension
@@ -403,10 +402,9 @@ export class LottieFileEditorProvider implements vscode.CustomEditorProvider<Paw
 						case 'init': {
 							console.log("ini player");
 							const originData = body.value.data+"";
-							//const data = new Uint8Array(originData);
-							//console.log("data=" + data);
 							console.log("originData=" + originData);
 							animationData = originData;
+							//lastData = originData;
 							initPlayer();
 						}
 					}
@@ -419,7 +417,10 @@ export class LottieFileEditorProvider implements vscode.CustomEditorProvider<Paw
 			var player;
 			initPlayer();
 			function initPlayer(){
-			   if(player)return;
+			   if(player){
+				console.log("retrun init play="+player);
+				return;
+			   }
 			   player = lottie.loadAnimation({
 				  container: document.querySelector("#app"),
 				  //path: "https://assets10.lottiefiles.com/packages/lf20_l3qxn9jy.json",
@@ -431,6 +432,8 @@ export class LottieFileEditorProvider implements vscode.CustomEditorProvider<Paw
 			}
 			//play
 			function startAnimation(){
+				console.log("start play="+player);
+				animationData = lastData;
 				initPlayer();
 				player.play();
 			}
@@ -443,7 +446,7 @@ export class LottieFileEditorProvider implements vscode.CustomEditorProvider<Paw
 		
 			//clear or stop
 			function stopAnimation(){
-				initPlayer();
+				//player.stop();
 				player.destroy();
 				player = null;
 			}

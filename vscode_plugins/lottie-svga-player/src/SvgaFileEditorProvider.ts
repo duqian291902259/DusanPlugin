@@ -458,7 +458,7 @@ export class SvgaFileEditorProvider implements vscode.CustomEditorProvider<PawDr
 				}
 			
 				#content-body {
-					width: 70%;
+					width: 80%;
 					height: 100%;
 					margin:20px auto;
 					position: relative;
@@ -467,8 +467,8 @@ export class SvgaFileEditorProvider implements vscode.CustomEditorProvider<PawDr
 				}
 
 				#playerCanvas {
-					max-width:70%;
-					max-height:70%;
+					max-width:80%;
+					max-height:80%;
 					overflow-x: scroll;
 					overflow-y: auto;
 					position: absolute;
