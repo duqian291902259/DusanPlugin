@@ -56,13 +56,13 @@ Drog .svga to vscode to play or preview lottie json by right menus
 ##### Visual Studio Code -> Extensions ->"duqian" or "lottie-svga-player"
 
 2.Click this link to download->
-[Lottie_SVGA_AndroidTools_1.2.3](https://github.com/duqian291902259/DusanPlugin/blob/main/release/DusanPlugin-1.2.3.zip)
+[Lottie_SVGA_AndroidTools_1.2.3](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/release/DusanPlugin-1.2.3.zip)
 
 ##### Drag the .zip file into the IDE and install it to take effect directly.
 
 
 ## Others
-There are more tools to dev. To get more info,please contact me:
+There are more tools to development. To get more info,please contact me:
 
 1. Email:duqian2010@gmail.com 
 2. wechat:AndroidDQ
