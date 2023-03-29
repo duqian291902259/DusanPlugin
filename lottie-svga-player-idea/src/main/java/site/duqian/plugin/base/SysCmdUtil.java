@@ -2,17 +2,12 @@ package site.duqian.plugin.base;
 
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.process.CapturingProcessHandler;
-import com.intellij.execution.process.ProcessEvent;
-import com.intellij.execution.process.ProcessListener;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Key;
 import com.intellij.openapi.vfs.CharsetToolkit;
 import org.apache.http.util.TextUtils;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.downloader.ThreadManager;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
@@ -61,30 +56,6 @@ public class SysCmdUtil {
             e.printStackTrace();
         }
     }
-
-    private final ProcessListener listener = new ProcessListener() {//这个会逐行输出每一行执行log
-        @Override
-        public void startNotified(@NotNull ProcessEvent event) {
-            LogUtil.INSTANCE.i(TAG + ",startNotified=" + event.getText());
-        }
-
-        @Override
-        public void processTerminated(@NotNull ProcessEvent event) {
-            LogUtil.INSTANCE.i(TAG + ",processTerminated=" + event.getText());
-        }
-
-        @Override
-        public void processWillTerminate(@NotNull ProcessEvent event, boolean willBeDestroyed) {
-            ProcessListener.super.processWillTerminate(event, willBeDestroyed);
-            LogUtil.INSTANCE.i(TAG + ",processWillTerminate=" + event.getText() + ",willBeDestroyed=" + willBeDestroyed);
-        }
-
-        @Override
-        public void onTextAvailable(@NotNull ProcessEvent event, @NotNull Key outputType) {
-            String text = event.getText();
-            LogUtil.INSTANCE.i(TAG + ",dq-cmd=" + text);
-        }
-    };
 
     public static void executePython(String cmd, Project project) {
         ThreadManager.INSTANCE.getBackgroundPool().execute(() -> {
