@@ -9,7 +9,7 @@ import site.duqian.plugin.stopcoding.data.DataCenter;
 import site.duqian.plugin.stopcoding.data.SettingData;
 import site.duqian.plugin.stopcoding.service.TimerService;
 
-public class StopCodingInitializer extends PreloadingActivity {
+/*public class StopCodingInitializer extends PreloadingActivity {
 
     private static final Logger LOG = Logger.getInstance(StopCodingInitializer.class);
 
@@ -24,4 +24,4 @@ public class StopCodingInitializer extends PreloadingActivity {
             TimerService.openTimer();
         }
     }
-}
+}*/

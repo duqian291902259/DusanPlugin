@@ -38,15 +38,11 @@
     </change-notes>
 
     <depends>com.intellij.modules.platform</depends>
-    <!-- Extension points defined by the plugin.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <!-- Extension points，Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>
-
-        <toolWindow canCloseContents="true" anchor="bottom" id="DQTool"
-                    factoryClass="site.duqian.plugin.dqlab.MyToolWindowFactory"/>
+        <!--<preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>-->
 
         <!-- svga extensions -->
         <applicationService serviceInterface="site.duqian.plugin.svga.svga.SvgaFileTypeFactory"
@@ -59,9 +55,11 @@
                 language="svga"
                 extensions="svga"/>
 
-
         <!--lottie-->
         <fileEditorProvider implementation="site.duqian.plugin.lottie.LottieEditorProvider"/>
+
+        <!--<toolWindow canCloseContents="true" anchor="bottom" id="DQTool"
+                    factoryClass="site.duqian.plugin.dqlab.MyToolWindowFactory"/>-->
     </extensions>
 
     <actions>
@@ -104,6 +102,7 @@
         <action id="HiId_EditorPopupMenu" class="site.duqian.plugin.DusanPlugin" text="DuQian">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
+
        -->
     </actions>
 </idea-plugin>
