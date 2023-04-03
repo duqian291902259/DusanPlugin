@@ -35,7 +35,7 @@ Drog .svga to vscode to play or preview lottie json by right menus
 1. SVGA-Player.
 1. ChatGPT plugin.
 1. Coding-Clock.
-1. Plugin-in for Android Developer.
+1. Plugins for Android Developer.
 1. And so on...
 
 ### Plugin Screenshots
