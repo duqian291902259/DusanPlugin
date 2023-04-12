@@ -1,8 +1,8 @@
 # DusanPlugin
 
-Interesting IDE plugins for developer.
+2023 New!!Interesting IDE plugins for developer.
 
-which integrated into the IDE,like Visual Studio Code,Android Studio and IntelliJ IDEA.
+which integrated into the IDE,like Android Studio,Visual Studio Code and IntelliJ IDEA.
 
 Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://github.com/duqian291902259/DusanPlugin)
 
