@@ -14,7 +14,7 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 ## 1. lottie-svga-player
 
 1. Install by Visual Studio Code.
-1. Select .svga or lottie .json file -> preview lottie json by right menus:preview svga/lottie.
+1. If your anim file in workspace dir,Select .svga or lottie .json file -> preview lottie json by right menus:preview svga/lottie.
 1. Drog animation file to vscode to play.
 
 
@@ -46,3 +46,21 @@ There are more tools to dev. To get more info,please contact me:
 
 1. Email:duqian2010@gmail.com 
 2. wechat:AndroidDQ
+
+
+## 6.Issues
+
+If you can't open json file.Please try to fix it by follow steps:
+
+#### 1.select the json file, open the right menu,
+#### 2.choose Open mode, set the default open mode to text editor.
+
+
+IDE版本众多，vscode默认打开文件的可能有兼容性问题,如果遇到这个问题，也不用担心，用户可以先自行处理，修复步骤：
+
+#### 1，选中json文件，右键菜单，选择“打开方式”
+#### 2，选择默认的打开方式：文本编辑器。即可打开json。
+#### 3，也可以设置默认的json打开方式为文本编辑器。
+
+![无法打开json文件的处理方式](https://user-images.githubusercontent.com/12441097/234164567-632dde52-9426-46e8-ac51-503790faf011.png)
+
