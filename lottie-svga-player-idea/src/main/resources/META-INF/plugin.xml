@@ -40,6 +40,7 @@
     <depends>com.intellij.modules.platform</depends>
     <!-- Extension points，Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <depends>com.intellij.modules.lang</depends>
+    <depends>org.jetbrains.android</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!--<preloadingActivity implementation="site.duqian.plugin.stopcoding.StopCodingInitializer"/>-->
@@ -83,6 +84,13 @@
                 text="CodingClock" description="CodingClock">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl S" second-keystroke="C"/>
+        </action>
+
+        <!--Convert to WebP-->
+        <action id="site.duqian.plugin.VcsImageToWeb"
+                class="site.duqian.plugin.convert.ImageToWebPAction"
+                text="Convert to WebP...">
+            <add-to-group group-id="ChangesViewPopupMenu" anchor="first" />
         </action>
 
         <!-- test plugin entry.group with id "xxxx" isn't registered; action will be added to the "Other" group -->
