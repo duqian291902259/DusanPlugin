@@ -49,6 +49,10 @@ Drog .svga to vscode to play or preview lottie json by right menus
 
 ![chatgpt-demo](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/chatgpt-demo.png)
 
+## convert-to-webp
+
+Support converting images to WebP in the VCS window.Thanks to xeemoo.
+
 ![convert-to-webp](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/convert-to-webp.png)
 
 ### Download
