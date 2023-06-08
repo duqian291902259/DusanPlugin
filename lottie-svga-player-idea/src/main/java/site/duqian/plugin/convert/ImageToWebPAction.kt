@@ -23,8 +23,10 @@ class ImageToWebPAction : DumbAwareAction() {
         if (files != null && e.project != null) {
             for (file in files) {
                 val directory = file.isDirectory
-                if (directory && isResourceDirectory(file, e.project!!) ||
-                    !directory && ConvertToWebpAction.isEligibleForConversion(file, null)
+                //// ||!directory && ConvertToWebpAction.isEligibleForConversion(file, null)
+                val fileName = file.name.toLowerCase()
+                if (directory && isResourceDirectory(file, e.project!!) || fileName.endsWith(".png")
+                    || fileName.endsWith(".jpeg") || fileName.endsWith(".jpg")
                 ) {
                     e.presentation.isEnabledAndVisible = true
                     return
