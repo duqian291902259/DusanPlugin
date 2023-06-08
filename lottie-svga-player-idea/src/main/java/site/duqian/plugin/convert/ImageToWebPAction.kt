@@ -44,7 +44,7 @@ class ImageToWebPAction : DumbAwareAction() {
             val folderType = ResourceFolderType.getFolderType(file.name)
             return if (folderType != null) {
                 folderType == ResourceFolderType.DRAWABLE || folderType == ResourceFolderType.MIPMAP
-            } else isLocalResourceDirectory(file, project)
+            } else false;//isLocalResourceDirectory(file, project)
         }
         return false
     }
