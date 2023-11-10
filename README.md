@@ -14,7 +14,7 @@ Project Repository:[https://github.com/duqian291902259/DusanPlugin](https://gith
 [Lottie_SVGA_AndroidTools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools?preview=true)
 --> [https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools](https://plugins.jetbrains.com/plugin/20039-lottie-svga-androidtools)
 
-![Lottie_SVGA_AndroidTools](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/Lottie-SVGA-Player-Plugin666.png)
+![Lottie_SVGA_AndroidTools](https://github.com/duqian291902259/DusanPlugin/raw/HEAD/screenshot/Lottie-SVGA-Player-Plugin.png)
 
 #### For Visual Studi Code：
 
