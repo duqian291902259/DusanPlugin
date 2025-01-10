@@ -8,6 +8,8 @@ import com.intellij.openapi.vfs.CharsetToolkit;
 import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.downloader.ThreadManager;
+import sun.nio.cs.UTF_8;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
@@ -43,7 +45,7 @@ public class SysCmdUtil {
             LogUtil.INSTANCE.i(TAG + ",cmdString=" + commandLineString);
 
 
-            CapturingProcessHandler handler = new CapturingProcessHandler(commandLine.createProcess(), CharsetToolkit.getDefaultSystemCharset(), commandLineString);
+            CapturingProcessHandler handler = new CapturingProcessHandler(commandLine.createProcess(), new UTF_8(), commandLineString);
             ProcessOutput result = handler.runProcess(10 * 1000);
             boolean isOK = result.getExitCode() == 0;
             String stderr = result.getStderr();

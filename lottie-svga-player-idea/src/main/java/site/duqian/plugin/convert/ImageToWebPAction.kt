@@ -2,7 +2,6 @@ package site.duqian.plugin.convert
 
 import com.android.resources.ResourceFolderType
 import com.android.tools.idea.rendering.webp.ConvertToWebpAction
-import com.android.tools.idea.res.isLocalResourceDirectory
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.project.DumbAwareAction
@@ -15,7 +14,16 @@ import com.intellij.openapi.vfs.VirtualFile
 class ImageToWebPAction : DumbAwareAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
-        ConvertToWebpAction().actionPerformed(e)
+        //ConvertToWebpAction().actionPerformed(e)
+        //ActionManager.getInstance().getAction(IdeActions.ACTION_HIGHLIGHT_USAGES_IN_FILE).actionPerformed(e)
+
+        //fix api问题：ImageToWebPAction.actionPerformed(AnActionEvent). This method is marked with @ApiStatus.OverrideOnly annotation,
+        // which indicates that the method must be only overridden but not invoked by client code. See documentation of the @ApiStatus.OverrideOnly for more info.
+        // WARNING: WebP requires API 14; current minSdkVersion is 0
+        val minSdkVersion = 14
+        val folders = e.getRequiredData(CommonDataKeys.VIRTUAL_FILE_ARRAY)
+        val action = ConvertToWebpAction()
+        action.perform(e.project!!, minSdkVersion, folders)
     }
 
     override fun update(e: AnActionEvent) {
@@ -23,7 +31,6 @@ class ImageToWebPAction : DumbAwareAction() {
         if (files != null && e.project != null) {
             for (file in files) {
                 val directory = file.isDirectory
-                //// ||!directory && ConvertToWebpAction.isEligibleForConversion(file, null)
                 val fileName = file.name.toLowerCase()
                 if (directory && isResourceDirectory(file, e.project!!) || fileName.endsWith(".png")
                     || fileName.endsWith(".jpeg") || fileName.endsWith(".jpg")
