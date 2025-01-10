@@ -4,12 +4,10 @@ import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.process.CapturingProcessHandler;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.CharsetToolkit;
 import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.Nullable;
 import site.duqian.plugin.downloader.ThreadManager;
 import sun.nio.cs.UTF_8;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
