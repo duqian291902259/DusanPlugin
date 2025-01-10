@@ -19,8 +19,8 @@ class ImageToWebPAction : DumbAwareAction() {
 
         //fix api问题：ImageToWebPAction.actionPerformed(AnActionEvent). This method is marked with @ApiStatus.OverrideOnly annotation,
         // which indicates that the method must be only overridden but not invoked by client code. See documentation of the @ApiStatus.OverrideOnly for more info.
-        // WARNING: WebP requires API 14; current minSdkVersion is 0
-        val minSdkVersion = 14
+        // WARNING: WebP requires API 18; current minSdkVersion is 0
+        val minSdkVersion = 18
         val folders = e.getRequiredData(CommonDataKeys.VIRTUAL_FILE_ARRAY)
         val action = ConvertToWebpAction()
         action.perform(e.project!!, minSdkVersion, folders)
