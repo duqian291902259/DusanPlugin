@@ -5,7 +5,7 @@ import site.duqian.plugin.base.IDataProcessor;
 /**
  * Description:Parse Lottie file and play
  * <p>
- * Created by 杜小菜 on 2022/9/28 - 08:09.
+ * Created by Davy on 2022/9/28 - 08:09.
  * E-mail: duqian2010@gmail.com
  */
 public class LottieJsonProcessor extends IDataProcessor {

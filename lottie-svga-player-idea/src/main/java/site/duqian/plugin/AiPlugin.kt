@@ -9,12 +9,12 @@ import site.duqian.plugin.downloader.ThreadManager
 import site.duqian.plugin.entity.ChatGptResult
 
 /**
- * Description:Hi from 杜小菜
+ * Description:Hi from Davy
  *
- * Created by 杜小菜 on 2022/9/28 - 09:39.
+ * Created by Davy on 2022/9/28 - 09:39.
  * E-mail: duqian2010@gmail.com
  */
-class DusanPlugin : AnAction() {
+class AiPlugin : AnAction() {
     companion object {
         private const val TAG = "dq-DusanPlugin"
         /**
@@ -31,7 +31,7 @@ class DusanPlugin : AnAction() {
         val project = e.getData(PlatformDataKeys.PROJECT)
         val basePath = if (project != null) project.basePath ?: "" else ""
         Messages.showMessageDialog(
-            project, "Hello，ChatGpt:$QUESTION", "Question from 杜小菜", Messages.getInformationIcon()
+            project, "Hello，ChatGpt:$QUESTION", "Question from Davy", Messages.getInformationIcon()
         )
 
         try {

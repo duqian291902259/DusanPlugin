@@ -13,7 +13,7 @@ import java.awt.*;
 /**
  * Description:parse svg and play in web browser
  * <p>
- * Created by 杜小菜 on 2022/9/26 - 09:04.
+ * Created by Davy on 2022/9/26 - 09:04.
  * E-mail: duqian2010@gmail.com
  */
 public class SvgaDataProcessor {
