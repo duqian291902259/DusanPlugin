@@ -16,7 +16,7 @@ import site.duqian.plugin.entity.ChatGptResult
  */
 class AiPlugin : AnAction() {
     companion object {
-        private const val TAG = "dq-DusanPlugin"
+        private const val TAG = "dq-AiPlugin"
         /**
          *Kotlin is a statically typed, cross-platform, general-purpose programming language developed by JetBrains. It is designed to interoperate fully with Java and is an officially supported language for Android development. It is also the language used by the Spring Boot framework.
          */
