@@ -1,3 +1,4 @@
+/*
 package site.duqian.plugin.convert
 
 import com.android.resources.ResourceFolderType
@@ -8,9 +9,11 @@ import com.intellij.openapi.project.DumbAwareAction
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 
+*/
 /**
  * Description: Add 'Convert to WebP' in VCS Local Change window
- */
+ *//*
+
 class ImageToWebPAction : DumbAwareAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
@@ -43,9 +46,11 @@ class ImageToWebPAction : DumbAwareAction() {
         e.presentation.isEnabledAndVisible = false
     }
 
-    /**
+    */
+/**
      * only convert the files in resource folder
-     */
+     *//*
+
     private fun isResourceDirectory(file: VirtualFile, project: Project): Boolean {
         if (file.isDirectory) {
             val folderType = ResourceFolderType.getFolderType(file.name)
@@ -55,4 +60,6 @@ class ImageToWebPAction : DumbAwareAction() {
         }
         return false
     }
-}
+
+
+}*/
