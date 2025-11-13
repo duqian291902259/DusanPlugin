@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "site.duqian.plugin"
-version = "1.3.7"
+version = "1.4.0"
 repositories {
     mavenCentral()
     google()
@@ -51,7 +51,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("182")
-        untilBuild.set("251.*")
+        untilBuild.set("352.*")
     }
 
    /* signPlugin {
